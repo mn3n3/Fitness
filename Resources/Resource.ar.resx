@@ -150,6 +150,9 @@
   <data name="Register" xml:space="preserve">
     <value>تسجيل</value>
   </data>
+  <data name="Save" xml:space="preserve">
+    <value>حفظ</value>
+  </data>
   <data name="ThisAccountHasBeenLocked" xml:space="preserve">
     <value>تم اغلاق الحساب</value>
   </data>
