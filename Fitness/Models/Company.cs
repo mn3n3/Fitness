@@ -35,6 +35,11 @@ namespace Fitness.Models
         [Display(Name = "DecimalPoint", ResourceType = typeof(Resources.Resource))]
         public int DecimalPoint { get; set; }
 
+
+
+        public ApplicationUser User { get; set; }
+        public string UserId { get; set; }
+
         public static implicit operator int(Company v)
         {
             throw new NotImplementedException();
