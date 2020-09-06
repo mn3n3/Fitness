@@ -70,6 +70,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Arabic Address.
+        /// </summary>
+        public static string ArabicAddress {
+            get {
+                return ResourceManager.GetString("ArabicAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Arabic Name.
+        /// </summary>
+        public static string ArabicName {
+            get {
+                return ResourceManager.GetString("ArabicName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change Password.
         /// </summary>
         public static string ChangePassword {
@@ -106,11 +124,56 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Decimal Point.
+        /// </summary>
+        public static string DecimalPoint {
+            get {
+                return ResourceManager.GetString("DecimalPoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        public static string Delete {
+            get {
+                return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to English Address.
+        /// </summary>
+        public static string EnglishAddress {
+            get {
+                return ResourceManager.GetString("EnglishAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to English Name.
+        /// </summary>
+        public static string EnglishName {
+            get {
+                return ResourceManager.GetString("EnglishName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error.
         /// </summary>
         public static string Error {
             get {
                 return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Group Code.
+        /// </summary>
+        public static string GroupCode {
+            get {
+                return ResourceManager.GetString("GroupCode", resourceCulture);
             }
         }
         
@@ -142,11 +205,38 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Logo Path.
+        /// </summary>
+        public static string LogoPath {
+            get {
+                return ResourceManager.GetString("LogoPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to My Notinifactio Logs.
         /// </summary>
         public static string MyNotinifactioLogs {
             get {
                 return ResourceManager.GetString("MyNotinifactioLogs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone (1).
+        /// </summary>
+        public static string Phone1 {
+            get {
+                return ResourceManager.GetString("Phone1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone (2).
+        /// </summary>
+        public static string Phone2 {
+            get {
+                return ResourceManager.GetString("Phone2", resourceCulture);
             }
         }
         
@@ -169,11 +259,38 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Suspension.
+        /// </summary>
+        public static string Suspension {
+            get {
+                return ResourceManager.GetString("Suspension", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TeleFax.
+        /// </summary>
+        public static string TeleFax {
+            get {
+                return ResourceManager.GetString("TeleFax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This Account Has Been Locked.
         /// </summary>
         public static string ThisAccountHasBeenLocked {
             get {
                 return ResourceManager.GetString("ThisAccountHasBeenLocked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update.
+        /// </summary>
+        public static string Update {
+            get {
+                return ResourceManager.GetString("Update", resourceCulture);
             }
         }
     }

@@ -120,6 +120,12 @@
   <data name="AnErrorOccurred" xml:space="preserve">
     <value>An Error Occurred</value>
   </data>
+  <data name="ArabicAddress" xml:space="preserve">
+    <value>Arabic Address</value>
+  </data>
+  <data name="ArabicName" xml:space="preserve">
+    <value>Arabic Name</value>
+  </data>
   <data name="ChangePassword" xml:space="preserve">
     <value>Change Password</value>
   </data>
@@ -132,8 +138,23 @@
   <data name="Dashboard" xml:space="preserve">
     <value>Dashboard</value>
   </data>
+  <data name="DecimalPoint" xml:space="preserve">
+    <value>Decimal Point</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="EnglishAddress" xml:space="preserve">
+    <value>English Address</value>
+  </data>
+  <data name="EnglishName" xml:space="preserve">
+    <value>English Name</value>
+  </data>
   <data name="Error" xml:space="preserve">
     <value>Error</value>
+  </data>
+  <data name="GroupCode" xml:space="preserve">
+    <value>Group Code</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>Home</value>
@@ -144,8 +165,17 @@
   <data name="LogOff" xml:space="preserve">
     <value>LogOff</value>
   </data>
+  <data name="LogoPath" xml:space="preserve">
+    <value>Logo Path</value>
+  </data>
   <data name="MyNotinifactioLogs" xml:space="preserve">
     <value>My Notinifactio Logs</value>
+  </data>
+  <data name="Phone1" xml:space="preserve">
+    <value>Phone (1)</value>
+  </data>
+  <data name="Phone2" xml:space="preserve">
+    <value>Phone (2)</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Register</value>
@@ -153,7 +183,16 @@
   <data name="Save" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="Suspension" xml:space="preserve">
+    <value>Suspension</value>
+  </data>
+  <data name="TeleFax" xml:space="preserve">
+    <value>TeleFax</value>
+  </data>
   <data name="ThisAccountHasBeenLocked" xml:space="preserve">
     <value>This Account Has Been Locked</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Update</value>
   </data>
 </root>

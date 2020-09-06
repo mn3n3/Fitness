@@ -120,6 +120,12 @@
   <data name="AnErrorOccurred" xml:space="preserve">
     <value>حدث خطا اثناء الاتصال</value>
   </data>
+  <data name="ArabicAddress" xml:space="preserve">
+    <value>العنوان بالعربي</value>
+  </data>
+  <data name="ArabicName" xml:space="preserve">
+    <value>الاسم بالعربي</value>
+  </data>
   <data name="ChangePassword" xml:space="preserve">
     <value>تغير كلمة المرور</value>
   </data>
@@ -132,8 +138,23 @@
   <data name="Dashboard" xml:space="preserve">
     <value>Dashboard</value>
   </data>
+  <data name="DecimalPoint" xml:space="preserve">
+    <value>الفواصل العشرية</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>حذف</value>
+  </data>
+  <data name="EnglishAddress" xml:space="preserve">
+    <value>العنوان بالاتيني</value>
+  </data>
+  <data name="EnglishName" xml:space="preserve">
+    <value>الاسم بالاتيني</value>
+  </data>
   <data name="Error" xml:space="preserve">
     <value>خطا</value>
+  </data>
+  <data name="GroupCode" xml:space="preserve">
+    <value>رمز المجموعة</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>الرئيسية</value>
@@ -144,8 +165,17 @@
   <data name="LogOff" xml:space="preserve">
     <value>تسجيل خروج</value>
   </data>
+  <data name="LogoPath" xml:space="preserve">
+    <value>امتداد الشعار</value>
+  </data>
   <data name="MyNotinifactioLogs" xml:space="preserve">
     <value>اشعاراتي</value>
+  </data>
+  <data name="Phone1" xml:space="preserve">
+    <value>هاتف (1)</value>
+  </data>
+  <data name="Phone2" xml:space="preserve">
+    <value>هاتف (2)</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>تسجيل</value>
@@ -153,7 +183,16 @@
   <data name="Save" xml:space="preserve">
     <value>حفظ</value>
   </data>
+  <data name="Suspension" xml:space="preserve">
+    <value>إيقاف عن العمل</value>
+  </data>
+  <data name="TeleFax" xml:space="preserve">
+    <value>فاكس</value>
+  </data>
   <data name="ThisAccountHasBeenLocked" xml:space="preserve">
     <value>تم اغلاق الحساب</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>تعديل</value>
   </data>
 </root>
