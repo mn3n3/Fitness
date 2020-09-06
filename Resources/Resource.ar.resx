@@ -159,11 +159,17 @@
   <data name="CompanyName" xml:space="preserve">
     <value>اسم الشركة</value>
   </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>تأكيد كلمة المرور</value>
+  </data>
   <data name="CostCenterNumber" xml:space="preserve">
     <value>رقم مركز الكلفه</value>
   </data>
   <data name="CreateAccount" xml:space="preserve">
     <value>انشاء حساب</value>
+  </data>
+  <data name="CreateNew" xml:space="preserve">
+    <value>انشاء جديد</value>
   </data>
   <data name="CurLang" xml:space="preserve">
     <value>Arb</value>
@@ -237,8 +243,14 @@
   <data name="Lenght" xml:space="preserve">
     <value>الطول</value>
   </data>
+  <data name="LoadingMsg" xml:space="preserve">
+    <value>يرجي الانظار جاري التحقق من البيانات</value>
+  </data>
   <data name="LockedOut" xml:space="preserve">
     <value>LockedOut</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>دخول</value>
   </data>
   <data name="LogOff" xml:space="preserve">
     <value>تسجيل خروج</value>
@@ -257,6 +269,9 @@
   </data>
   <data name="ParentsName" xml:space="preserve">
     <value>اسماء الاباء</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>كلمة الدخول</value>
   </data>
   <data name="PeriodByDay" xml:space="preserve">
     <value>الفتره حسب اليوم</value>
@@ -279,17 +294,29 @@
   <data name="PlaceOfBirth" xml:space="preserve">
     <value>مكان الولادة</value>
   </data>
+  <data name="PleasefillalRequiredfields" xml:space="preserve">
+    <value>يرجي ادخال الحقول المطلوبه</value>
+  </data>
+  <data name="PleaseWait" xml:space="preserve">
+    <value>يرجي الانتظار</value>
+  </data>
   <data name="Price" xml:space="preserve">
     <value>السعر</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>تسجيل</value>
   </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>تذكرني</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>حفظ</value>
   </data>
   <data name="SocialStatus" xml:space="preserve">
     <value>الحالة الاجتماعية</value>
+  </data>
+  <data name="SomthingWentWrong" xml:space="preserve">
+    <value>حدث خطأ </value>
   </data>
   <data name="SourceCode" xml:space="preserve">
     <value>رمز المصدر</value>
@@ -344,5 +371,11 @@
   </data>
   <data name="Weight" xml:space="preserve">
     <value>الوزن</value>
+  </data>
+  <data name="YourAccountIsBeingCreated" xml:space="preserve">
+    <value>جاري انشاء حسابك</value>
+  </data>
+  <data name="YourrequesthasBeenSuccessfullySent" xml:space="preserve">
+    <value>تم ارسال طلبك بنجاح</value>
   </data>
 </root>

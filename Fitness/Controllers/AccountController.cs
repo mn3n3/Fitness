@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Fitness.Models;
+using Fitness.Helpers;
 
 namespace Fitness.Controllers
 {
@@ -50,6 +51,73 @@ namespace Fitness.Controllers
             {
                 _userManager = value;
             }
+        }
+        [HttpPost]
+        [AllowAnonymous]
+        // [ValidateAntiForgeryToken]
+        public async Task<ActionResult> RegisterJson(RegisterViewModel model)
+        {
+            MsgUnit Msg = new MsgUnit();
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    fCompanyId = 0,
+
+                    UserType = 1,
+                    AccountStatus = 1,
+                    RealPass = model.Password
+                };
+
+
+
+                var result = await UserManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    await UserManager.AddToRoleAsync(user.Id, "CoOwner");
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+
+                    Msg.Msg = Resources.Resource.YourrequesthasBeenSuccessfullySent;
+                    Msg.Code = 1;
+                    return Json(Msg, JsonRequestBehavior.AllowGet);
+                }
+
+
+                string Err = " ";
+                //var errors = result.SelectMany();
+                foreach (string error in result.Errors)
+                {
+                    Err = Err + error + " * ";
+                }
+
+                Msg.Msg = Resources.Resource.SomthingWentWrong + " * " + Err;
+                Msg.Code = 0;
+                return Json(Msg, JsonRequestBehavior.AllowGet);
+
+
+            }
+            else
+            {
+                string Err = " ";
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
+                foreach (ModelError error in errors)
+                {
+                    Err = Err + error.ErrorMessage + "  ";
+                }
+
+                Msg.Msg = Resources.Resource.SomthingWentWrong + " " + Err;
+                Msg.Code = 0;
+                return Json(Msg, JsonRequestBehavior.AllowGet);
+            }
+
+
+
+
+            // If we got this far, something failed, redisplay form
+            // return View(model);
         }
 
         //

@@ -159,11 +159,17 @@
   <data name="CompanyName" xml:space="preserve">
     <value>Company Name</value>
   </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Confirm Password</value>
+  </data>
   <data name="CostCenterNumber" xml:space="preserve">
     <value>Cost Center Number</value>
   </data>
   <data name="CreateAccount" xml:space="preserve">
     <value>Create Account</value>
+  </data>
+  <data name="CreateNew" xml:space="preserve">
+    <value>Create New</value>
   </data>
   <data name="CurLang" xml:space="preserve">
     <value>Eng</value>
@@ -237,8 +243,14 @@
   <data name="Lenght" xml:space="preserve">
     <value>Lenght</value>
   </data>
+  <data name="LoadingMsg" xml:space="preserve">
+    <value>Please Watin Loading Your Data</value>
+  </data>
   <data name="LockedOut" xml:space="preserve">
     <value>Locked Out</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Login</value>
   </data>
   <data name="LogOff" xml:space="preserve">
     <value>LogOff</value>
@@ -257,6 +269,9 @@
   </data>
   <data name="ParentsName" xml:space="preserve">
     <value>Parents Name</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
   </data>
   <data name="PeriodByDay" xml:space="preserve">
     <value>Period By Day</value>
@@ -279,17 +294,29 @@
   <data name="PlaceOfBirth" xml:space="preserve">
     <value>Place Of Birth </value>
   </data>
+  <data name="PleasefillalRequiredfields" xml:space="preserve">
+    <value>Please fill all Required fields</value>
+  </data>
+  <data name="PleaseWait" xml:space="preserve">
+    <value>Please Wait</value>
+  </data>
   <data name="Price" xml:space="preserve">
     <value>Price</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Register</value>
   </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Remember Me</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Save</value>
   </data>
   <data name="SocialStatus" xml:space="preserve">
     <value>Social Status</value>
+  </data>
+  <data name="SomthingWentWrong" xml:space="preserve">
+    <value>Somthing Went Wrong</value>
   </data>
   <data name="SourceCode" xml:space="preserve">
     <value>Source Code</value>
@@ -344,5 +371,11 @@
   </data>
   <data name="Weight" xml:space="preserve">
     <value>Weight</value>
+  </data>
+  <data name="YourAccountIsBeingCreated" xml:space="preserve">
+    <value>Your Account Is Being Created</value>
+  </data>
+  <data name="YourrequesthasBeenSuccessfullySent" xml:space="preserve">
+    <value>Your Request has Been Successfully Sent</value>
   </data>
 </root>

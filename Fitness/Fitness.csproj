@@ -48,6 +48,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -100,9 +103,6 @@
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -171,6 +171,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -189,6 +190,10 @@
     <Compile Include="Migrations\202009061534558_addClass060920-nagham.cs" />
     <Compile Include="Migrations\202009061534558_addClass060920-nagham.Designer.cs">
       <DependentUpon>202009061534558_addClass060920-nagham.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009061934118_n3n3sdlskdlksldk.cs" />
+    <Compile Include="Migrations\202009061934118_n3n3sdlskdlksldk.Designer.cs">
+      <DependentUpon>202009061934118_n3n3sdlskdlksldk.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -234,8 +239,30 @@
     <Compile Include="Repositories\IUnitOfWork.cs" />
     <Compile Include="Repositories\IVisitorRepo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\RegisterViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CompanyLogo\1fe15209-654d-4552-b9d3-86e6045d1239.jpg" />
+    <Content Include="CompanyLogo\6697ea81-fe53-469c-83d7-5dc75c4804ea.png" />
+    <Content Include="CompanyLogo\b6919754-6b87-4aa3-9f30-169325d7e4b1.png" />
+    <Content Include="CompanyLogo\c8a214ea-a41d-45c4-ba58-bd2f08737e8b.png" />
+    <Content Include="CompanyLogo\cat-128.png" />
+    <Content Include="CompanyLogo\cat-16.png" />
+    <Content Include="CompanyLogo\cat-20.png" />
+    <Content Include="CompanyLogo\cat-24.png" />
+    <Content Include="CompanyLogo\cat-256.png" />
+    <Content Include="CompanyLogo\cat-32.png" />
+    <Content Include="CompanyLogo\cat-48.png" />
+    <Content Include="CompanyLogo\cat-512.png" />
+    <Content Include="CompanyLogo\cat-64.png" />
+    <Content Include="CompanyLogo\DashBoard.PNG" />
+    <Content Include="CompanyLogo\female.png" />
+    <Content Include="CompanyLogo\male.png" />
+    <Content Include="CompanyLogo\noimage.png" />
+    <Content Include="CompanyLogo\Slid3.jpg" />
+    <Content Include="CompanyLogo\Slide1.jpg" />
+    <Content Include="CompanyLogo\Slide2.jpg" />
     <Content Include="Content\animate.css" />
     <Content Include="Content\autoFill.jqueryui.css" />
     <Content Include="Content\autoFill.jqueryui.min.css" />
@@ -3132,9 +3159,44 @@
     <Content Include="dist\js\vectormap-data.js" />
     <Content Include="dist\js\widgets-data.js" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\font-awesome\css\font-awesome.css" />
+    <Content Include="fonts\font-awesome\css\font-awesome.min.css" />
+    <Content Include="fonts\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\font-awesome\HELP-US-OUT.txt" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\fontawesome\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\lg\lg.svg" />
+    <Content Include="fonts\linea-icons\linea-arrows-10.svg" />
+    <Content Include="fonts\linea-icons\linea-basic-10.svg" />
+    <Content Include="fonts\linea-icons\linea-basic-elaboration-10.svg" />
+    <Content Include="fonts\linea-icons\linea-ecommerce-10.svg" />
+    <Content Include="fonts\linea-icons\linea-music-10.svg" />
+    <Content Include="fonts\linea-icons\linea-software-10.svg" />
+    <Content Include="fonts\linea-icons\linea-weather-10.svg" />
+    <Content Include="fonts\material-design-iconic-font\Material-Design-Iconic-Font.svg" />
+    <Content Include="fonts\pe-icon-7\Pe-icon-7-stroke.svg" />
+    <Content Include="fonts\simple-line-icons\Simple-Line-Icons4c82.svg" />
+    <Content Include="fonts\themify-icons\themify.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Logs\cat-128.png" />
+    <Content Include="Logs\cat-16.png" />
+    <Content Include="Logs\cat-20.png" />
+    <Content Include="Logs\cat-24.png" />
+    <Content Include="Logs\cat-256.png" />
+    <Content Include="Logs\cat-32.png" />
+    <Content Include="Logs\cat-48.png" />
+    <Content Include="Logs\cat-512.png" />
+    <Content Include="Logs\cat-64.png" />
+    <Content Include="Logs\female.png" />
+    <Content Include="Logs\LoginLogo.png" />
+    <Content Include="Logs\Logo-big.jpeg" />
+    <Content Include="Logs\Logo-small.jpeg" />
+    <Content Include="Logs\Logo.png" />
+    <Content Include="Logs\LogoIn.png" />
+    <Content Include="Logs\male.png" />
+    <Content Include="Logs\noimage.png" />
     <Content Include="Scripts\animate.css" />
     <Content Include="Scripts\app\job.js" />
     <Content Include="Scripts\bloodhound.js" />
@@ -4586,6 +4648,99 @@
     <Content Include="dist\fonts\themify-icons\themify.woff" />
     <Content Include="dist\img\country\01-flag.zip" />
     <Content Include="dist\json\bootstrap-table.json" />
+    <Content Include="fonts\font-awesome\css\font-awesome.css.map" />
+    <Content Include="fonts\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="fonts\font-awesome\less\animated.less" />
+    <Content Include="fonts\font-awesome\less\bordered-pulled.less" />
+    <Content Include="fonts\font-awesome\less\core.less" />
+    <Content Include="fonts\font-awesome\less\extras.less" />
+    <Content Include="fonts\font-awesome\less\fixed-width.less" />
+    <Content Include="fonts\font-awesome\less\font-awesome.less" />
+    <Content Include="fonts\font-awesome\less\icons.less" />
+    <Content Include="fonts\font-awesome\less\larger.less" />
+    <Content Include="fonts\font-awesome\less\list.less" />
+    <Content Include="fonts\font-awesome\less\mixins.less" />
+    <Content Include="fonts\font-awesome\less\path.less" />
+    <Content Include="fonts\font-awesome\less\rotated-flipped.less" />
+    <Content Include="fonts\font-awesome\less\screen-reader.less" />
+    <Content Include="fonts\font-awesome\less\spinning.less" />
+    <Content Include="fonts\font-awesome\less\stacked.less" />
+    <Content Include="fonts\font-awesome\less\variables.less" />
+    <Content Include="fonts\font-awesome\scss\font-awesome.scss" />
+    <Content Include="fonts\font-awesome\scss\_animated.scss" />
+    <Content Include="fonts\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="fonts\font-awesome\scss\_core.scss" />
+    <Content Include="fonts\font-awesome\scss\_extras.scss" />
+    <Content Include="fonts\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="fonts\font-awesome\scss\_icons.scss" />
+    <Content Include="fonts\font-awesome\scss\_larger.scss" />
+    <Content Include="fonts\font-awesome\scss\_list.scss" />
+    <Content Include="fonts\font-awesome\scss\_mixins.scss" />
+    <Content Include="fonts\font-awesome\scss\_path.scss" />
+    <Content Include="fonts\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="fonts\font-awesome\scss\_screen-reader.scss" />
+    <Content Include="fonts\font-awesome\scss\_spinning.scss" />
+    <Content Include="fonts\font-awesome\scss\_stacked.scss" />
+    <Content Include="fonts\font-awesome\scss\_variables.scss" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome\FontAwesome.otf" />
+    <Content Include="fonts\lg\lg.ttf" />
+    <Content Include="fonts\lg\lg.woff" />
+    <Content Include="fonts\linea-icons\linea-arrows-10.eot" />
+    <Content Include="fonts\linea-icons\linea-arrows-10.ttf" />
+    <Content Include="fonts\linea-icons\linea-arrows-10.woff" />
+    <Content Include="fonts\linea-icons\linea-arrows-10d41d.eot" />
+    <Content Include="fonts\linea-icons\linea-basic-10.eot" />
+    <Content Include="fonts\linea-icons\linea-basic-10.ttf" />
+    <Content Include="fonts\linea-icons\linea-basic-10.woff" />
+    <Content Include="fonts\linea-icons\linea-basic-10d41d.eot" />
+    <Content Include="fonts\linea-icons\linea-basic-elaboration-10.eot" />
+    <Content Include="fonts\linea-icons\linea-basic-elaboration-10.ttf" />
+    <Content Include="fonts\linea-icons\linea-basic-elaboration-10.woff" />
+    <Content Include="fonts\linea-icons\linea-basic-elaboration-10d41d.eot" />
+    <Content Include="fonts\linea-icons\linea-ecommerce-10.eot" />
+    <Content Include="fonts\linea-icons\linea-ecommerce-10.ttf" />
+    <Content Include="fonts\linea-icons\linea-ecommerce-10.woff" />
+    <Content Include="fonts\linea-icons\linea-ecommerce-10d41d.eot" />
+    <Content Include="fonts\linea-icons\linea-music-10.eot" />
+    <Content Include="fonts\linea-icons\linea-music-10.ttf" />
+    <Content Include="fonts\linea-icons\linea-music-10.woff" />
+    <Content Include="fonts\linea-icons\linea-music-10d41d.eot" />
+    <Content Include="fonts\linea-icons\linea-software-10.eot" />
+    <Content Include="fonts\linea-icons\linea-software-10.ttf" />
+    <Content Include="fonts\linea-icons\linea-software-10.woff" />
+    <Content Include="fonts\linea-icons\linea-software-10d41d.eot" />
+    <Content Include="fonts\linea-icons\linea-weather-10.eot" />
+    <Content Include="fonts\linea-icons\linea-weather-10.ttf" />
+    <Content Include="fonts\linea-icons\linea-weather-10.woff" />
+    <Content Include="fonts\linea-icons\linea-weather-10d41d.eot" />
+    <Content Include="fonts\material-design-iconic-font.zip" />
+    <Content Include="fonts\material-design-iconic-font\Material-Design-Iconic-Font.eot" />
+    <Content Include="fonts\material-design-iconic-font\Material-Design-Iconic-Font.ttf" />
+    <Content Include="fonts\material-design-iconic-font\Material-Design-Iconic-Font.woff" />
+    <Content Include="fonts\material-design-iconic-font\Material-Design-Iconic-Font.woff2" />
+    <Content Include="fonts\pe-icon-7\Pe-icon-7-stroke.eot" />
+    <Content Include="fonts\pe-icon-7\Pe-icon-7-stroke.ttf" />
+    <Content Include="fonts\pe-icon-7\Pe-icon-7-stroke.woff" />
+    <Content Include="fonts\simple-line-icons\Simple-Line-Icons4c82.eot" />
+    <Content Include="fonts\simple-line-icons\Simple-Line-Icons4c82.ttf" />
+    <Content Include="fonts\simple-line-icons\Simple-Line-Icons4c82.woff" />
+    <Content Include="fonts\simple-line-icons\Simple-Line-Icons4c82.woff2" />
+    <Content Include="fonts\simple-line-icons\Simple-Line-Iconsd41d.eot" />
+    <Content Include="fonts\themify-icons\themify.eot" />
+    <Content Include="fonts\themify-icons\themify.ttf" />
+    <Content Include="fonts\themify-icons\themify.woff" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bundle.js" />
     <Content Include="Scripts\buttons.flash.min.js" />
@@ -8851,12 +9006,17 @@
     <Content Include="Views\Shared\Layout_Register.cshtml" />
     <Content Include="Views\Shared\LeftMenu.cshtml" />
     <Content Include="Views\Shared\NoMenu.cshtml" />
+    <Content Include="src\scss\mixins.scss" />
+    <Content Include="src\scss\style-dark.scss" />
+    <Content Include="src\scss\style-rtl.scss" />
+    <Content Include="src\scss\style.scss" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\vendors\bower_components\x-editable\dist\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\" />
     <Folder Include="Content\vendors\x-editable\dist\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\" />
     <Folder Include="vendors\bower_components\pdfmake\libs\FileSaver.js\" />
+    <Folder Include="Views\Company\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -8893,6 +9053,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009061534558_addClass060920-nagham.resx">
       <DependentUpon>202009061534558_addClass060920-nagham.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009061934118_n3n3sdlskdlksldk.resx">
+      <DependentUpon>202009061934118_n3n3sdlskdlksldk.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
