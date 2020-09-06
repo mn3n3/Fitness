@@ -207,6 +207,7 @@
     <Compile Include="Models\Trainer.cs" />
     <Compile Include="Models\Visitor.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
+    <Compile Include="Persistence\CompanyRepo.cs" />
     <Compile Include="Persistence\CustomerCompanyRepo.cs" />
     <Compile Include="Persistence\GroupRepo.cs" />
     <Compile Include="Persistence\ItemRepo.cs" />
