@@ -117,6 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccountNumber" xml:space="preserve">
+    <value>Account Number</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="AddByAdmin" xml:space="preserve">
+    <value>Add By Admin</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
   <data name="AnErrorOccurred" xml:space="preserve">
     <value>An Error Occurred</value>
   </data>
@@ -126,8 +138,29 @@
   <data name="ArabicName" xml:space="preserve">
     <value>Arabic Name</value>
   </data>
+  <data name="BirthDate" xml:space="preserve">
+    <value>Birth Date</value>
+  </data>
+  <data name="CardNumber" xml:space="preserve">
+    <value>Card Number</value>
+  </data>
   <data name="ChangePassword" xml:space="preserve">
     <value>Change Password</value>
+  </data>
+  <data name="Classes" xml:space="preserve">
+    <value>Classes</value>
+  </data>
+  <data name="ComapnyAddress" xml:space="preserve">
+    <value>Comapny Address</value>
+  </data>
+  <data name="CompanyCode" xml:space="preserve">
+    <value>Company Code</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>Company Name</value>
+  </data>
+  <data name="CostCenterNumber" xml:space="preserve">
+    <value>Cost Center Number</value>
   </data>
   <data name="CreateAccount" xml:space="preserve">
     <value>Create Account</value>
@@ -144,6 +177,9 @@
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
   </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
   <data name="EnglishAddress" xml:space="preserve">
     <value>English Address</value>
   </data>
@@ -153,11 +189,53 @@
   <data name="Error" xml:space="preserve">
     <value>Error</value>
   </data>
+  <data name="Free" xml:space="preserve">
+    <value>Free</value>
+  </data>
+  <data name="GenderCode" xml:space="preserve">
+    <value>Gender</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>Group</value>
+  </data>
   <data name="GroupCode" xml:space="preserve">
     <value>Group Code</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>Home</value>
+  </data>
+  <data name="Image1" xml:space="preserve">
+    <value>Image (1)</value>
+  </data>
+  <data name="Image2" xml:space="preserve">
+    <value>Image (2)</value>
+  </data>
+  <data name="InsDateTime" xml:space="preserve">
+    <value>Insert Date</value>
+  </data>
+  <data name="InsUserName" xml:space="preserve">
+    <value>Insert User</value>
+  </data>
+  <data name="Interseted" xml:space="preserve">
+    <value>Interseted</value>
+  </data>
+  <data name="ItemCode" xml:space="preserve">
+    <value>Item Code</value>
+  </data>
+  <data name="ItemCost" xml:space="preserve">
+    <value>Item Cost</value>
+  </data>
+  <data name="ItemName" xml:space="preserve">
+    <value>Item Name</value>
+  </data>
+  <data name="ItemPrice" xml:space="preserve">
+    <value>Item Price</value>
+  </data>
+  <data name="JobCode" xml:space="preserve">
+    <value>Job Code</value>
+  </data>
+  <data name="Lenght" xml:space="preserve">
+    <value>Lenght</value>
   </data>
   <data name="LockedOut" xml:space="preserve">
     <value>Locked Out</value>
@@ -171,17 +249,68 @@
   <data name="MyNotinifactioLogs" xml:space="preserve">
     <value>My Notinifactio Logs</value>
   </data>
+  <data name="NationalityCode" xml:space="preserve">
+    <value>Nationality Code</value>
+  </data>
+  <data name="Note" xml:space="preserve">
+    <value>Note</value>
+  </data>
+  <data name="ParentsName" xml:space="preserve">
+    <value>Parents Name</value>
+  </data>
+  <data name="PeriodByDay" xml:space="preserve">
+    <value>Period By Day</value>
+  </data>
+  <data name="PeriodByMonth" xml:space="preserve">
+    <value>Period By Month</value>
+  </data>
+  <data name="PeriodByWeeks" xml:space="preserve">
+    <value>Period By Weeks</value>
+  </data>
   <data name="Phone1" xml:space="preserve">
     <value>Phone (1)</value>
   </data>
   <data name="Phone2" xml:space="preserve">
     <value>Phone (2)</value>
   </data>
+  <data name="PlaceCode" xml:space="preserve">
+    <value>Place Code</value>
+  </data>
+  <data name="PlaceOfBirth" xml:space="preserve">
+    <value>Place Of Birth </value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Price</value>
+  </data>
   <data name="Register" xml:space="preserve">
     <value>Register</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Save</value>
+  </data>
+  <data name="SocialStatus" xml:space="preserve">
+    <value>Social Status</value>
+  </data>
+  <data name="SourceCode" xml:space="preserve">
+    <value>Source Code</value>
+  </data>
+  <data name="Stop" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="SubscriberCode" xml:space="preserve">
+    <value>Subscriber Code</value>
+  </data>
+  <data name="SubscriberName" xml:space="preserve">
+    <value>Subscriber Name</value>
+  </data>
+  <data name="SubscriberType" xml:space="preserve">
+    <value>Subscriber Type</value>
+  </data>
+  <data name="SubscriptionCode" xml:space="preserve">
+    <value>Subscription Code</value>
+  </data>
+  <data name="SubscriptionName" xml:space="preserve">
+    <value>Subscription Name</value>
   </data>
   <data name="Suspension" xml:space="preserve">
     <value>Suspension</value>
@@ -192,7 +321,28 @@
   <data name="ThisAccountHasBeenLocked" xml:space="preserve">
     <value>This Account Has Been Locked</value>
   </data>
+  <data name="TrainerCode" xml:space="preserve">
+    <value>Trainer Code</value>
+  </data>
+  <data name="TrainerName" xml:space="preserve">
+    <value>Trainer Name</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="UnInterseted" xml:space="preserve">
+    <value>UnInterseted</value>
+  </data>
   <data name="Update" xml:space="preserve">
     <value>Update</value>
+  </data>
+  <data name="VisitorCode" xml:space="preserve">
+    <value>Visitor Code</value>
+  </data>
+  <data name="VisitorName" xml:space="preserve">
+    <value>VisitorName</value>
+  </data>
+  <data name="Weight" xml:space="preserve">
+    <value>Weight</value>
   </data>
 </root>

@@ -7,25 +7,35 @@ using System.Web;
 
 namespace Fitness.Models
 {
-    public class Group
+    public class Item
     {
         public Company Company { get; set; }
         [Key]
         [Column(Order = 1)]
         public int CompanyID { get; set; }
-        [Key]
-        [Column(Order = 2)]
-        [Display(Name = "GroupCode", ResourceType = typeof(Resources.Resource))]
-        public int GroupCode { get; set; }
-        [Display(Name = "ArabicName", ResourceType = typeof(Resources.Resource))]
-        public string ArabicName { get; set; }
-        [Display(Name = "EnglishName", ResourceType = typeof(Resources.Resource))]
-        public string EnglishName { get; set; }
-        [Display(Name = "Suspension", ResourceType = typeof(Resources.Resource))]
-        public bool Suspension { get; set; }
+
+        [Display(Name = "ItemCode", ResourceType = typeof(Resources.Resource))]
+
+        public string ItemCode { get; set; }
+
+        [Display(Name = "ItemName", ResourceType = typeof(Resources.Resource))]
+
+        public string ItemName { get; set; }
+
+        [Display(Name = "ItemPrice", ResourceType = typeof(Resources.Resource))]
+
+        public double ItemPrice { get; set; }
+
+        [Display(Name = "ItemCost", ResourceType = typeof(Resources.Resource))]
+
+        public double ItemCost { get; set; }
         [Display(Name = "InsUserName", ResourceType = typeof(Resources.Resource))]
         public string InsUserID { get; set; }
         [Display(Name = "InsDateTime", ResourceType = typeof(Resources.Resource))]
         public DateTime InsDateTime { get; set; }
+
+
+
+
     }
 }

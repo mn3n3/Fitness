@@ -117,6 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccountNumber" xml:space="preserve">
+    <value>رقم الحساب</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>فعال</value>
+  </data>
+  <data name="AddByAdmin" xml:space="preserve">
+    <value>اضافة من قبل المشرف</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>العنوان</value>
+  </data>
   <data name="AnErrorOccurred" xml:space="preserve">
     <value>حدث خطا اثناء الاتصال</value>
   </data>
@@ -126,8 +138,29 @@
   <data name="ArabicName" xml:space="preserve">
     <value>الاسم بالعربي</value>
   </data>
+  <data name="BirthDate" xml:space="preserve">
+    <value>تاريخ الميلاد</value>
+  </data>
+  <data name="CardNumber" xml:space="preserve">
+    <value>رقم البطاقة</value>
+  </data>
   <data name="ChangePassword" xml:space="preserve">
     <value>تغير كلمة المرور</value>
+  </data>
+  <data name="Classes" xml:space="preserve">
+    <value>الحصص</value>
+  </data>
+  <data name="CompanyAddress" xml:space="preserve">
+    <value>موقع الشركة</value>
+  </data>
+  <data name="CompanyCode" xml:space="preserve">
+    <value>رمز الشركة</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>اسم الشركة</value>
+  </data>
+  <data name="CostCenterNumber" xml:space="preserve">
+    <value>رقم مركز الكلفه</value>
   </data>
   <data name="CreateAccount" xml:space="preserve">
     <value>انشاء حساب</value>
@@ -144,6 +177,9 @@
   <data name="Delete" xml:space="preserve">
     <value>حذف</value>
   </data>
+  <data name="Email" xml:space="preserve">
+    <value>الايميل</value>
+  </data>
   <data name="EnglishAddress" xml:space="preserve">
     <value>العنوان بالاتيني</value>
   </data>
@@ -153,11 +189,53 @@
   <data name="Error" xml:space="preserve">
     <value>خطا</value>
   </data>
+  <data name="Free" xml:space="preserve">
+    <value>مجاني</value>
+  </data>
+  <data name="GenderCode" xml:space="preserve">
+    <value>الجنس</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>المجموعة</value>
+  </data>
   <data name="GroupCode" xml:space="preserve">
     <value>رمز المجموعة</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>الرئيسية</value>
+  </data>
+  <data name="Image1" xml:space="preserve">
+    <value> الصورة (1)</value>
+  </data>
+  <data name="Image2" xml:space="preserve">
+    <value>الصورة (2)</value>
+  </data>
+  <data name="InsDateTime" xml:space="preserve">
+    <value>تاريخ الادخال</value>
+  </data>
+  <data name="InsUserName" xml:space="preserve">
+    <value>ادخل بواسطة</value>
+  </data>
+  <data name="Interseted" xml:space="preserve">
+    <value>مهتم</value>
+  </data>
+  <data name="ItemCode" xml:space="preserve">
+    <value>رمز المادة</value>
+  </data>
+  <data name="ItemCost" xml:space="preserve">
+    <value>سعر الكلفه</value>
+  </data>
+  <data name="ItemName" xml:space="preserve">
+    <value>اسم المادة</value>
+  </data>
+  <data name="ItemPrice" xml:space="preserve">
+    <value>سعر البيع</value>
+  </data>
+  <data name="JobCode" xml:space="preserve">
+    <value>رمز الوظيفة</value>
+  </data>
+  <data name="Lenght" xml:space="preserve">
+    <value>الطول</value>
   </data>
   <data name="LockedOut" xml:space="preserve">
     <value>LockedOut</value>
@@ -171,17 +249,68 @@
   <data name="MyNotinifactioLogs" xml:space="preserve">
     <value>اشعاراتي</value>
   </data>
+  <data name="NationalityCode" xml:space="preserve">
+    <value>رمز الجنسية</value>
+  </data>
+  <data name="Note" xml:space="preserve">
+    <value>ملاحظه</value>
+  </data>
+  <data name="ParentsName" xml:space="preserve">
+    <value>اسماء الاباء</value>
+  </data>
+  <data name="PeriodByDay" xml:space="preserve">
+    <value>الفتره حسب اليوم</value>
+  </data>
+  <data name="PeriodByMonth" xml:space="preserve">
+    <value>الفترة حسب الشهر</value>
+  </data>
+  <data name="PeriodByWeeks" xml:space="preserve">
+    <value>الفتره حسب الاسبوع</value>
+  </data>
   <data name="Phone1" xml:space="preserve">
     <value>هاتف (1)</value>
   </data>
   <data name="Phone2" xml:space="preserve">
     <value>هاتف (2)</value>
   </data>
+  <data name="PlaceCode" xml:space="preserve">
+    <value>رمز المكان</value>
+  </data>
+  <data name="PlaceOfBirth" xml:space="preserve">
+    <value>مكان الولادة</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>السعر</value>
+  </data>
   <data name="Register" xml:space="preserve">
     <value>تسجيل</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>حفظ</value>
+  </data>
+  <data name="SocialStatus" xml:space="preserve">
+    <value>الحالة الاجتماعية</value>
+  </data>
+  <data name="SourceCode" xml:space="preserve">
+    <value>رمز المصدر</value>
+  </data>
+  <data name="Stop" xml:space="preserve">
+    <value>إيقاف</value>
+  </data>
+  <data name="SubscriberCode" xml:space="preserve">
+    <value>رمز المشترك</value>
+  </data>
+  <data name="SubscriberName" xml:space="preserve">
+    <value>اسم المشترك</value>
+  </data>
+  <data name="SubscriberType" xml:space="preserve">
+    <value>نوع الاشتراك</value>
+  </data>
+  <data name="SubscriptionCode" xml:space="preserve">
+    <value>رمز الاشتراك</value>
+  </data>
+  <data name="SubscriptionName" xml:space="preserve">
+    <value>اسم الاشتراك</value>
   </data>
   <data name="Suspension" xml:space="preserve">
     <value>إيقاف عن العمل</value>
@@ -192,7 +321,28 @@
   <data name="ThisAccountHasBeenLocked" xml:space="preserve">
     <value>تم اغلاق الحساب</value>
   </data>
+  <data name="TrainerCode" xml:space="preserve">
+    <value>رمز المدرب</value>
+  </data>
+  <data name="TrainerName" xml:space="preserve">
+    <value>اسم المدرب</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>النوع </value>
+  </data>
+  <data name="UnInterseted" xml:space="preserve">
+    <value>غير مهتم</value>
+  </data>
   <data name="Update" xml:space="preserve">
     <value>تعديل</value>
+  </data>
+  <data name="VisitorCode" xml:space="preserve">
+    <value>رمز الزائر</value>
+  </data>
+  <data name="VisitorName" xml:space="preserve">
+    <value>اسم الزائر</value>
+  </data>
+  <data name="Weight" xml:space="preserve">
+    <value>الوزن</value>
   </data>
 </root>

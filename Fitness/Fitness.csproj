@@ -182,16 +182,56 @@
     <Compile Include="Migrations\202009050715433_FirstRun.Designer.cs">
       <DependentUpon>202009050715433_FirstRun.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009060957209_addClass060920.cs" />
+    <Compile Include="Migrations\202009060957209_addClass060920.Designer.cs">
+      <DependentUpon>202009060957209_addClass060920.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009061534558_addClass060920-nagham.cs" />
+    <Compile Include="Migrations\202009061534558_addClass060920-nagham.Designer.cs">
+      <DependentUpon>202009061534558_addClass060920-nagham.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Company.cs" />
+    <Compile Include="Models\CustomerCompany.cs" />
     <Compile Include="Models\Group.cs" />
+    <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\Job.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Nationality.cs" />
+    <Compile Include="Models\PlaceOfBirth.cs" />
+    <Compile Include="Models\Source.cs" />
+    <Compile Include="Models\Subscriber.cs" />
+    <Compile Include="Models\Subscription.cs" />
+    <Compile Include="Models\Trainer.cs" />
+    <Compile Include="Models\Visitor.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
+    <Compile Include="Persistence\CustomerCompanyRepo.cs" />
+    <Compile Include="Persistence\GroupRepo.cs" />
+    <Compile Include="Persistence\ItemRepo.cs" />
+    <Compile Include="Persistence\JobRepo.cs" />
+    <Compile Include="Persistence\NationalityRepo.cs" />
+    <Compile Include="Persistence\PlaceOfBirthRepo.cs" />
+    <Compile Include="Persistence\SourceRepo.cs" />
+    <Compile Include="Persistence\SubscriberRepo.cs" />
+    <Compile Include="Persistence\SubscriptionRepo.cs" />
+    <Compile Include="Persistence\TrainerRepo.cs" />
     <Compile Include="Persistence\UnitOfWork.cs" />
+    <Compile Include="Persistence\VisitorRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ICustomerCompanyRepo.cs" />
+    <Compile Include="Repositories\IGroupRepo.cs" />
+    <Compile Include="Repositories\IItemRepo.cs" />
+    <Compile Include="Repositories\IJobRepo.cs" />
+    <Compile Include="Repositories\INationalityRepo.cs" />
+    <Compile Include="Repositories\IPlaceOfBirthRepo.cs" />
+    <Compile Include="Repositories\ISourceRepo.cs" />
+    <Compile Include="Repositories\ISubscriberRepo.cs" />
+    <Compile Include="Repositories\ISubscriptionRepo.cs" />
+    <Compile Include="Repositories\ITrainerRepo.cs" />
     <Compile Include="Repositories\IUnitOfWork.cs" />
+    <Compile Include="Repositories\IVisitorRepo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -8846,6 +8886,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202009050715433_FirstRun.resx">
       <DependentUpon>202009050715433_FirstRun.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009060957209_addClass060920.resx">
+      <DependentUpon>202009060957209_addClass060920.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009061534558_addClass060920-nagham.resx">
+      <DependentUpon>202009061534558_addClass060920-nagham.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
