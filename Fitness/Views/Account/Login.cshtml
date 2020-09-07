@@ -46,14 +46,14 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    <script>
+<script>
     // Check javascript has loaded
     $(document).ready(function(){
     // Click event of the showPassword button
         $('#MakeLogin').on('click', function () {
             var dialog = bootbox.dialog({
-                title: '@Resources.Resource.PleaseWait',
-                message: '<p><i class="fa fa-spin fa-spinner"></i> @Resources.Resource.LoadingMsg...</p>'
+                title: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif;color : White"> @Resources.Resource.PleaseWait...</h6>',
+                message: '<p style="font-family: Verdana, Geneva, Tahoma, sans-serif"><i class="fa fa-spin fa-spinner"></i> @Resources.Resource.LoadingMsg...</p>'
             });
             dialog.init(function () {
                 setTimeout(function () {
@@ -92,5 +92,5 @@
     });
     });
 
-    </script>
+</script>
 }

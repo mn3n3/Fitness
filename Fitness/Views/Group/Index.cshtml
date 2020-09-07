@@ -59,7 +59,7 @@
 		$(document).on('click', '#SaveGroup', function () {
 			if ($("#ArabicName").val() == '') {
 				bootbox.alert({
-					message: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif"> @Resources.Resource.PleasefillalRequiredfields</h6>',
+                    message: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif"> @Resources.Resource.PleasefillalRequiredfields</h6>',
 					className: 'rubberBand animated',
 					buttons: {
 						ok: {
@@ -86,7 +86,7 @@
 					callback: function (result) {
 						if (result) {
 							var dialog = bootbox.dialog({
-								title: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif"> @Resources.Resource.PleaseWait...</h6>',
+								title: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif;color : White"> @Resources.Resource.PleaseWait...</h6>',
 								message: '<p style="font-family: Verdana, Geneva, Tahoma, sans-serif"><i class="fa fa-spin fa-spinner"></i> @Resources.Resource.Saving...</p>',
 								closeButton: false
 							});
@@ -137,7 +137,7 @@
 		$(document).on('click', '#UpdateGroup', function () {
 			if ($("#ArabicName").val() == '') {
 				bootbox.alert({
-					message: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif"> @Resources.Resource.PleasefillalRequiredfields</h6>',
+                    message: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif"> @Resources.Resource.PleasefillalRequiredfields</h6>',
 					className: 'rubberBand animated',
 					buttons: {
 						ok: {
@@ -165,7 +165,7 @@
 					callback: function (result) {
 						if (result) {
 							var dialog = bootbox.dialog({
-								title: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif"> @Resources.Resource.PleaseWait...</h6>',
+                                title: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif;color : White"> @Resources.Resource.PleaseWait...</h6>',
 								message: '<p style="font-family: Verdana, Geneva, Tahoma, sans-serif"><i class="fa fa-spin fa-spinner"></i> @Resources.Resource.Updating...</p>',
 								closeButton: false
 							});
@@ -226,7 +226,7 @@
 				callback: function (result) {
 					if (result) {
 						var dialog = bootbox.dialog({
-							title: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif"> @Resources.Resource.PleaseWait...</h6>',
+                            title: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif;color : White"> @Resources.Resource.PleaseWait...</h6>',
 							message: '<p style="font-family: Verdana, Geneva, Tahoma, sans-serif"><i class="fa fa-spin fa-spinner"></i> @Resources.Resource.Deleting...</p>',
 							closeButton: false
 						});

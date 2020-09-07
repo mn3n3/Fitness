@@ -58,7 +58,7 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval");
-    <script>
+<script>
 
 		$(document).ready(function () {
 
@@ -77,9 +77,9 @@
 		else {
 
 		document.getElementById("save").disabled = true;
-		var dialog = bootbox.dialog({
-				   title: '<div class="panel panel-info"> <div class="panel-heading"> @Resources.Resource.PleaseWait </dvi> </dvi>',
-				  message: '<p><i class="fa fa-spin fa-spinner"></i> @Resources.Resource.YourAccountIsBeingCreated...</p>',
+			var dialog = bootbox.dialog({
+			title: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif;color : White"> @Resources.Resource.PleaseWait...</h6>',
+                message: '<p style="font-family: Verdana, Geneva, Tahoma, sans-serif"><i class="fa fa-spin fa-spinner"></i> @Resources.Resource.YourAccountIsBeingCreated...</p>',
 				  closeButton: false
 			});
 
@@ -126,6 +126,6 @@
 		});
 
 		});
-    </script>
+</script>
 
 }

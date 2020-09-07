@@ -21,7 +21,9 @@
                         @Html.TextBoxFor(m => m.GroupCode, new { @id = "GroupCode", @class = "form-control input-sml", @readonly = "readonly" })
                     </div>
                     <div class="form-group">
-                        @Html.CheckBoxFor(m => m.Suspension, new { @id = "Suspension", @class = "form-control input-sml", @disabled = "disabled" }) @Resources.Resource.Suspension
+                        <label style="font-size :smaller">
+                            @Html.CheckBoxFor(m => m.Suspension, new { @id = "Suspension", @disabled = "disabled" }) @Resources.Resource.Suspension
+                        </label>
                     </div>
                     <div class="form-group">
                         @Html.LabelFor(m => m.ArabicName)
