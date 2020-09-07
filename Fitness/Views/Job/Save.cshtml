@@ -1,5 +1,4 @@
-﻿
-@model Fitness.Models.Job
+﻿@model Fitness.Models.Job
 @{
     ViewBag.Title = @Resources.Resource.Save;
 }
@@ -36,7 +35,7 @@
 
                         @Html.TextBoxFor(m => m.JobCode, new { @id = "JobCode", @class = "form-control input-sml", @readonly = "readonly" })
                     </div>
-                    
+                   
                     <div class="form-group">
                         @Html.LabelFor(m => m.ArabicName)  <span style="color:red">*</span>
 

@@ -282,8 +282,17 @@
   <data name="ItemPrice" xml:space="preserve">
     <value>Item Price</value>
   </data>
+  <data name="Job" xml:space="preserve">
+    <value>Job</value>
+  </data>
   <data name="JobCode" xml:space="preserve">
     <value>Job Code</value>
+  </data>
+  <data name="JobName" xml:space="preserve">
+    <value>Job Name</value>
+  </data>
+  <data name="Jobs" xml:space="preserve">
+    <value>Jobs</value>
   </data>
   <data name="Last" xml:space="preserve">
     <value>Last</value>

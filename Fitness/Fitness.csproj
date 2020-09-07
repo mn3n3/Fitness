@@ -249,6 +249,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\DashBoardVM.cs" />
     <Compile Include="ViewModels\GroupVM.cs" />
+    <Compile Include="ViewModels\JobVM.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
   </ItemGroup>

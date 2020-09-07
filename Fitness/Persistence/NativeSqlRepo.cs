@@ -81,5 +81,59 @@ namespace Fitness.Persistence
 
             }
         }
+
+        public IEnumerable<JobVM> GetAllJob(int CompanyID)
+        {
+            if (Resources.Resource.CurLang == "Arb")
+            {
+                try
+                {
+                    return _context.Database.SqlQuery<JobVM>(
+                      " Select J.JobCode, J.ArabicName As JobName,A.UserName  " +
+
+                    "  From Jobs J,AspNetUsers A " +
+                     " Where  " +
+                    "  J.CompanyID = 1 " +
+                    "  And  " +
+                    "  J.CompanyID = A.fCompanyId " +
+                   "   And  " +
+                    "  J.InsUserID = A.Id  " +
+                   "   Order By J.JobCode "
+                    , new SqlParameter("@CompanyID", CompanyID)
+
+                ).ToList();
+                }
+                catch
+                {
+                    return new List<JobVM>();
+                }
+            }
+            else
+            {
+                try
+                {
+                    return _context.Database.SqlQuery<JobVM>(
+                      " Select J.JobCode, J.ArabicName As JobName,A.UserName  " +
+
+                    "  From Jobs J,AspNetUsers A " +
+                     " Where  " +
+                    "  J.CompanyID = 1 " +
+                    "  And  " +
+                    "  J.CompanyID = A.fCompanyId " +
+                   "   And  " +
+                    "  J.InsUserID = A.Id  " +
+                   "   Order By J.JobCode "
+
+                    , new SqlParameter("@CompanyID", CompanyID)
+
+                ).ToList();
+                }
+                catch
+                {
+                    return new List<JobVM>();
+                }
+
+            }
+        }
     }
 }

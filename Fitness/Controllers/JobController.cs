@@ -33,7 +33,7 @@ namespace Fitness.Controllers
             {
                 var userId = User.Identity.GetUserId();
                 var UserInfo = _unitOfWork.User.GetMyInfo(userId);
-                var AllJob = _unitOfWork.Job.GetAllJob(UserInfo.fCompanyId);
+                var AllJob = _unitOfWork.NativeSql.GetAllJob(UserInfo.fCompanyId);
                 if (AllJob == null)
                 {
                     return Json(new List<Job>(), JsonRequestBehavior.AllowGet);

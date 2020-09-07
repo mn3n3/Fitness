@@ -8,7 +8,7 @@ namespace Fitness.Repositories
 {
     public interface IJobRepo
     {
-        IEnumerable<Job> GetAllJob(int CompanyID);
+
         Job GetJobByID(int CompanyID, int JobCode);
         void Add(Job ObjSave);
         void Update(Job ObjUpdate);

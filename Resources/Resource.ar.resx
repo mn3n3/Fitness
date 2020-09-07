@@ -282,8 +282,17 @@
   <data name="ItemPrice" xml:space="preserve">
     <value>سعر البيع</value>
   </data>
+  <data name="Job" xml:space="preserve">
+    <value>الوظيفة</value>
+  </data>
   <data name="JobCode" xml:space="preserve">
     <value>رمز الوظيفة</value>
+  </data>
+  <data name="JobName" xml:space="preserve">
+    <value>اسم الوظيفة</value>
+  </data>
+  <data name="Jobs" xml:space="preserve">
+    <value>وظائف</value>
   </data>
   <data name="Last" xml:space="preserve">
     <value>الأخير</value>
