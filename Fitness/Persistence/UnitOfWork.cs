@@ -23,6 +23,7 @@ namespace Fitness.Persistence
         public IVisitorRepo Visitor { get; set; }
         public IUserRepo User { get; set; }
         public INativeSqlRepo NativeSql { get; set; }
+        public ICompanyRepo Company { get; set; }
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -40,6 +41,7 @@ namespace Fitness.Persistence
             Visitor = new VisitorRepo(_context);
             User = new UserRepo(_context);
             NativeSql = new NativeSqlRepo(_context);
+            Company = new CompanyRepo(_context);
         }
         public void Complete()
         {

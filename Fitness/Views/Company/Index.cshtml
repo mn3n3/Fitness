@@ -1,0 +1,299 @@
+﻿@model Fitness.Models.Company
+@{
+    ViewBag.Title = @Resources.Resource.CompanyInfo;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.AntiForgeryToken()
+@Html.HiddenFor(m => m.CompanyID, new { @id = "CompanyID" })
+<div class="panel card-view">
+    <div class="panel-heading">
+        <div class="pull-left">
+            <h6 class="panel-title txt-light" style="font-weight:bold">@Resources.Resource.CompanyInfo</h6>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="panel-body">
+        <div class="col-lg-12">
+            <div class="col-lg-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ArabicName)
+                    @Html.TextBoxFor(m => m.ArabicName, new { @id = "ArabicName", @class = "form-control input-sml" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ArabicAddress)
+                    @Html.TextAreaFor(m => m.ArabicAddress, new { @id = "ArabicAddress", @class = "form-control input-sml" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Email)
+                    @Html.TextBoxFor(m => m.Email, new { @id = "Email", @class = "form-control input-sml" })
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.EnglishName)
+                    @Html.TextBoxFor(m => m.EnglishName, new { @id = "EnglishName", @class = "form-control input-sml" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.EnglishAddress)
+                    @Html.TextAreaFor(m => m.EnglishAddress, new { @id = "EnglishAddress", @class = "form-control input-sml" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.DecimalPoint)
+                    @Html.TextBoxFor(m => m.DecimalPoint, new { @id = "DecimalPoint", @class = "form-control input-sml", @type = "number", @min = 2, @max = 3 })
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Mobile)
+                    @Html.TextBoxFor(m => m.Mobile, new { @id = "Mobile", @class = "form-control input-sml" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Telephone)
+                    @Html.TextBoxFor(m => m.Telephone, new { @id = "Telephone", @class = "form-control input-sml" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.TeleFax)
+                    @Html.TextBoxFor(m => m.TeleFax, new { @id = "TeleFax", @class = "form-control input-sml" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Website)
+                    @Html.TextBoxFor(m => m.Website, new { @id = "Website", @class = "form-control input-sml" })
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="panel-footer">
+        <div class="form-group">
+            @if (Model.CompanyID == 0)
+            {
+              <button type="submit" class="btn btn-success btn-anim" id="save"> <i class="fa fa-save"></i><span class="btn-text">@Resources.Resource.Save</span></button>
+            }
+            else
+            {
+             <button type="submit" class="btn btn-success btn-anim" id="update"> <i class="fa fa-edit"></i><span class="btn-text">@Resources.Resource.Update</span></button>
+
+            }
+            <button type="button" class="btn btn-default btn-anim" id="Close"> <i class="fa fa-times"></i><span class="btn-text">@Resources.Resource.Close</span></button>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+<script>
+
+    $(document).ready(function () {
+        $("#ArabicName").focus().select();
+        $(document).on('click', '#Close', function () {
+            window.location = "/CompanySettingsDash/Index";
+        });
+        $(document).on('click', '#save', function () {
+            if (document.getElementById("DecimalPoint").value == "" || document.getElementById("DecimalPoint").value < 2) {
+                document.getElementById("DecimalPoint").value = "2";
+            }
+            else if (document.getElementById("DecimalPoint").value > 3) {
+                document.getElementById("DecimalPoint").value = "3";
+            }
+            if ($("#ArabicName").val() == '') {
+                    bootbox.alert({
+                        message: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif"> @Resources.Resource.PleasefillalRequiredfields</h6>',
+                        className: 'rubberBand animated',
+                        buttons: {
+                            ok: {
+                                label: '<span style="font-family: Verdana, Geneva, Tahoma, sans-serif">@Resources.Resource.Ok</span>',
+                                className: 'btn-primary'
+                            }
+                        }
+                    });
+                }
+                else {
+                    bootbox.confirm({
+                        message: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif"> @Resources.Resource.AreYouSure</h6>',
+                        className: 'rubberBand animated',
+                        buttons: {
+                            confirm: {
+                                label: '<span style="font-family: Verdana, Geneva, Tahoma, sans-serif">@Resources.Resource.Yes</span>',
+                                className: 'btn-success'
+                            },
+                            cancel: {
+                                label: '<span style="font-family: Verdana, Geneva, Tahoma, sans-serif">@Resources.Resource.No</span>',
+                                className: 'btn-danger'
+                            }
+                        },
+                        callback: function (result) {
+                            if (result) {
+                                var dialog = bootbox.dialog({
+                                    title: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif"> @Resources.Resource.PleaseWait...</h6>',
+                                    message: '<p style="font-family: Verdana, Geneva, Tahoma, sans-serif"><i class="fa fa-spin fa-spinner"></i> @Resources.Resource.Saving...</p>',
+                                    closeButton: false
+                                });
+                                var dataToSave = {
+                                    CompanyID: $("#CompanyID").val(),
+                                    ArabicName: $("#ArabicName").val(), ArabicAddress: $("#ArabicAddress").val(),
+                                    EnglishName: $("#EnglishName").val(), EnglishAddress: $("#EnglishAddress").val(), Email: $("#Email").val(),
+                                    Mobile: $("#Mobile").val(), Telephone: $("#Telephone").val(), TeleFax: $("#TeleFax").val(),
+                                    Website: $("#Website").val(), DecimalPoint: $("#DecimalPoint").val()
+                                };
+                                $.ajax({
+                                    type: "POST",
+                                    url: "/Company/Save",
+                                    data: JSON.stringify(dataToSave),
+                                    contentType: 'application/json',
+                                    success: function (data) {
+
+                                        dialog.modal('hide');
+                                        if (data.Code == 0) {
+                                            toastr.error(data.Msg);
+                                        }
+                                        else if (data.Code == 1) {
+                                            $('#modal-container').modal('hide');
+                                            toastr.success(data.Msg);
+                                        }
+
+                                    },
+                                    error: function (data) {
+                                        dialog.modal('hide');
+                                        toastr.error(data);
+                                    }
+
+                                });
+                            }
+                        }
+                    });
+                }
+        });
+        $(document).on('click', '#update', function () {
+            if (document.getElementById("DecimalPoint").value == "" || document.getElementById("DecimalPoint").value < 2) {
+                document.getElementById("DecimalPoint").value = "2";
+            }
+            else if (document.getElementById("DecimalPoint").value > 3) {
+                document.getElementById("DecimalPoint").value = "3";
+            }
+            if ($("#ArabicName").val() == '') {
+                    bootbox.alert({
+                        message: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif"> @Resources.Resource.PleasefillalRequiredfields</h6>',
+                        className: 'rubberBand animated',
+                        buttons: {
+                            ok: {
+                                label: '<span style="font-family: Verdana, Geneva, Tahoma, sans-serif">@Resources.Resource.Ok</span>',
+                                className: 'btn-primary'
+                            }
+                        }
+                    });
+                }
+                else {
+                    bootbox.confirm({
+                        message: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif"> @Resources.Resource.AreYouSure</h6>',
+                        className: 'rubberBand animated',
+                        buttons: {
+                            confirm: {
+                                label: '<span style="font-family: Verdana, Geneva, Tahoma, sans-serif">@Resources.Resource.Yes</span>',
+                                className: 'btn-success'
+                            },
+                            cancel: {
+                                label: '<span style="font-family: Verdana, Geneva, Tahoma, sans-serif">@Resources.Resource.No</span>',
+                                className: 'btn-danger'
+                            }
+                        },
+                        callback: function (result) {
+                            if (result) {
+                                var dialog = bootbox.dialog({
+                                    title: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif">@Resources.Resource.PleaseWait...</h6>',
+                                    message: '<p style="font-family: Verdana, Geneva, Tahoma, sans-serif"><i class="fa fa-spin fa-spinner"></i> @Resources.Resource.Updating...</p>',
+                                    closeButton: false
+                                });
+                                var dataToSave = {
+                                    CompanyID: $("#CompanyID").val(),
+                                    ArabicName: $("#ArabicName").val(), ArabicAddress: $("#ArabicAddress").val(),
+                                    EnglishName: $("#EnglishName").val(), EnglishAddress: $("#EnglishAddress").val(), Email: $("#Email").val(),
+                                    Mobile: $("#Mobile").val(), Telephone: $("#Telephone").val(), TeleFax: $("#TeleFax").val(),
+                                    Website: $("#Website").val(), DecimalPoint: $("#DecimalPoint").val()
+                                };
+                                $.ajax({
+                                    type: "POST",
+                                    url: "/Company/Update",
+                                    data: JSON.stringify(dataToSave),
+                                    contentType: 'application/json',
+                                    success: function (data) {
+
+                                        dialog.modal('hide');
+                                        if (data.Code == 0) {
+                                            toastr.error(data.Msg);
+                                        }
+                                        else if (data.Code == 1) {
+                                            $('#modal-container').modal('hide');
+                                            toastr.success(data.Msg);
+                                        }
+
+                                    },
+                                    error: function (data) {
+                                        dialog.modal('hide');
+                                        toastr.error(data);
+                                    }
+
+                                });
+                            }
+                        }
+                    });
+                }
+        });
+        $("#ArabicName").keyup(function (event) {
+            if (event.keyCode == 13)
+                $("#ArabicAddress").focus().select();
+
+        });
+        $("#Email").keyup(function (event) {
+            if (event.keyCode == 13)
+                $("#EnglishName").focus().select();
+
+        });
+        $("#EnglishName").keyup(function (event) {
+            if (event.keyCode == 13)
+                $("#EnglishAddress").focus().select();
+
+        });
+        $("#DecimalPoint").keyup(function (event) {
+            if (event.keyCode == 13)
+                $("#Mobile").focus().select();
+
+        });
+        $("#Mobile").keyup(function (event) {
+            if (event.keyCode == 13)
+                $("#Telephone").focus().select();
+
+        });
+        $("#Telephone").keyup(function (event) {
+            if (event.keyCode == 13)
+                $("#TeleFax").focus().select();
+
+        });
+        $("#TeleFax").keyup(function (event) {
+            if (event.keyCode == 13)
+                $("#Website").focus().select();
+
+        });
+        $("#Website").keyup(function (event) {
+            if (event.keyCode == 13)
+                $("#ArabicName").focus().select();
+
+        });
+        var DecimalPoint = $("#DecimalPoint").val();
+        if (DecimalPoint == 0) {
+            document.getElementById("DecimalPoint").value = '3';
+        }
+        $("#DecimalPoint").blur(function () {
+            if (document.getElementById("DecimalPoint").value == "" || document.getElementById("DecimalPoint").value < 2) {
+                document.getElementById("DecimalPoint").value = "2";
+            }
+            else if (document.getElementById("DecimalPoint").value > 3) {
+                document.getElementById("DecimalPoint").value = "3";
+            }
+        });
+    });
+</script>
+}
+
+
+
+

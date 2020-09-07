@@ -1,15 +1,20 @@
-﻿ 
+﻿@model Fitness.ViewModels.DashBoardVM
 @{
     ViewBag.Title = @Resources.Resource.Home;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
- 
+<div>
+</div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 
-     
- 
+    <script>
+        $(document).ready(function () {
+
+        });
+    </script>
+    <script src="~/Scripts/dashboard-data.js"></script>
 
 
 
