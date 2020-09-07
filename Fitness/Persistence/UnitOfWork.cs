@@ -21,7 +21,8 @@ namespace Fitness.Persistence
         public ISubscriberRepo Subscriber { get; set; }
         public ISubscriptionRepo Subscription { get; set; }
         public IVisitorRepo Visitor { get; set; }
-
+        public IUserRepo User { get; set; }
+        public INativeSqlRepo NativeSql { get; set; }
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -37,7 +38,8 @@ namespace Fitness.Persistence
             Subscriber = new SubscriberRepo(_context);
             Subscription = new SubscriptionRepo(_context);
             Visitor = new VisitorRepo(_context);
-
+            User = new UserRepo(_context);
+            NativeSql = new NativeSqlRepo(_context);
         }
         public void Complete()
         {

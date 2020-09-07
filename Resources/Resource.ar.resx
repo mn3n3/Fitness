@@ -126,6 +126,9 @@
   <data name="AddByAdmin" xml:space="preserve">
     <value>اضافة من قبل المشرف</value>
   </data>
+  <data name="AddedSuccessfully" xml:space="preserve">
+    <value>تمت عملية التخزين بنجاح</value>
+  </data>
   <data name="Address" xml:space="preserve">
     <value>العنوان</value>
   </data>
@@ -138,6 +141,9 @@
   <data name="ArabicName" xml:space="preserve">
     <value>الاسم بالعربي</value>
   </data>
+  <data name="AreYouSure" xml:space="preserve">
+    <value>هل انتا متأكد ؟</value>
+  </data>
   <data name="BirthDate" xml:space="preserve">
     <value>تاريخ الميلاد</value>
   </data>
@@ -149,6 +155,9 @@
   </data>
   <data name="Classes" xml:space="preserve">
     <value>الحصص</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>إغلاق</value>
   </data>
   <data name="CompanyAddress" xml:space="preserve">
     <value>موقع الشركة</value>
@@ -183,8 +192,17 @@
   <data name="Delete" xml:space="preserve">
     <value>حذف</value>
   </data>
+  <data name="DeletedSuccessfully" xml:space="preserve">
+    <value>تمت عملية الحذف بنجاح</value>
+  </data>
+  <data name="Deleting" xml:space="preserve">
+    <value>جاري عملية الحذف</value>
+  </data>
   <data name="Email" xml:space="preserve">
     <value>الايميل</value>
+  </data>
+  <data name="EmptyTable" xml:space="preserve">
+    <value>ليست هناك بيانات متاحة في الجدول</value>
   </data>
   <data name="EnglishAddress" xml:space="preserve">
     <value>العنوان بالاتيني</value>
@@ -195,6 +213,9 @@
   <data name="Error" xml:space="preserve">
     <value>خطا</value>
   </data>
+  <data name="First" xml:space="preserve">
+    <value>الأول</value>
+  </data>
   <data name="Free" xml:space="preserve">
     <value>مجاني</value>
   </data>
@@ -204,8 +225,17 @@
   <data name="Group" xml:space="preserve">
     <value>المجموعة</value>
   </data>
+  <data name="GroupCase" xml:space="preserve">
+    <value>حالة المجموعة</value>
+  </data>
   <data name="GroupCode" xml:space="preserve">
     <value>رمز المجموعة</value>
+  </data>
+  <data name="GroupName" xml:space="preserve">
+    <value>اسم المجموعة</value>
+  </data>
+  <data name="Groups" xml:space="preserve">
+    <value>المجموعات</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>الرئيسية</value>
@@ -215,6 +245,15 @@
   </data>
   <data name="Image2" xml:space="preserve">
     <value>الصورة (2)</value>
+  </data>
+  <data name="Info" xml:space="preserve">
+    <value>إظهار _START_ إلى _END_ من أصل _TOTAL_ مدخل</value>
+  </data>
+  <data name="InfoEmpty" xml:space="preserve">
+    <value>يعرض 0 إلى 0 من أصل 0 سجل</value>
+  </data>
+  <data name="InfoFiltered" xml:space="preserve">
+    <value>(منتقاة من مجموع _MAX_ مُدخل)</value>
   </data>
   <data name="InsDateTime" xml:space="preserve">
     <value>تاريخ الادخال</value>
@@ -240,11 +279,20 @@
   <data name="JobCode" xml:space="preserve">
     <value>رمز الوظيفة</value>
   </data>
+  <data name="Last" xml:space="preserve">
+    <value>الأخير</value>
+  </data>
   <data name="Lenght" xml:space="preserve">
     <value>الطول</value>
   </data>
+  <data name="LengthMenu" xml:space="preserve">
+    <value>أظهر _MENU_ مدخلات</value>
+  </data>
   <data name="LoadingMsg" xml:space="preserve">
     <value>يرجي الانظار جاري التحقق من البيانات</value>
+  </data>
+  <data name="LoadingRecords" xml:space="preserve">
+    <value>جارٍ التحميل...</value>
   </data>
   <data name="LockedOut" xml:space="preserve">
     <value>LockedOut</value>
@@ -264,8 +312,20 @@
   <data name="NationalityCode" xml:space="preserve">
     <value>رمز الجنسية</value>
   </data>
+  <data name="New" xml:space="preserve">
+    <value>جديد</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>التالي</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>لا</value>
+  </data>
   <data name="Note" xml:space="preserve">
     <value>ملاحظه</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>موافق</value>
   </data>
   <data name="ParentsName" xml:space="preserve">
     <value>اسماء الاباء</value>
@@ -300,8 +360,17 @@
   <data name="PleaseWait" xml:space="preserve">
     <value>يرجي الانتظار</value>
   </data>
+  <data name="Previous" xml:space="preserve">
+    <value>السابق</value>
+  </data>
   <data name="Price" xml:space="preserve">
     <value>السعر</value>
+  </data>
+  <data name="PrintExcel" xml:space="preserve">
+    <value>طباعة اكسل</value>
+  </data>
+  <data name="Processing" xml:space="preserve">
+    <value>جارٍ التحميل...</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>تسجيل</value>
@@ -312,11 +381,23 @@
   <data name="Save" xml:space="preserve">
     <value>حفظ</value>
   </data>
+  <data name="Saving" xml:space="preserve">
+    <value>جاري عملية التخزين</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>بحث</value>
+  </data>
   <data name="SocialStatus" xml:space="preserve">
     <value>الحالة الاجتماعية</value>
   </data>
   <data name="SomthingWentWrong" xml:space="preserve">
     <value>حدث خطأ </value>
+  </data>
+  <data name="SortAscending" xml:space="preserve">
+    <value>: تفعيل لترتيب العمود تصاعدياً</value>
+  </data>
+  <data name="SortDescending" xml:space="preserve">
+    <value>: تفعيل لترتيب العمود تنازلياً</value>
   </data>
   <data name="SourceCode" xml:space="preserve">
     <value>رمز المصدر</value>
@@ -363,6 +444,12 @@
   <data name="Update" xml:space="preserve">
     <value>تعديل</value>
   </data>
+  <data name="UpdatedSuccessfully" xml:space="preserve">
+    <value>تمت عملية التعديل بنجاح</value>
+  </data>
+  <data name="Updating" xml:space="preserve">
+    <value>جاري عملية التعديل</value>
+  </data>
   <data name="VisitorCode" xml:space="preserve">
     <value>رمز الزائر</value>
   </data>
@@ -372,10 +459,16 @@
   <data name="Weight" xml:space="preserve">
     <value>الوزن</value>
   </data>
+  <data name="Yes" xml:space="preserve">
+    <value>نعم</value>
+  </data>
   <data name="YourAccountIsBeingCreated" xml:space="preserve">
     <value>جاري انشاء حسابك</value>
   </data>
   <data name="YourrequesthasBeenSuccessfullySent" xml:space="preserve">
     <value>تم ارسال طلبك بنجاح</value>
+  </data>
+  <data name="ZeroRecords" xml:space="preserve">
+    <value>لم يعثر على أية سجلات</value>
   </data>
 </root>

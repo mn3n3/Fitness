@@ -28,11 +28,6 @@ namespace Fitness.Persistence
             }
         }
 
-        public IEnumerable<Group> GetAllGroup(int CompanyID)
-        {
-            return _context.Groups.Where(m => m.CompanyID == CompanyID).ToList();
-        }
-
         public Group GetGroupByID(int CompanyID, int GroupCode)
         {
             return _context.Groups.FirstOrDefault(m => m.CompanyID == CompanyID && m.GroupCode == GroupCode);

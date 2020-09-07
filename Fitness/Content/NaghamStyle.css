@@ -12,6 +12,40 @@
     background-color:#382D2C !important;    
 }
 
+.panel-body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+.panel-footer {
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+
+.panel-title {
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+.dt-button {
+    display: none !important;
+}
+.panel-heading {
+    background-color: #34495E
+}
+.panel-title txt-light {
+    font-weight: bold
+}
+.modal-body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+
+.modal-footer {
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+
+.modal-title {
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+.modal-header {
+    background-color: #34495E
+}
+
 .btnDetail {
     transition-duration: 0.4s;
 }

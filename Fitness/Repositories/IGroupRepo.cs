@@ -8,7 +8,6 @@ namespace Fitness.Repositories
 {
     public interface IGroupRepo
     {
-        IEnumerable<Group> GetAllGroup(int CompanyID);
         Group GetGroupByID(int CompanyID, int GroupCode);
         void Add(Group ObjSave);
         void Update(Group ObjUpdate);
