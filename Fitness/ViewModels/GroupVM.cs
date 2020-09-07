@@ -13,6 +13,7 @@ namespace Fitness.ViewModels
         public string GroupName { get; set; }
         public string Suspension { get; set; }
         public string  UserName { get; set; }
+        public double Percentage { get; set; }
 
     }
 }

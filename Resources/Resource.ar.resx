@@ -159,6 +159,9 @@
   <data name="Close" xml:space="preserve">
     <value>إغلاق</value>
   </data>
+  <data name="ComapnyName" xml:space="preserve">
+    <value>اسم الشركة</value>
+  </data>
   <data name="CompanyAddress" xml:space="preserve">
     <value>موقع الشركة</value>
   </data>
@@ -189,17 +192,11 @@
   <data name="CurLang" xml:space="preserve">
     <value>Arb</value>
   </data>
-  <data name="Customer Companies" xml:space="preserve">
-    <value>شركات العملاء</value>
-  </data>
-  <data name="Customer Company" xml:space="preserve">
-    <value>شركة العميل</value>
-  </data>
   <data name="CustomerCompanies" xml:space="preserve">
-    <value>شركة العملاء</value>
+    <value>شركات المشتركين</value>
   </data>
   <data name="CustomerCompany" xml:space="preserve">
-    <value>شركة العميل</value>
+    <value>شركة المشترك</value>
   </data>
   <data name="Dashboard" xml:space="preserve">
     <value>لوحة التحكم</value>
@@ -223,10 +220,10 @@
     <value>ليست هناك بيانات متاحة في الجدول</value>
   </data>
   <data name="EnglishAddress" xml:space="preserve">
-    <value>العنوان بالاتيني</value>
+    <value>العنوان بالإنجليزي</value>
   </data>
   <data name="EnglishName" xml:space="preserve">
-    <value>الاسم بالاتيني</value>
+    <value>الاسم بالإنجليزي</value>
   </data>
   <data name="Error" xml:space="preserve">
     <value>خطا</value>
@@ -304,7 +301,7 @@
     <value>اسم الوظيفة</value>
   </data>
   <data name="Jobs" xml:space="preserve">
-    <value>وظائف</value>
+    <value>وظائف المشتركين</value>
   </data>
   <data name="Last" xml:space="preserve">
     <value>الأخير</value>
@@ -322,7 +319,7 @@
     <value>جارٍ التحميل...</value>
   </data>
   <data name="LockedOut" xml:space="preserve">
-    <value>LockedOut</value>
+    <value>مغلق</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>دخول</value>
@@ -337,7 +334,7 @@
     <value>اشعاراتي</value>
   </data>
   <data name="Nationalities" xml:space="preserve">
-    <value>الجنسيات</value>
+    <value>جنسيات المشتركين</value>
   </data>
   <data name="Nationality" xml:space="preserve">
     <value>الجنسية</value>
@@ -394,7 +391,7 @@
     <value>مكان الولادة</value>
   </data>
   <data name="PlaceOfBirths" xml:space="preserve">
-    <value>مكان الولادة</value>
+    <value>اماكن ولادة المشتركين</value>
   </data>
   <data name="PleasefillalRequiredfields" xml:space="preserve">
     <value>يرجي ادخال الحقول المطلوبه</value>
@@ -444,11 +441,17 @@
   <data name="Source" xml:space="preserve">
     <value>المصدر</value>
   </data>
+  <data name="Source Name" xml:space="preserve">
+    <value>اسم المصدر</value>
+  </data>
   <data name="SourceCode" xml:space="preserve">
     <value>رمز المصدر</value>
   </data>
+  <data name="SourceName" xml:space="preserve">
+    <value>اسم المصدر</value>
+  </data>
   <data name="Sources" xml:space="preserve">
-    <value>مصدر المعرفه</value>
+    <value>مصادر المعرفة</value>
   </data>
   <data name="Stop" xml:space="preserve">
     <value>إيقاف</value>
@@ -479,6 +482,9 @@
   </data>
   <data name="Trainer" xml:space="preserve">
     <value>مدرب</value>
+  </data>
+  <data name="TrainerCase" xml:space="preserve">
+    <value>حالة المدرب</value>
   </data>
   <data name="TrainerCode" xml:space="preserve">
     <value>رمز المدرب</value>

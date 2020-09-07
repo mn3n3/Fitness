@@ -277,7 +277,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Customer Companies.
+        ///   Looks up a localized string similar to Subscribers Companies.
         /// </summary>
         public static string CustomerCompanies {
             get {
@@ -286,7 +286,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Customer Company.
+        ///   Looks up a localized string similar to Subscriber Company.
         /// </summary>
         public static string CustomerCompany {
             get {
@@ -601,7 +601,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Jobs.
+        ///   Looks up a localized string similar to Subscribers&apos; jobs.
         /// </summary>
         public static string Jobs {
             get {
@@ -700,7 +700,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nationalities.
+        ///   Looks up a localized string similar to Nationalities Of Subscribers.
         /// </summary>
         public static string Nationalities {
             get {
@@ -871,7 +871,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Place Of Birth.
+        ///   Looks up a localized string similar to Places Of Birth Subscribers.
         /// </summary>
         public static string PlaceOfBirths {
             get {
@@ -1033,7 +1033,16 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sources.
+        ///   Looks up a localized string similar to Source Name.
+        /// </summary>
+        public static string SourceName {
+            get {
+                return ResourceManager.GetString("SourceName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Knowledge sources.
         /// </summary>
         public static string Sources {
             get {
@@ -1128,6 +1137,15 @@ namespace Resources {
         public static string Trainer {
             get {
                 return ResourceManager.GetString("Trainer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trainer Case.
+        /// </summary>
+        public static string TrainerCase {
+            get {
+                return ResourceManager.GetString("TrainerCase", resourceCulture);
             }
         }
         

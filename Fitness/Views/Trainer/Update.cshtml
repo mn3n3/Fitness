@@ -1,12 +1,23 @@
 ﻿
-
 @model Fitness.Models.Trainer
 @{
     ViewBag.Title = @Resources.Resource.Update;
 }
-<script>
+    <script>
+        $(document).ready(function () {
+            $("#TrainerName").focus().select();
+            $("#TrainerName").keyup(function (event) {
+                if (event.keyCode == 13)
+                    $("#Percentage").focus().select();
 
-</script>
+            });
+            $("#Percentage").keyup(function (event) {
+                if (event.keyCode == 13)
+                    $("#TrainerName").focus().select();
+
+            });
+        });
+    </script>
 <div id="myModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: block;">
     <div class="modal-dialog modal-sm ">
         <div class="modal-content">
@@ -25,11 +36,20 @@
 
                         @Html.TextBoxFor(m => m.TrainerCode, new { @id = "TrainerCode", @class = "form-control input-sml", @readonly = "readonly" })
                     </div>
-
+                    <div class="form-group">
+                        <label style="font-size :smaller">
+                            @Html.CheckBoxFor(m => m.Suspension, new { @id = "Suspension" }) @Resources.Resource.Suspension
+                        </label>
+                    </div>
                     <div class="form-group">
                         @Html.LabelFor(m => m.TrainerName)  <span style="color:red">*</span>
 
                         @Html.TextBoxFor(m => m.TrainerName, new { @id = "TrainerName", @class = "form-control input-sml" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Percentage)
+
+                        @Html.TextBoxFor(m => m.Percentage, new { @id = "Percentage", @class = "form-control input-sml", @type = "Number", @min = "0" })
                     </div>
 
                 </div>

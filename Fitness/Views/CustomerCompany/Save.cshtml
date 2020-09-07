@@ -5,17 +5,7 @@
 }
 <script>
     $(document).ready(function () {
-        $("#ArabicName").focus().select();
-        $("#ArabicName").keyup(function (event) {
-            if (event.keyCode == 13)
-                $("#EnglishName").focus().select();
-
-        });
-        $("#EnglishName").keyup(function (event) {
-            if (event.keyCode == 13)
-                $("#ArabicName").focus().select();
-
-        });
+        $("#CompanyName").focus().select();
     });
 </script>
 <div id="myModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: block;">

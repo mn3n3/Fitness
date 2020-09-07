@@ -18,11 +18,13 @@
         </div>
         <div class="col-lg-12" style="margin-top:10px;">
 
-            <table id="tdataTable" class="table table-bordered">
+            <table id="tdataTable" class="table table-bordered" style="width : 100%">
                 <thead>
                     <tr>
                         <th>@Resources.Resource.TrainerCode</th>
                         <th>@Resources.Resource.TrainerName</th>
+                        <th>@Resources.Resource.Percentage</th>
+                        <th>@Resources.Resource.TrainerCase</th>
                         <th>@Resources.Resource.InsUserName</th>
                         <th>@Resources.Resource.Update</th>
                         <th>@Resources.Resource.Delete</th>
@@ -92,7 +94,9 @@
 
 							var dataToSave = {
                                 TrainerCode: $("#TrainerCode").val(),
-                                TrainerName: $("#TrainerName").val()
+								TrainerName: $("#TrainerName").val(),
+								Suspension: $("#Suspension:checked").val(),
+                                Percentage: $("#Percentage").val()
 
 
 							};
@@ -112,7 +116,8 @@
 										tabelMemRef.ajax.reload();
                                         document.getElementById("TrainerCode").value = data.LastID;
                                         document.getElementById("TrainerName").value = '';
-
+                                        document.getElementById("Percentage").value = '0';
+                                        document.getElementById('Suspension').checked = false;
 
                                         $("#TrainerName").focus().select();
 
@@ -172,7 +177,9 @@
 							var dataToSave = {
 
                                 TrainerCode: $("#TrainerCode").val(),
-                                TrainerName: $("#TrainerName").val()
+								TrainerName: $("#TrainerName").val(),
+                                Suspension: $("#Suspension:checked").val(),
+                                Percentage: $("#Percentage").val()
 
 							};
 							$.ajax({
@@ -292,20 +299,22 @@
 			"fixedColumns": true,
 			"columnDefs": [
 				{ "width": "10%", "targets": 0, "className": "dt-center" },
-				{ "width": "60%", "targets": 1, "className": "dt-center" },
+				{ "width": "35%", "targets": 1, "className": "dt-center" },
 				{ "width": "10%", "targets": 2, "className": "dt-center" },
-				{ "width": "10%", "targets": 3, "className": "dt-center", "orderable": false },
-				{ "width": "10%", "targets": 4, "className": "dt-center", "orderable": false }
+				{ "width": "10%", "targets": 3, "className": "dt-center" },
+                { "width": "15%", "targets": 4, "className": "dt-center" },
+				{ "width": "10%", "targets": 5, "className": "dt-center", "orderable": false },
+				{ "width": "10%", "targets": 6, "className": "dt-center", "orderable": false }
 
 				],
 
 			buttons: [
 
 				{
-					messageTop: '@Resources.Resource.Trainer',
+					messageTop: '@Resources.Resource.Trainers',
 					extend: 'excelHtml5',
 					exportOptions: {
-						columns: [0, 1, 2 ]
+						columns: [0, 1, 2,3,4 ]
 					}
 				}
 
@@ -327,6 +336,18 @@
 				}
 
 				,
+                {
+                    data: "Percentage"
+
+                }
+
+				,
+                {
+                    data: "Suspension"
+
+                }
+
+                ,
 
                 {
                     data: "UserName"

@@ -68,6 +68,12 @@
         background-color: white !important;
         border: 1px solid #E41B17 !important;
     }
+.btnDelete-lg {
+    transition-duration: 0.4s;
+}
+.btnDelete-lg {
+    background-color: #E41B17 !important;
+}
 
 .btnDelete {
     background-color: #E41B17 !important

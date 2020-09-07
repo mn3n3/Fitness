@@ -190,10 +190,10 @@
     <value>Eng</value>
   </data>
   <data name="CustomerCompanies" xml:space="preserve">
-    <value>Customer Companies</value>
+    <value>Subscribers Companies</value>
   </data>
   <data name="CustomerCompany" xml:space="preserve">
-    <value>Customer Company</value>
+    <value>Subscriber Company</value>
   </data>
   <data name="Dashboard" xml:space="preserve">
     <value>Dashboard</value>
@@ -298,7 +298,7 @@
     <value>Job Name</value>
   </data>
   <data name="Jobs" xml:space="preserve">
-    <value>Jobs</value>
+    <value>Subscribers' jobs</value>
   </data>
   <data name="Last" xml:space="preserve">
     <value>Last</value>
@@ -331,7 +331,7 @@
     <value>My Notinifactio Logs</value>
   </data>
   <data name="Nationalities" xml:space="preserve">
-    <value>Nationalities</value>
+    <value>Nationalities Of Subscribers</value>
   </data>
   <data name="Nationality" xml:space="preserve">
     <value>Nationality</value>
@@ -388,7 +388,7 @@
     <value>Place Of Birth </value>
   </data>
   <data name="PlaceOfBirths" xml:space="preserve">
-    <value>Place Of Birth</value>
+    <value>Places Of Birth Subscribers</value>
   </data>
   <data name="PleasefillalRequiredfields" xml:space="preserve">
     <value>Please fill all Required fields</value>
@@ -441,8 +441,11 @@
   <data name="SourceCode" xml:space="preserve">
     <value>Source Code</value>
   </data>
+  <data name="SourceName" xml:space="preserve">
+    <value>Source Name</value>
+  </data>
   <data name="Sources" xml:space="preserve">
-    <value>Sources</value>
+    <value>Knowledge sources</value>
   </data>
   <data name="Stop" xml:space="preserve">
     <value>Stop</value>
@@ -473,6 +476,9 @@
   </data>
   <data name="Trainer" xml:space="preserve">
     <value>Trainer</value>
+  </data>
+  <data name="TrainerCase" xml:space="preserve">
+    <value>Trainer Case</value>
   </data>
   <data name="TrainerCode" xml:space="preserve">
     <value>Trainer Code</value>

@@ -81,7 +81,6 @@ namespace Fitness.Persistence
 
             }
         }
-
         public IEnumerable<JobVM> GetAllJob(int CompanyID)
         {
             if (Resources.Resource.CurLang == "Arb")
@@ -113,7 +112,6 @@ namespace Fitness.Persistence
                 {
                     return _context.Database.SqlQuery<JobVM>(
                       " Select J.JobCode, J.EnglishName As JobName,A.UserName  " +
-
                     "  From Jobs J,AspNetUsers A " +
                      " Where  " +
                     "  J.CompanyID = @CompanyID " +
@@ -184,59 +182,29 @@ namespace Fitness.Persistence
 
             }
         }
-    
         public IEnumerable<CustomerCompanyVM> GetAllCompanies(int CompanyID)
         {
-            if (Resources.Resource.CurLang == "Arb")
+            try
             {
-                try
-                {
-                    return _context.Database.SqlQuery<CustomerCompanyVM>(
-                    "  Select C.CompanyCode, C.CompanyName ,A.UserName  " +
-                    "  From CustomerCompanies C,AspNetUsers A " +
-                    "  Where   " +
-                      "  C.CompanyID = @CompanyID " +
-                   "   And   " +
-                     "  C.CompanyID = A.fCompanyId  " +
-                     "   And   " +
-                     "  C.InsUserID = A.Id    " +
-                     "  Order By C.CompanyCode "
-                    , new SqlParameter("@CompanyID", CompanyID)
+                return _context.Database.SqlQuery<CustomerCompanyVM>(
+                "  Select C.CompanyCode, C.CompanyName ,A.UserName  " +
+                "  From CustomerCompanies C,AspNetUsers A " +
+                "  Where   " +
+                  "  C.CompanyID = @CompanyID " +
+               "   And   " +
+                 "  C.CompanyID = A.fCompanyId  " +
+                 "   And   " +
+                 "  C.InsUserID = A.Id    " +
+                 "  Order By C.CompanyCode "
+                , new SqlParameter("@CompanyID", CompanyID)
 
-                ).ToList();
-                }
-                catch
-                {
-                    return new List<CustomerCompanyVM>();
-                }
+            ).ToList();
             }
-            else
+            catch
             {
-                try
-                {
-                    return _context.Database.SqlQuery<CustomerCompanyVM>(
-                     "  Select C.CompanyCode, C.CompanyName ,A.UserName  " +
-                    "  From CustomerCompanies C,AspNetUsers A " +
-                    "  Where   " +
-                      "  C.CompanyID =  @CompanyID " +
-                   "   And   " +
-                     "  C.CompanyID = A.fCompanyId  " +
-                     "   And   " +
-                     "  C.InsUserID = A.Id    " +
-                     "  Order By C.CompanyCode "
-                    , new SqlParameter("@CompanyID", CompanyID)
-
-                ).ToList();
-                }
-                catch
-                {
-                    return new List<CustomerCompanyVM>();
-                }
-
+                return new List<CustomerCompanyVM>();
             }
         }
-
-
         public IEnumerable<PlaceOfBirthVM> GetAllPlaces(int CompanyID)
         {
             if (Resources.Resource.CurLang == "Arb")
@@ -288,8 +256,6 @@ namespace Fitness.Persistence
 
             }
         }
-
-
         public IEnumerable<SourceVM> GetAllSources(int CompanyID)
         {
             if (Resources.Resource.CurLang == "Arb")
@@ -297,7 +263,7 @@ namespace Fitness.Persistence
                 try
                 {
                     return _context.Database.SqlQuery<SourceVM>(
-                      " Select S.SourceCode, S.ArabicName As Source, A.UserName " +
+                      " Select S.SourceCode, S.ArabicName As SourceName, A.UserName " +
                       "  From Sources S, AspNetUsers A " +
                       "  Where " +
                       "    S.CompanyID = @CompanyID " +
@@ -320,7 +286,7 @@ namespace Fitness.Persistence
                 try
                 {
                     return _context.Database.SqlQuery<SourceVM>(
-                    "  Select S.SourceCode, S.EnglishName As Source, A.UserName " +
+                    "  Select S.SourceCode, S.EnglishName As SourceName, A.UserName " +
                       "  From Sources S, AspNetUsers A " +
                       "  Where " +
                       "    S.CompanyID = @CompanyID " +
@@ -340,57 +306,34 @@ namespace Fitness.Persistence
 
             }
         }
-
-
         public IEnumerable<TrainerVM> GetAllTrainers(int CompanyID)
         {
-            if (Resources.Resource.CurLang == "Arb")
+            try
             {
-                try
-                {
-                    return _context.Database.SqlQuery<TrainerVM>(
+                return _context.Database.SqlQuery<TrainerVM>(
+                  " Select T.TrainerCode, T.TrainerName, A.UserName,T.[Percentage], " +
+                  " ( " +
+                  " Case When " +
+                  " T.Suspension = 0 Then N'فعال' " +
+                  " Else " +
+                  " N'موقوف' " +
+                  " End " +
+                  " ) As Suspension " +
+                  "  From Trainers T, AspNetUsers A " +
+                  "  Where " +
+                  "  T.CompanyID =  @CompanyID " +
+                  "  And " +
+                  "   T.CompanyID = A.fCompanyId " +
+                  "   And " +
+                  "  T.InsUserID = A.Id " +
+                  "  Order By T.TrainerCode "
+                , new SqlParameter("@CompanyID", CompanyID)
 
-                      " Select T.TrainerCode, T.TrainerName, A.UserName " +
-                      "  From Trainers T, AspNetUsers A " +
-                      "  Where " +
-                    "   T.CompanyID =  @CompanyID " +
-                      "  And " +
-                      "   T.CompanyID = A.fCompanyId " +
-                      "   And " +
-                      "  T.InsUserID = A.Id " +
-                      "  Order By T.TrainerCode "
-                    , new SqlParameter("@CompanyID", CompanyID)
-
-                ).ToList();
-                }
-                catch
-                {
-                    return new List<TrainerVM>();
-                }
+            ).ToList();
             }
-            else
+            catch
             {
-                try
-                {
-                    return _context.Database.SqlQuery<TrainerVM>(
-                     " Select T.TrainerCode, T.TrainerName, A.UserName " +
-                      "  From Trainers T, AspNetUsers A " +
-                      "  Where " +
-                    "   T.CompanyID = @CompanyID " +
-                      "  And " +
-                      "   T.CompanyID = A.fCompanyId " +
-                      "   And " +
-                      "  T.InsUserID = A.Id " +
-                      "  Order By T.TrainerCode "
-                    , new SqlParameter("@CompanyID", CompanyID)
-
-                ).ToList();
-                }
-                catch
-                {
-                    return new List<TrainerVM>();
-                }
-
+                return new List<TrainerVM>();
             }
         }
     }

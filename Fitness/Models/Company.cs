@@ -20,9 +20,9 @@ namespace Fitness.Models
         public string Website { get; set; }
         [Display(Name = "Email", ResourceType = typeof(Resources.Resource))]
         public string Email { get; set; }
-        [Display(Name = "Phone1", ResourceType = typeof(Resources.Resource))]
-        public string Telephone { get; set; }
         [Display(Name = "Phone2", ResourceType = typeof(Resources.Resource))]
+        public string Telephone { get; set; }
+        [Display(Name = "Phone1", ResourceType = typeof(Resources.Resource))]
         public string Mobile { get; set; }
         [Display(Name = "TeleFax", ResourceType = typeof(Resources.Resource))]
         public string TeleFax { get; set; }

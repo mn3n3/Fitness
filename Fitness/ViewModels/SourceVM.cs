@@ -9,7 +9,7 @@ namespace Fitness.ViewModels
     {
 
         public int SourceCode { get; set; }
-        public string Source { get; set; }
+        public string SourceName { get; set; }
         public string UserName { get; set; }
     }
 }

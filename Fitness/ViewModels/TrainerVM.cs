@@ -9,6 +9,8 @@ namespace Fitness.ViewModels
     {
         public int TrainerCode { get; set; }
         public string TrainerName { get; set; }
+        public string Suspension { get; set; }
+        public double Percentage { get; set; }
         public string UserName { get; set; }
     }
 }

@@ -26,7 +26,6 @@ namespace Fitness.Controllers
             var UserInfo = _unitOfWork.User.GetMyInfo(userId);
             return View();
         }
-
         public JsonResult GetAllTrainer()
         {
             try
@@ -48,7 +47,6 @@ namespace Fitness.Controllers
             }
 
         }
-
         public ActionResult Save()
         {
             var userId = User.Identity.GetUserId();
@@ -59,8 +57,6 @@ namespace Fitness.Controllers
             };
             return PartialView(Obj);
         }
-
-
         [HttpPost]
         public JsonResult SaveTrainer(Trainer ObjSave)
         {
@@ -103,9 +99,6 @@ namespace Fitness.Controllers
             }
 
         }
-
-
-
         public ActionResult Update(int id)
         {
             try
@@ -133,8 +126,6 @@ namespace Fitness.Controllers
                 return View("Error");
             }
         }
-
-
         [HttpPost]
         public JsonResult UpdateTrainer(Trainer ObjUpdate)
         {
@@ -176,7 +167,6 @@ namespace Fitness.Controllers
             }
 
         }
-
         public ActionResult Delete(int id)
         {
             try
@@ -204,9 +194,6 @@ namespace Fitness.Controllers
                 return View("Error");
             }
         }
-
-
-
         [HttpPost]
         public JsonResult DeleteTrainer(Trainer ObjDelete)
         {
