@@ -17,6 +17,8 @@ namespace Fitness.Repositories
         ISubscriberRepo Subscriber { get; }
         ISubscriptionRepo Subscription { get; }
         IVisitorRepo Visitor { get; }
+        IUserRepo User { get; }
+        INativeSqlRepo NativeSql { get; }
         void Complete();
     }
 }

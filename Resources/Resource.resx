@@ -126,6 +126,9 @@
   <data name="AddByAdmin" xml:space="preserve">
     <value>Add By Admin</value>
   </data>
+  <data name="AddedSuccessfully" xml:space="preserve">
+    <value>Added Successfully</value>
+  </data>
   <data name="Address" xml:space="preserve">
     <value>Address</value>
   </data>
@@ -138,6 +141,9 @@
   <data name="ArabicName" xml:space="preserve">
     <value>Arabic Name</value>
   </data>
+  <data name="AreYouSure" xml:space="preserve">
+    <value>Are You Sure ?</value>
+  </data>
   <data name="BirthDate" xml:space="preserve">
     <value>Birth Date</value>
   </data>
@@ -149,6 +155,9 @@
   </data>
   <data name="Classes" xml:space="preserve">
     <value>Classes</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
   </data>
   <data name="ComapnyAddress" xml:space="preserve">
     <value>Comapny Address</value>
@@ -183,8 +192,17 @@
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
   </data>
+  <data name="DeletedSuccessfully" xml:space="preserve">
+    <value>Deleted Successfully</value>
+  </data>
+  <data name="Deleting" xml:space="preserve">
+    <value>Deleting</value>
+  </data>
   <data name="Email" xml:space="preserve">
     <value>Email</value>
+  </data>
+  <data name="EmptyTable" xml:space="preserve">
+    <value>No data available in table</value>
   </data>
   <data name="EnglishAddress" xml:space="preserve">
     <value>English Address</value>
@@ -195,6 +213,9 @@
   <data name="Error" xml:space="preserve">
     <value>Error</value>
   </data>
+  <data name="First" xml:space="preserve">
+    <value>First</value>
+  </data>
   <data name="Free" xml:space="preserve">
     <value>Free</value>
   </data>
@@ -204,8 +225,17 @@
   <data name="Group" xml:space="preserve">
     <value>Group</value>
   </data>
+  <data name="GroupCase" xml:space="preserve">
+    <value>Group Case</value>
+  </data>
   <data name="GroupCode" xml:space="preserve">
     <value>Group Code</value>
+  </data>
+  <data name="GroupName" xml:space="preserve">
+    <value>Group Name</value>
+  </data>
+  <data name="Groups" xml:space="preserve">
+    <value>Groups</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>Home</value>
@@ -215,6 +245,15 @@
   </data>
   <data name="Image2" xml:space="preserve">
     <value>Image (2)</value>
+  </data>
+  <data name="Info" xml:space="preserve">
+    <value>Showing _START_ to _END_ of _TOTAL_ entries</value>
+  </data>
+  <data name="InfoEmpty" xml:space="preserve">
+    <value>Showing 0 to 0 of 0 entries</value>
+  </data>
+  <data name="InfoFiltered" xml:space="preserve">
+    <value>(filtered from _MAX_ total entries)</value>
   </data>
   <data name="InsDateTime" xml:space="preserve">
     <value>Insert Date</value>
@@ -240,11 +279,20 @@
   <data name="JobCode" xml:space="preserve">
     <value>Job Code</value>
   </data>
+  <data name="Last" xml:space="preserve">
+    <value>Last</value>
+  </data>
   <data name="Lenght" xml:space="preserve">
     <value>Lenght</value>
   </data>
+  <data name="LengthMenu" xml:space="preserve">
+    <value>Show _MENU_ entries</value>
+  </data>
   <data name="LoadingMsg" xml:space="preserve">
     <value>Please Watin Loading Your Data</value>
+  </data>
+  <data name="LoadingRecords" xml:space="preserve">
+    <value>Loading...</value>
   </data>
   <data name="LockedOut" xml:space="preserve">
     <value>Locked Out</value>
@@ -264,8 +312,20 @@
   <data name="NationalityCode" xml:space="preserve">
     <value>Nationality Code</value>
   </data>
+  <data name="New" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
   <data name="Note" xml:space="preserve">
     <value>Note</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>Ok</value>
   </data>
   <data name="ParentsName" xml:space="preserve">
     <value>Parents Name</value>
@@ -300,8 +360,17 @@
   <data name="PleaseWait" xml:space="preserve">
     <value>Please Wait</value>
   </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Previous</value>
+  </data>
   <data name="Price" xml:space="preserve">
     <value>Price</value>
+  </data>
+  <data name="PrintExcel" xml:space="preserve">
+    <value>PrintExcel</value>
+  </data>
+  <data name="Processing" xml:space="preserve">
+    <value>Processing...</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Register</value>
@@ -312,11 +381,23 @@
   <data name="Save" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="Saving" xml:space="preserve">
+    <value>Saving</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
   <data name="SocialStatus" xml:space="preserve">
     <value>Social Status</value>
   </data>
   <data name="SomthingWentWrong" xml:space="preserve">
     <value>Somthing Went Wrong</value>
+  </data>
+  <data name="SortAscending" xml:space="preserve">
+    <value>activate to sort column ascending :</value>
+  </data>
+  <data name="SortDescending" xml:space="preserve">
+    <value>activate to sort column descending :</value>
   </data>
   <data name="SourceCode" xml:space="preserve">
     <value>Source Code</value>
@@ -363,6 +444,12 @@
   <data name="Update" xml:space="preserve">
     <value>Update</value>
   </data>
+  <data name="UpdatedSuccessfully" xml:space="preserve">
+    <value>Updated Successfully</value>
+  </data>
+  <data name="Updating" xml:space="preserve">
+    <value>Updating</value>
+  </data>
   <data name="VisitorCode" xml:space="preserve">
     <value>Visitor Code</value>
   </data>
@@ -372,10 +459,16 @@
   <data name="Weight" xml:space="preserve">
     <value>Weight</value>
   </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
   <data name="YourAccountIsBeingCreated" xml:space="preserve">
     <value>Your Account Is Being Created</value>
   </data>
   <data name="YourrequesthasBeenSuccessfullySent" xml:space="preserve">
     <value>Your Request has Been Successfully Sent</value>
+  </data>
+  <data name="ZeroRecords" xml:space="preserve">
+    <value>No matching records found</value>
   </data>
 </root>
