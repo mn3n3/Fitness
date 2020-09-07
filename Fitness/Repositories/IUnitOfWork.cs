@@ -19,6 +19,7 @@ namespace Fitness.Repositories
         IVisitorRepo Visitor { get; }
         IUserRepo User { get; }
         INativeSqlRepo NativeSql { get; }
+        ICompanyRepo Company { get; }
         void Complete();
     }
 }

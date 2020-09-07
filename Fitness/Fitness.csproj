@@ -172,6 +172,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
+    <Compile Include="Controllers\CompanySettingsDashController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -229,6 +230,7 @@
     <Compile Include="Persistence\UserRepo.cs" />
     <Compile Include="Persistence\VisitorRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ICompanyRepo.cs" />
     <Compile Include="Repositories\ICustomerCompanyRepo.cs" />
     <Compile Include="Repositories\IGroupRepo.cs" />
     <Compile Include="Repositories\IItemRepo.cs" />
@@ -244,6 +246,7 @@
     <Compile Include="Repositories\IUserRepo.cs" />
     <Compile Include="Repositories\IVisitorRepo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\DashBoardVM.cs" />
     <Compile Include="ViewModels\GroupVM.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
@@ -9020,13 +9023,14 @@
     <Content Include="Views\Group\Save.cshtml" />
     <Content Include="Views\Group\Update.cshtml" />
     <Content Include="Views\Group\Delete.cshtml" />
+    <Content Include="Views\Company\Index.cshtml" />
+    <Content Include="Views\CompanySettingsDash\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\vendors\bower_components\x-editable\dist\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\" />
     <Folder Include="Content\vendors\x-editable\dist\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\" />
     <Folder Include="vendors\bower_components\pdfmake\libs\FileSaver.js\" />
-    <Folder Include="Views\Company\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -44,7 +44,7 @@ namespace Fitness.Persistence
 
         public IEnumerable<ApplicationUser> GetAllUsers(int CoId)
         {
-            throw new NotImplementedException();
+            return _context.Users.Where(m => m.fCompanyId == CoId).ToList();
         }
 
         public ApplicationUser GetMyInfo(string UserID)
@@ -54,32 +54,32 @@ namespace Fitness.Persistence
 
         public ApplicationUser GetUserByEmailAndPassword(string Email, string Passord)
         {
-            throw new NotImplementedException();
+            return _context.Users.SingleOrDefault(m => m.Email == Email && m.PasswordHash == Passord);
         }
 
         public ApplicationUser GetUserByEmpIdAndCo(int CoId, string UId)
         {
-            throw new NotImplementedException();
+            return _context.Users.SingleOrDefault(m => m.fCompanyId == CoId && m.Id == UId);
         }
 
         public ApplicationUser GetUserByID(string UId)
         {
-            throw new NotImplementedException();
+            return _context.Users.SingleOrDefault(m => m.Id == UId);
         }
 
         public ApplicationUser GetUserByIDAndCo(int CoId, string UId)
         {
-            throw new NotImplementedException();
+            return _context.Users.SingleOrDefault(m => m.fCompanyId == CoId && m.Id == UId);
         }
 
         public ApplicationUser GetUserEmailID(string UId)
         {
-            throw new NotImplementedException();
+            return _context.Users.SingleOrDefault(m => m.Email == UId);
         }
 
         public ApplicationUser GetUserEmailIDForEmailValidation(string UId, string Email)
         {
-            throw new NotImplementedException();
+            return _context.Users.SingleOrDefault(m => m.Email == Email && m.Id != UId);
         }
 
         public ApplicationUser LoginMobile(string UserName, string Password)
@@ -94,7 +94,11 @@ namespace Fitness.Persistence
 
         public void UpdateCompanyID(string UserID, int CompanyID)
         {
-            throw new NotImplementedException();
+            var UserInfo = _context.Users.SingleOrDefault(m => m.Id == UserID);
+            if (UserInfo != null)
+            {
+                UserInfo.fCompanyId = CompanyID;
+            }
         }
 
         public Task<bool> UpdateUserPermission(ApplicationUser model)

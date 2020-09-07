@@ -165,6 +165,12 @@
   <data name="CompanyCode" xml:space="preserve">
     <value>Company Code</value>
   </data>
+  <data name="CompanyInfo" xml:space="preserve">
+    <value>Company Information</value>
+  </data>
+  <data name="CompanyMainSetup" xml:space="preserve">
+    <value>Company Settings</value>
+  </data>
   <data name="CompanyName" xml:space="preserve">
     <value>Company Name</value>
   </data>
@@ -450,11 +456,17 @@
   <data name="Updating" xml:space="preserve">
     <value>Updating</value>
   </data>
+  <data name="Users" xml:space="preserve">
+    <value>Users</value>
+  </data>
   <data name="VisitorCode" xml:space="preserve">
     <value>Visitor Code</value>
   </data>
   <data name="VisitorName" xml:space="preserve">
     <value>VisitorName</value>
+  </data>
+  <data name="Website" xml:space="preserve">
+    <value>Website</value>
   </data>
   <data name="Weight" xml:space="preserve">
     <value>Weight</value>

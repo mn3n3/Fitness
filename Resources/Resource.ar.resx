@@ -165,6 +165,12 @@
   <data name="CompanyCode" xml:space="preserve">
     <value>رمز الشركة</value>
   </data>
+  <data name="CompanyInfo" xml:space="preserve">
+    <value>معلومات الشركة</value>
+  </data>
+  <data name="CompanyMainSetup" xml:space="preserve">
+    <value>إعدادات الشركة</value>
+  </data>
   <data name="CompanyName" xml:space="preserve">
     <value>اسم الشركة</value>
   </data>
@@ -184,7 +190,7 @@
     <value>Arb</value>
   </data>
   <data name="Dashboard" xml:space="preserve">
-    <value>Dashboard</value>
+    <value>لوحة التحكم</value>
   </data>
   <data name="DecimalPoint" xml:space="preserve">
     <value>الفواصل العشرية</value>
@@ -450,11 +456,17 @@
   <data name="Updating" xml:space="preserve">
     <value>جاري عملية التعديل</value>
   </data>
+  <data name="Users" xml:space="preserve">
+    <value>المستخدمين</value>
+  </data>
   <data name="VisitorCode" xml:space="preserve">
     <value>رمز الزائر</value>
   </data>
   <data name="VisitorName" xml:space="preserve">
     <value>اسم الزائر</value>
+  </data>
+  <data name="Website" xml:space="preserve">
+    <value>الموقع الإلكتروني</value>
   </data>
   <data name="Weight" xml:space="preserve">
     <value>الوزن</value>
