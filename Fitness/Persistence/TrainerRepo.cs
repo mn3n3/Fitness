@@ -29,11 +29,7 @@ namespace Fitness.Persistence
             }
         }
 
-        public IEnumerable<Trainer> GetAllTrainer(int CompanyID)
-        {
-            return _context.Trainers.Where(m => m.CompanyID == CompanyID).ToList();
-        }
-
+      
         public int GetMaxSerial(int CompanyID)
         {
 

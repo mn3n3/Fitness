@@ -30,11 +30,6 @@ namespace Fitness.Persistence
             }
         }
 
-        public IEnumerable<Nationality> GetAllNationality(int CompanyID)
-        {
-            return _context.Nationalities.Where(m => m.CompanyID == CompanyID).ToList();
-
-        }
 
         public int GetMaxSerial(int CompanyID)
         {

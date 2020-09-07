@@ -189,6 +189,12 @@
   <data name="CurLang" xml:space="preserve">
     <value>Eng</value>
   </data>
+  <data name="CustomerCompanies" xml:space="preserve">
+    <value>Customer Companies</value>
+  </data>
+  <data name="CustomerCompany" xml:space="preserve">
+    <value>Customer Company</value>
+  </data>
   <data name="Dashboard" xml:space="preserve">
     <value>Dashboard</value>
   </data>
@@ -324,6 +330,12 @@
   <data name="MyNotinifactioLogs" xml:space="preserve">
     <value>My Notinifactio Logs</value>
   </data>
+  <data name="Nationalities" xml:space="preserve">
+    <value>Nationalities</value>
+  </data>
+  <data name="Nationality" xml:space="preserve">
+    <value>Nationality</value>
+  </data>
   <data name="NationalityCode" xml:space="preserve">
     <value>Nationality Code</value>
   </data>
@@ -348,6 +360,9 @@
   <data name="Password" xml:space="preserve">
     <value>Password</value>
   </data>
+  <data name="Percentage" xml:space="preserve">
+    <value>Percantage</value>
+  </data>
   <data name="PeriodByDay" xml:space="preserve">
     <value>Period By Day</value>
   </data>
@@ -366,8 +381,14 @@
   <data name="PlaceCode" xml:space="preserve">
     <value>Place Code</value>
   </data>
+  <data name="PlaceName" xml:space="preserve">
+    <value>Place Name</value>
+  </data>
   <data name="PlaceOfBirth" xml:space="preserve">
     <value>Place Of Birth </value>
+  </data>
+  <data name="PlaceOfBirths" xml:space="preserve">
+    <value>Place Of Birth</value>
   </data>
   <data name="PleasefillalRequiredfields" xml:space="preserve">
     <value>Please fill all Required fields</value>
@@ -414,8 +435,14 @@
   <data name="SortDescending" xml:space="preserve">
     <value>activate to sort column descending :</value>
   </data>
+  <data name="Source" xml:space="preserve">
+    <value>Source</value>
+  </data>
   <data name="SourceCode" xml:space="preserve">
     <value>Source Code</value>
+  </data>
+  <data name="Sources" xml:space="preserve">
+    <value>Sources</value>
   </data>
   <data name="Stop" xml:space="preserve">
     <value>Stop</value>
@@ -444,11 +471,17 @@
   <data name="ThisAccountHasBeenLocked" xml:space="preserve">
     <value>This Account Has Been Locked</value>
   </data>
+  <data name="Trainer" xml:space="preserve">
+    <value>Trainer</value>
+  </data>
   <data name="TrainerCode" xml:space="preserve">
     <value>Trainer Code</value>
   </data>
   <data name="TrainerName" xml:space="preserve">
     <value>Trainer Name</value>
+  </data>
+  <data name="Trainers" xml:space="preserve">
+    <value>Trainers</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>Type</value>

@@ -8,6 +8,12 @@ namespace Fitness.Repositories
     public interface INativeSqlRepo
     {
         IEnumerable<GroupVM> GetAllGroup(int CompanyID);
-        IEnumerable<JobVM> GetAllJob(int CompanyID);
+        IEnumerable<JobVM> GetAllJob(int CompanyID);  
+        
+        IEnumerable<NationalityVM> GetAllNationalities(int CompanyID);
+        IEnumerable<CustomerCompanyVM> GetAllCompanies(int CompanyID);
+        IEnumerable<PlaceOfBirthVM> GetAllPlaces(int CompanyID);   
+        IEnumerable<SourceVM> GetAllSources(int CompanyID);  
+        IEnumerable<TrainerVM> GetAllTrainers(int CompanyID);
     }
 }

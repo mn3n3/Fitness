@@ -7,8 +7,7 @@ using System.Web;
 namespace Fitness.Repositories
 {
     public interface ISourceRepo
-    {
-        IEnumerable<Source> GetAllSource(int CompanyID);
+    { 
         Source GetSourceByID(int CompanyID, int SourceCode);
         void Add(Source ObjSave);
         void Update(Source ObjUpdate);

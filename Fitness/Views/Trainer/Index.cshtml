@@ -1,18 +1,18 @@
 ﻿@{
-    ViewBag.Title = @Resources.Resource.Jobs;
+    ViewBag.Title = @Resources.Resource.Trainers;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="panel card-view">
     <div class="panel-heading">
         <div class="pull-left">
-            <h6 class="panel-title txt-light">@Resources.Resource.Jobs</h6>
+            <h6 class="panel-title txt-light">@Resources.Resource.Trainers</h6>
         </div>
         <div class="clearfix"></div>
     </div>
     <div class="panel-body">
         <div class="col-lg-12">
-            <a class="btn btn-primary btn-anim js-Pop" id="btnSave" href="/Job/Save"> <i class="fa fa-save"></i><span class="btn-text">@Resources.Resource.New</span></a>
+            <a class="btn btn-primary btn-anim js-Pop" id="btnSave" href="/Trainer/Save"> <i class="fa fa-save"></i><span class="btn-text">@Resources.Resource.New</span></a>
             <a class="btn btn-warning btn-anim" id="btnPrintExcel"> <i class="fa fa-file-excel-o"></i><span class="btn-text">@Resources.Resource.PrintExcel</span></a>
             <button type="button" class="btn btn-default btn-anim" id="CloseForm"> <i class="fa fa-times"></i><span class="btn-text">@Resources.Resource.Close</span></button>
         </div>
@@ -21,8 +21,8 @@
             <table id="tdataTable" class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>@Resources.Resource.JobCode</th>
-                        <th>@Resources.Resource.JobName</th>
+                        <th>@Resources.Resource.TrainerCode</th>
+                        <th>@Resources.Resource.TrainerName</th>
                         <th>@Resources.Resource.InsUserName</th>
                         <th>@Resources.Resource.Update</th>
                         <th>@Resources.Resource.Delete</th>
@@ -46,7 +46,7 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 
-<script>
+    <script>
 
 	$(document).ready(function () {
 		$(document).on('click', '#CloseForm', function () {
@@ -55,8 +55,8 @@
 		$(document).on('click', '#btnPrintExcel', function () {
 			$(".dt-button").click();
 		});
-		$(document).on('click', '#SaveJob', function () {
-            if ($("#ArabicName").val() == '') {
+		$(document).on('click', '#SaveTrainer', function () {
+			if ($("#TrainerName").val() == '') {
 				bootbox.alert({
 					message: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif"> @Resources.Resource.PleasefillalRequiredfields</h6>',
 					className: 'rubberBand animated',
@@ -91,16 +91,14 @@
 							});
 
 							var dataToSave = {
-                                JobCode: $("#JobCode").val(),
-                                ArabicName: $("#ArabicName").val(),
-                                EnglishName: $("#EnglishName").val()
-								
-                               
+                                TrainerCode: $("#TrainerCode").val(),
+                                TrainerName: $("#TrainerName").val()
+
 
 							};
 							$.ajax({
 								type: "POST",
-								url: "/Job/SaveJob",
+								url: "/Trainer/SaveTrainer",
 								data: JSON.stringify(dataToSave),
 								contentType: 'application/json',
 								success: function (data) {
@@ -112,13 +110,11 @@
 									else if (data.Code == 1) {
 										toastr.success(data.Msg);
 										tabelMemRef.ajax.reload();
-                                        document.getElementById("JobCode").value = data.LastID;
-                                        document.getElementById("ArabicName").value = '';
-                                        document.getElementById("EnglishName").value = '';
-								
-                                        
+                                        document.getElementById("TrainerCode").value = data.LastID;
+                                        document.getElementById("TrainerName").value = '';
 
-                                        $("#ArabicName").focus().select();
+
+                                        $("#TrainerName").focus().select();
 
 
 									}
@@ -137,8 +133,8 @@
 		});
 
 
-		$(document).on('click', '#UpdateJob', function () {
-            if ($("#CompanyName").val() == '') {
+		$(document).on('click', '#UpdateTrainer', function () {
+            if ($("#TrainerName").val() == '') {
 				bootbox.alert({
 					message: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif"> @Resources.Resource.PleasefillalRequiredfields</h6>',
 					className: 'rubberBand animated',
@@ -175,14 +171,13 @@
 
 							var dataToSave = {
 
-                                JobCode: $("#JobCode").val(),
-                                ArabicName: $("#ArabicName").val(),
-                                EnglishName: $("#EnglishName").val()
-						
+                                TrainerCode: $("#TrainerCode").val(),
+                                TrainerName: $("#TrainerName").val()
+
 							};
 							$.ajax({
 								type: "POST",
-								url: "/Job/UpdateJob",
+								url: "/Trainer/UpdateTrainer",
 								data: JSON.stringify(dataToSave),
 								contentType: 'application/json',
 								success: function (data) {
@@ -212,7 +207,7 @@
 
 			}
 		});
-		$(document).on('click', '#DeleteJob', function () {
+		$(document).on('click', '#DeleteTrainer', function () {
 			bootbox.confirm({
 				message: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif"> @Resources.Resource.AreYouSure</h6>',
 				className: 'rubberBand animated',
@@ -234,11 +229,11 @@
 							closeButton: false
 						});
 						var dataToSave = {
-                            JobCode: $("#JobCode").val()
+                            TrainerCode: $("#TrainerCode").val()
 						};
 						$.ajax({
 							type: "POST",
-							url: "/Job/DeleteJob",
+							url: "/Trainer/DeleteTrainer",
 							data: JSON.stringify(dataToSave),
 							contentType: 'application/json',
 							success: function (data) {
@@ -296,17 +291,18 @@
 			"scrollCollapse": true,
 			"fixedColumns": true,
 			"columnDefs": [
-                { "width": "10%", "targets": 0, "className": "dt-center"  },
-                { "width": "60%", "targets": 1, "className": "dt-center"},
-                { "width": "10%", "targets": 2, "className": "dt-center"},
-                { "width": "10%", "targets": 3, "className": "dt-center", "orderable": false },
-                { "width": "10%", "targets": 4, "className": "dt-center", "orderable": false }
-            ],
+				{ "width": "10%", "targets": 0, "className": "dt-center" },
+				{ "width": "60%", "targets": 1, "className": "dt-center" },
+				{ "width": "10%", "targets": 2, "className": "dt-center" },
+				{ "width": "10%", "targets": 3, "className": "dt-center", "orderable": false },
+				{ "width": "10%", "targets": 4, "className": "dt-center", "orderable": false }
+
+				],
 
 			buttons: [
 
 				{
-					messageTop: '@Resources.Resource.Job',
+					messageTop: '@Resources.Resource.Trainer',
 					extend: 'excelHtml5',
 					exportOptions: {
 						columns: [0, 1, 2 ]
@@ -316,17 +312,17 @@
 			],
 
 			ajax: {
-				url: "/Job/GetAllJob",
+                url: "/Trainer/GetAllTrainer",
 				dataSrc: ""
 			},
 			columns: [
 				{
 
-                    data: "JobCode"
+                    data: "TrainerCode"
 				},
 
 				{
-                    data: "JobName"
+                    data: "TrainerName"
 
 				}
 
@@ -339,16 +335,16 @@
 
                 ,
 				{
-                    data: "JobCode",
+                    data: "TrainerCode",
 					render: function (data) {
-						return "<a  class='btn btn-success btn-icon-anim btn-square btn-sm js-Pop' href='/Job/Update/" + data + "'><i class='fa fa-edit' style='margin-top: 4px;'></i> </a>";
+						return "<a  class='btn btn-success btn-icon-anim btn-square btn-sm js-Pop' href='/Trainer/Update/" + data + "'><i class='fa fa-edit' style='margin-top: 4px;'></i> </a>";
 					}
 
 				},
 				{
-                    data: "JobCode",
+                    data: "TrainerCode",
 					render: function (data) {
-                        return "<a  class='btn  btn-icon-anim btn-square btnDelete btn-sm js-Pop' href='/Job/Delete/" + data + " '><i class='fa fa-trash-o' style='margin-top: 4px;'></i> </a>";
+                        return "<a  class='btn  btn-icon-anim btn-square btnDelete btn-sm js-Pop' href='/Trainer/Delete/" + data + " '><i class='fa fa-trash-o' style='margin-top: 4px;'></i> </a>";
 					}
 
 				}
@@ -371,7 +367,7 @@
 			return false;
 		});
 	});
-</script>
+    </script>
 }
 
 

@@ -29,11 +29,7 @@ namespace Fitness.Persistence
             }
         }
 
-        public IEnumerable<PlaceOfBirth> GetAllBirth(int CompanyID)
-        {
-            return _context.PlaceOfBirths.Where(m => m.CompanyID == CompanyID).ToList();
-        }
-
+       
         public PlaceOfBirth GetBirthByID(int CompanyID, int PlaceCode)
         {
             return _context.PlaceOfBirths.FirstOrDefault(m => m.CompanyID == CompanyID && m.PlaceCode == PlaceCode);

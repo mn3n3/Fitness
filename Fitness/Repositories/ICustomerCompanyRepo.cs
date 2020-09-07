@@ -8,7 +8,7 @@ namespace Fitness.Repositories
 {
     public interface ICustomerCompanyRepo
     {
-        IEnumerable<CustomerCompany> GetAllCustomerCompany(int CompanyID);
+  
         CustomerCompany GetCustomerCompanyByID(int CompanyID, int CompanyCode);
         void Add(CustomerCompany ObjSave);
         void Update(CustomerCompany ObjUpdate);

@@ -31,10 +31,7 @@ namespace Fitness.Persistence
             }
         }
 
-        public IEnumerable<CustomerCompany> GetAllCustomerCompany(int CompanyID)
-        {
-            return _context.CustomerCompanies.Where(m => m.CompanyID == CompanyID).ToList();
-        }
+       
 
         public CustomerCompany GetCustomerCompanyByID(int CompanyID, int CompanyCode)
         {

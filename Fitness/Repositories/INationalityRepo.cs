@@ -8,7 +8,7 @@ namespace Fitness.Repositories
 {
     public interface INationalityRepo
     {
-        IEnumerable<Nationality> GetAllNationality(int CompanyID);
+      
         Nationality GetNationalityByID(int CompanyID, int NationalityCode);
         void Add(Nationality ObjSave);
         void Update(Nationality ObjUpdate);

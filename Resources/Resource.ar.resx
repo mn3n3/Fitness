@@ -189,6 +189,18 @@
   <data name="CurLang" xml:space="preserve">
     <value>Arb</value>
   </data>
+  <data name="Customer Companies" xml:space="preserve">
+    <value>شركات العملاء</value>
+  </data>
+  <data name="Customer Company" xml:space="preserve">
+    <value>شركة العميل</value>
+  </data>
+  <data name="CustomerCompanies" xml:space="preserve">
+    <value>شركة العملاء</value>
+  </data>
+  <data name="CustomerCompany" xml:space="preserve">
+    <value>شركة العميل</value>
+  </data>
   <data name="Dashboard" xml:space="preserve">
     <value>لوحة التحكم</value>
   </data>
@@ -324,6 +336,12 @@
   <data name="MyNotinifactioLogs" xml:space="preserve">
     <value>اشعاراتي</value>
   </data>
+  <data name="Nationalities" xml:space="preserve">
+    <value>الجنسيات</value>
+  </data>
+  <data name="Nationality" xml:space="preserve">
+    <value>الجنسية</value>
+  </data>
   <data name="NationalityCode" xml:space="preserve">
     <value>رمز الجنسية</value>
   </data>
@@ -348,6 +366,9 @@
   <data name="Password" xml:space="preserve">
     <value>كلمة الدخول</value>
   </data>
+  <data name="Percentage" xml:space="preserve">
+    <value>نسبة مئوية</value>
+  </data>
   <data name="PeriodByDay" xml:space="preserve">
     <value>الفتره حسب اليوم</value>
   </data>
@@ -366,7 +387,13 @@
   <data name="PlaceCode" xml:space="preserve">
     <value>رمز المكان</value>
   </data>
+  <data name="PlaceName" xml:space="preserve">
+    <value>اسم المكان</value>
+  </data>
   <data name="PlaceOfBirth" xml:space="preserve">
+    <value>مكان الولادة</value>
+  </data>
+  <data name="PlaceOfBirths" xml:space="preserve">
     <value>مكان الولادة</value>
   </data>
   <data name="PleasefillalRequiredfields" xml:space="preserve">
@@ -414,8 +441,14 @@
   <data name="SortDescending" xml:space="preserve">
     <value>: تفعيل لترتيب العمود تنازلياً</value>
   </data>
+  <data name="Source" xml:space="preserve">
+    <value>المصدر</value>
+  </data>
   <data name="SourceCode" xml:space="preserve">
     <value>رمز المصدر</value>
+  </data>
+  <data name="Sources" xml:space="preserve">
+    <value>مصدر المعرفه</value>
   </data>
   <data name="Stop" xml:space="preserve">
     <value>إيقاف</value>
@@ -444,11 +477,17 @@
   <data name="ThisAccountHasBeenLocked" xml:space="preserve">
     <value>تم اغلاق الحساب</value>
   </data>
+  <data name="Trainer" xml:space="preserve">
+    <value>مدرب</value>
+  </data>
   <data name="TrainerCode" xml:space="preserve">
     <value>رمز المدرب</value>
   </data>
   <data name="TrainerName" xml:space="preserve">
     <value>اسم المدرب</value>
+  </data>
+  <data name="Trainers" xml:space="preserve">
+    <value>المدربون</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>النوع </value>

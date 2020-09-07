@@ -1,18 +1,18 @@
 ﻿@{
-    ViewBag.Title = @Resources.Resource.Jobs;
+    ViewBag.Title = @Resources.Resource.Sources;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="panel card-view">
     <div class="panel-heading">
         <div class="pull-left">
-            <h6 class="panel-title txt-light">@Resources.Resource.Jobs</h6>
+            <h6 class="panel-title txt-light">@Resources.Resource.Sources</h6>
         </div>
         <div class="clearfix"></div>
     </div>
     <div class="panel-body">
         <div class="col-lg-12">
-            <a class="btn btn-primary btn-anim js-Pop" id="btnSave" href="/Job/Save"> <i class="fa fa-save"></i><span class="btn-text">@Resources.Resource.New</span></a>
+            <a class="btn btn-primary btn-anim js-Pop" id="btnSave" href="/Source/Save"> <i class="fa fa-save"></i><span class="btn-text">@Resources.Resource.New</span></a>
             <a class="btn btn-warning btn-anim" id="btnPrintExcel"> <i class="fa fa-file-excel-o"></i><span class="btn-text">@Resources.Resource.PrintExcel</span></a>
             <button type="button" class="btn btn-default btn-anim" id="CloseForm"> <i class="fa fa-times"></i><span class="btn-text">@Resources.Resource.Close</span></button>
         </div>
@@ -21,8 +21,8 @@
             <table id="tdataTable" class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>@Resources.Resource.JobCode</th>
-                        <th>@Resources.Resource.JobName</th>
+                        <th>@Resources.Resource.SourceCode</th>
+                        <th>@Resources.Resource.Source</th>
                         <th>@Resources.Resource.InsUserName</th>
                         <th>@Resources.Resource.Update</th>
                         <th>@Resources.Resource.Delete</th>
@@ -46,7 +46,7 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 
-<script>
+    <script>
 
 	$(document).ready(function () {
 		$(document).on('click', '#CloseForm', function () {
@@ -55,8 +55,8 @@
 		$(document).on('click', '#btnPrintExcel', function () {
 			$(".dt-button").click();
 		});
-		$(document).on('click', '#SaveJob', function () {
-            if ($("#ArabicName").val() == '') {
+		$(document).on('click', '#SaveSource', function () {
+			if ($("#ArabicName").val() == '') {
 				bootbox.alert({
 					message: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif"> @Resources.Resource.PleasefillalRequiredfields</h6>',
 					className: 'rubberBand animated',
@@ -91,16 +91,15 @@
 							});
 
 							var dataToSave = {
-                                JobCode: $("#JobCode").val(),
-                                ArabicName: $("#ArabicName").val(),
-                                EnglishName: $("#EnglishName").val()
-								
-                               
+                                NationalityCode: $("#NationalityCode").val(),
+								ArabicName: $("#ArabicName").val(),
+								EnglishName: $("#EnglishName").val()
+
 
 							};
 							$.ajax({
 								type: "POST",
-								url: "/Job/SaveJob",
+								url: "/Source/SaveSource",
 								data: JSON.stringify(dataToSave),
 								contentType: 'application/json',
 								success: function (data) {
@@ -112,13 +111,12 @@
 									else if (data.Code == 1) {
 										toastr.success(data.Msg);
 										tabelMemRef.ajax.reload();
-                                        document.getElementById("JobCode").value = data.LastID;
-                                        document.getElementById("ArabicName").value = '';
-                                        document.getElementById("EnglishName").value = '';
-								
-                                        
+                                        document.getElementById("SourceCode").value = data.LastID;
+										document.getElementById("ArabicName").value = '';
+										document.getElementById("EnglishName").value = '';
 
-                                        $("#ArabicName").focus().select();
+
+										$("#ArabicName").focus().select();
 
 
 									}
@@ -137,8 +135,8 @@
 		});
 
 
-		$(document).on('click', '#UpdateJob', function () {
-            if ($("#CompanyName").val() == '') {
+		$(document).on('click', '#UpdateSource', function () {
+			if ($("#ArabicName").val() == '') {
 				bootbox.alert({
 					message: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif"> @Resources.Resource.PleasefillalRequiredfields</h6>',
 					className: 'rubberBand animated',
@@ -175,14 +173,13 @@
 
 							var dataToSave = {
 
-                                JobCode: $("#JobCode").val(),
-                                ArabicName: $("#ArabicName").val(),
-                                EnglishName: $("#EnglishName").val()
-						
+                                SourceCode: $("#SourceCode").val(),
+								ArabicName: $("#ArabicName").val(),
+								EnglishName: $("#EnglishName").val()
 							};
 							$.ajax({
 								type: "POST",
-								url: "/Job/UpdateJob",
+								url: "/Source/UpdateSource",
 								data: JSON.stringify(dataToSave),
 								contentType: 'application/json',
 								success: function (data) {
@@ -212,7 +209,7 @@
 
 			}
 		});
-		$(document).on('click', '#DeleteJob', function () {
+        $(document).on('click', '#DeleteSource', function () {
 			bootbox.confirm({
 				message: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif"> @Resources.Resource.AreYouSure</h6>',
 				className: 'rubberBand animated',
@@ -234,11 +231,11 @@
 							closeButton: false
 						});
 						var dataToSave = {
-                            JobCode: $("#JobCode").val()
+                            SourceCode: $("#SourceCode").val()
 						};
 						$.ajax({
 							type: "POST",
-							url: "/Job/DeleteJob",
+                            url: "/Source/DeleteSource",
 							data: JSON.stringify(dataToSave),
 							contentType: 'application/json',
 							success: function (data) {
@@ -306,7 +303,7 @@
 			buttons: [
 
 				{
-					messageTop: '@Resources.Resource.Job',
+					messageTop: '@Resources.Resource.Source',
 					extend: 'excelHtml5',
 					exportOptions: {
 						columns: [0, 1, 2 ]
@@ -316,17 +313,17 @@
 			],
 
 			ajax: {
-				url: "/Job/GetAllJob",
+				url: "/Source/GetAllSource",
 				dataSrc: ""
 			},
 			columns: [
 				{
 
-                    data: "JobCode"
+                    data: "SourceCode"
 				},
 
 				{
-                    data: "JobName"
+                    data: "Source"
 
 				}
 
@@ -339,16 +336,16 @@
 
                 ,
 				{
-                    data: "JobCode",
+                    data: "SourceCode",
 					render: function (data) {
-						return "<a  class='btn btn-success btn-icon-anim btn-square btn-sm js-Pop' href='/Job/Update/" + data + "'><i class='fa fa-edit' style='margin-top: 4px;'></i> </a>";
+						return "<a  class='btn btn-success btn-icon-anim btn-square btn-sm js-Pop' href='/Source/Update/" + data + "'><i class='fa fa-edit' style='margin-top: 4px;'></i> </a>";
 					}
 
 				},
 				{
-                    data: "JobCode",
+                    data: "SourceCode",
 					render: function (data) {
-                        return "<a  class='btn  btn-icon-anim btn-square btnDelete btn-sm js-Pop' href='/Job/Delete/" + data + " '><i class='fa fa-trash-o' style='margin-top: 4px;'></i> </a>";
+                        return "<a  class='btn  btn-icon-anim btn-square btnDelete btn-sm js-Pop' href='/Source/Delete/" + data + " '><i class='fa fa-trash-o' style='margin-top: 4px;'></i> </a>";
 					}
 
 				}
@@ -371,7 +368,7 @@
 			return false;
 		});
 	});
-</script>
+    </script>
 }
 
 
