@@ -90,10 +90,9 @@ namespace Fitness.Persistence
                 {
                     return _context.Database.SqlQuery<JobVM>(
                       " Select J.JobCode, J.ArabicName As JobName,A.UserName  " +
-
                     "  From Jobs J,AspNetUsers A " +
                      " Where  " +
-                    "  J.CompanyID = 1 " +
+                    "  J.CompanyID = @CompanyID " +
                     "  And  " +
                     "  J.CompanyID = A.fCompanyId " +
                    "   And  " +
@@ -117,7 +116,7 @@ namespace Fitness.Persistence
 
                     "  From Jobs J,AspNetUsers A " +
                      " Where  " +
-                    "  J.CompanyID = 1 " +
+                    "  J.CompanyID = @CompanyID " +
                     "  And  " +
                     "  J.CompanyID = A.fCompanyId " +
                    "   And  " +
