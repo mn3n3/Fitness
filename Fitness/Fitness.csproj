@@ -175,6 +175,7 @@
     <Compile Include="Controllers\CompanySettingsDashController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JobController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -9025,6 +9026,10 @@
     <Content Include="Views\Group\Delete.cshtml" />
     <Content Include="Views\Company\Index.cshtml" />
     <Content Include="Views\CompanySettingsDash\Index.cshtml" />
+    <Content Include="Views\Job\Delete.cshtml" />
+    <Content Include="Views\Job\Index.cshtml" />
+    <Content Include="Views\Job\Save.cshtml" />
+    <Content Include="Views\Job\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
