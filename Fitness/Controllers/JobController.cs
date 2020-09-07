@@ -11,6 +11,7 @@ using System.Web.Mvc;
 
 namespace Fitness.Controllers
 {
+    [Authorize]
     public class JobController : BaseController
     {
         private readonly IUnitOfWork _unitOfWork;

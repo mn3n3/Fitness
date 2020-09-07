@@ -6,7 +6,8 @@ using System.Web.Mvc;
 
 namespace Fitness.Controllers
 {
-    public class CompanySettingsDashController : Controller
+    [Authorize]
+    public class CompanySettingsDashController : BaseController
     {
         // GET: CompanySettingsDash
         public ActionResult Index()
