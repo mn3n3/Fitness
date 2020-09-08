@@ -74,6 +74,19 @@
 .btnDelete-lg {
     background-color: #E41B17 !important;
 }
+table.dataTable thead .sorting::after, table.dataTable thead .sorting_asc::after, table.dataTable thead .sorting_desc::after {
+    display: none !important;
+}
+table.dataTable th.dt-center {
+    font-size: 8pt !important;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.BodyStyle {
+    font-size: 8pt;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 
 .btnDelete {
     background-color: #E41B17 !important

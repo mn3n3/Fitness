@@ -176,12 +176,14 @@
     <Compile Include="Controllers\CustomerCompanyController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\JobController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NationalityController.cs" />
     <Compile Include="Controllers\PlaceOfBirthController.cs" />
     <Compile Include="Controllers\SourceController.cs" />
     <Compile Include="Controllers\TrainerController.cs" />
+    <Compile Include="Controllers\VisitorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -202,6 +204,14 @@
     <Compile Include="Migrations\202009061934118_n3n3sdlskdlksldk.cs" />
     <Compile Include="Migrations\202009061934118_n3n3sdlskdlksldk.Designer.cs">
       <DependentUpon>202009061934118_n3n3sdlskdlksldk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009080848240_Nagham080920201.cs" />
+    <Compile Include="Migrations\202009080848240_Nagham080920201.Designer.cs">
+      <DependentUpon>202009080848240_Nagham080920201.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009081002493_Nagham080920202.cs" />
+    <Compile Include="Migrations\202009081002493_Nagham080920202.Designer.cs">
+      <DependentUpon>202009081002493_Nagham080920202.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -262,6 +272,7 @@
     <Compile Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="ViewModels\SourceVM.cs" />
     <Compile Include="ViewModels\TrainerVM.cs" />
+    <Compile Include="ViewModels\VisitorVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="CompanyLogo\1fe15209-654d-4552-b9d3-86e6045d1239.jpg" />
@@ -9061,6 +9072,12 @@
     <Content Include="Views\Trainer\Save.cshtml" />
     <Content Include="Views\Trainer\Update.cshtml" />
     <Content Include="Views\Trainer\Delete.cshtml" />
+    <Content Include="Views\Visitor\Index.cshtml" />
+    <Content Include="Views\Visitor\Save.cshtml" />
+    <Content Include="Views\Item\Update.cshtml" />
+    <Content Include="Views\Item\Save.cshtml" />
+    <Content Include="Views\Item\Index.cshtml" />
+    <Content Include="Views\Item\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -9106,6 +9123,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009061934118_n3n3sdlskdlksldk.resx">
       <DependentUpon>202009061934118_n3n3sdlskdlksldk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009080848240_Nagham080920201.resx">
+      <DependentUpon>202009080848240_Nagham080920201.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009081002493_Nagham080920202.resx">
+      <DependentUpon>202009081002493_Nagham080920202.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

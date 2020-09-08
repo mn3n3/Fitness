@@ -9,7 +9,7 @@ namespace Fitness.ViewModels
     {
 
         public int NationalityCode { get; set; }
-        public string Nationality { get; set; }
+        public string NationalityName { get; set; }
         public string UserName { get; set; }
     }
 }

@@ -156,6 +156,9 @@
   <data name="Classes" xml:space="preserve">
     <value>الحصص</value>
   </data>
+  <data name="Clear" xml:space="preserve">
+    <value>مسح</value>
+  </data>
   <data name="Close" xml:space="preserve">
     <value>إغلاق</value>
   </data>
@@ -228,11 +231,20 @@
   <data name="Error" xml:space="preserve">
     <value>خطا</value>
   </data>
+  <data name="Female" xml:space="preserve">
+    <value>انثى</value>
+  </data>
   <data name="First" xml:space="preserve">
     <value>الأول</value>
   </data>
   <data name="Free" xml:space="preserve">
     <value>مجاني</value>
+  </data>
+  <data name="FromVistDate" xml:space="preserve">
+    <value>من تاريخ زيارة</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>الجنس</value>
   </data>
   <data name="GenderCode" xml:space="preserve">
     <value>الجنس</value>
@@ -279,6 +291,12 @@
   <data name="Interseted" xml:space="preserve">
     <value>مهتم</value>
   </data>
+  <data name="IntersetedCase" xml:space="preserve">
+    <value>حالة اهتمام</value>
+  </data>
+  <data name="Item" xml:space="preserve">
+    <value>مادة</value>
+  </data>
   <data name="ItemCode" xml:space="preserve">
     <value>رمز المادة</value>
   </data>
@@ -290,6 +308,9 @@
   </data>
   <data name="ItemPrice" xml:space="preserve">
     <value>سعر البيع</value>
+  </data>
+  <data name="Items" xml:space="preserve">
+    <value>مواد</value>
   </data>
   <data name="Job" xml:space="preserve">
     <value>الوظيفة</value>
@@ -330,6 +351,9 @@
   <data name="LogoPath" xml:space="preserve">
     <value>امتداد الشعار</value>
   </data>
+  <data name="Male" xml:space="preserve">
+    <value>ذكر</value>
+  </data>
   <data name="MyNotinifactioLogs" xml:space="preserve">
     <value>اشعاراتي</value>
   </data>
@@ -341,6 +365,9 @@
   </data>
   <data name="NationalityCode" xml:space="preserve">
     <value>رمز الجنسية</value>
+  </data>
+  <data name="NationalityName" xml:space="preserve">
+    <value>اسم الجنسية</value>
   </data>
   <data name="New" xml:space="preserve">
     <value>جديد</value>
@@ -399,11 +426,17 @@
   <data name="PleaseWait" xml:space="preserve">
     <value>يرجي الانتظار</value>
   </data>
+  <data name="PreparingData" xml:space="preserve">
+    <value>إعداد البيانات</value>
+  </data>
   <data name="Previous" xml:space="preserve">
     <value>السابق</value>
   </data>
   <data name="Price" xml:space="preserve">
     <value>السعر</value>
+  </data>
+  <data name="Print" xml:space="preserve">
+    <value>طباعة</value>
   </data>
   <data name="PrintExcel" xml:space="preserve">
     <value>طباعة اكسل</value>
@@ -480,6 +513,9 @@
   <data name="ThisAccountHasBeenLocked" xml:space="preserve">
     <value>تم اغلاق الحساب</value>
   </data>
+  <data name="ToDate" xml:space="preserve">
+    <value>الى تاريخ</value>
+  </data>
   <data name="Trainer" xml:space="preserve">
     <value>مدرب</value>
   </data>
@@ -518,6 +554,12 @@
   </data>
   <data name="VisitorName" xml:space="preserve">
     <value>اسم الزائر</value>
+  </data>
+  <data name="Visitors" xml:space="preserve">
+    <value>معلومات الزوار</value>
+  </data>
+  <data name="VistDate" xml:space="preserve">
+    <value>تاريخ الزيارة</value>
   </data>
   <data name="Website" xml:space="preserve">
     <value>الموقع الإلكتروني</value>

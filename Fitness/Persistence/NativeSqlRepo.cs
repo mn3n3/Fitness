@@ -139,7 +139,7 @@ namespace Fitness.Persistence
                 try
                 {
                     return _context.Database.SqlQuery<NationalityVM>(
-                    " Select N.NationalityCode, N.ArabicName As Nationality ,A.UserName  " +
+                    " Select N.NationalityCode, N.ArabicName As NationalityName ,A.UserName  " +
                     "  From Nationalities N ,AspNetUsers A " +
                     "  Where  " +
                     "  N.CompanyID = @CompanyID " +
@@ -162,7 +162,7 @@ namespace Fitness.Persistence
                 try
                 {
                     return _context.Database.SqlQuery<NationalityVM>(
-                   " Select N.NationalityCode, N.ArabicName As Nationality ,A.UserName  " +
+                   " Select N.NationalityCode, N.ArabicName As NationalityName ,A.UserName  " +
                     "  From Nationalities N ,AspNetUsers A " +
                     "  Where  " +
                     "  N.CompanyID = @CompanyID " +
@@ -335,6 +335,107 @@ namespace Fitness.Persistence
             {
                 return new List<TrainerVM>();
             }
+        }
+        public IEnumerable<VisitorVM> GetAllVisitor(int CompanyID,int FromVisitorDate , int ToDate)
+        {
+            if (Resources.Resource.CurLang == "Arb")
+            {
+                try
+                {
+                    return _context.Database.SqlQuery<VisitorVM>(
+                      " Select V.VisitorCode, V.VisitorName, V.VistDate, N.ArabicName As NationalityName,V.Interseted, " +
+                        " S.ArabicName As SourceName, J.ArabicName As JobName, A.UserName, " +
+                         " ( " +
+                         " Case When " +
+                         " V.Interseted = 0 Then N'غير مهتم' " +
+                         " Else " +
+                         " N'مهتم' " +
+                         " End " +
+                         " ) As IntersetedCase " +
+                        " From AspNetUsers A,Visitors V " +
+                        " Left Join Nationalities N On " +
+                        " V.NationalityCode = N.NationalityCode " +
+                        " And " +
+                        " V.CompanyID = N.CompanyID " +
+                        " Left Join Sources S On " +
+                        " V.SourceCode = S.SourceCode " +
+                        " And " +
+                        " V.CompanyID = S.CompanyID " +
+                        " Left Join Jobs J On " +
+                        " V.JobCode = J.JobCode " +
+                        " And " +
+                        " V.CompanyID = J.CompanyID " +
+                        " Where " +
+                        " V.CompanyID = A.fCompanyId " +
+                        " And " +
+                        " V.InsUserID = A.Id " +
+                        " And " +
+                        " V.CompanyID >= @CompanyID " +
+                        " And " +
+                        " V.VistDateInt >= @FromVisitorDate " +
+                        " And " +
+                        " V.VistDateInt <= @ToDate " +
+                      "  Order By V.VisitorCode "
+                    , new SqlParameter("@CompanyID", CompanyID)
+                    , new SqlParameter("@FromVisitorDate", FromVisitorDate)
+                    , new SqlParameter("@ToDate", ToDate)
+                ).ToList();
+                }
+                catch
+                {
+                    return new List<VisitorVM>();
+                }
+            }
+            else
+            {
+                try
+                {
+                    return _context.Database.SqlQuery<VisitorVM>(
+                      " Select V.VisitorCode, V.VisitorName, V.VistDate, N.EnglishName As NationalityName, " +
+                        " S.EnglishName As SourceName, J.EnglishName As JobName, A.UserName, " +
+                         " ( " +
+                         " Case When " +
+                         " V.Interseted = 0 Then 'UnInterseted' " +
+                         " Else " +
+                         " 'Interseted' " +
+                         " End " +
+                         " ) As IntersetedCase " +
+                        " From AspNetUsers A,Visitors V " +
+                        " Left Join Nationalities N On " +
+                        " V.NationalityCode = N.NationalityCode " +
+                        " And " +
+                        " V.CompanyID = N.CompanyID " +
+                        " Left Join Sources S On " +
+                        " V.SourceCode = S.SourceCode " +
+                        " And " +
+                        " V.CompanyID = S.CompanyID " +
+                        " Left Join Jobs J On " +
+                        " V.JobCode = J.JobCode " +
+                        " And " +
+                        " V.CompanyID = J.CompanyID " +
+                        " Where " +
+                        " V.CompanyID = A.fCompanyId " +
+                        " And " +
+                        " V.InsUserID = A.Id " +
+                        " And " +
+                        " V.CompanyID >= @CompanyID " +
+                        " And " +
+                        " V.VistDateInt >= @FromVisitorDate " +
+                        " And " +
+                        " V.VistDateInt <= @ToDate " +
+                      "  Order By V.VisitorCode "
+                    , new SqlParameter("@CompanyID", CompanyID)
+                    , new SqlParameter("@FromVisitorDate", FromVisitorDate)
+                    , new SqlParameter("@ToDate", ToDate)
+                ).ToList();
+                }
+                catch
+                {
+                    return new List<VisitorVM>();
+                }
+
+            }
+            
         }
     }
 

@@ -156,6 +156,9 @@
   <data name="Classes" xml:space="preserve">
     <value>Classes</value>
   </data>
+  <data name="Clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
   <data name="Close" xml:space="preserve">
     <value>Close</value>
   </data>
@@ -225,11 +228,20 @@
   <data name="Error" xml:space="preserve">
     <value>Error</value>
   </data>
+  <data name="Female" xml:space="preserve">
+    <value>Female</value>
+  </data>
   <data name="First" xml:space="preserve">
     <value>First</value>
   </data>
   <data name="Free" xml:space="preserve">
     <value>Free</value>
+  </data>
+  <data name="FromVistDate" xml:space="preserve">
+    <value>From Vist Date</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>Gender</value>
   </data>
   <data name="GenderCode" xml:space="preserve">
     <value>Gender</value>
@@ -276,6 +288,12 @@
   <data name="Interseted" xml:space="preserve">
     <value>Interseted</value>
   </data>
+  <data name="IntersetedCase" xml:space="preserve">
+    <value>Interseted Case</value>
+  </data>
+  <data name="Item" xml:space="preserve">
+    <value>Item</value>
+  </data>
   <data name="ItemCode" xml:space="preserve">
     <value>Item Code</value>
   </data>
@@ -287,6 +305,9 @@
   </data>
   <data name="ItemPrice" xml:space="preserve">
     <value>Item Price</value>
+  </data>
+  <data name="Items" xml:space="preserve">
+    <value>Items</value>
   </data>
   <data name="Job" xml:space="preserve">
     <value>Job</value>
@@ -327,6 +348,9 @@
   <data name="LogoPath" xml:space="preserve">
     <value>Logo Path</value>
   </data>
+  <data name="Male" xml:space="preserve">
+    <value>Male</value>
+  </data>
   <data name="MyNotinifactioLogs" xml:space="preserve">
     <value>My Notinifactio Logs</value>
   </data>
@@ -338,6 +362,9 @@
   </data>
   <data name="NationalityCode" xml:space="preserve">
     <value>Nationality Code</value>
+  </data>
+  <data name="NationalityName" xml:space="preserve">
+    <value>Nationality Name</value>
   </data>
   <data name="New" xml:space="preserve">
     <value>New</value>
@@ -396,11 +423,17 @@
   <data name="PleaseWait" xml:space="preserve">
     <value>Please Wait</value>
   </data>
+  <data name="PreparingData" xml:space="preserve">
+    <value>Preparing Data</value>
+  </data>
   <data name="Previous" xml:space="preserve">
     <value>Previous</value>
   </data>
   <data name="Price" xml:space="preserve">
     <value>Price</value>
+  </data>
+  <data name="Print" xml:space="preserve">
+    <value>Print</value>
   </data>
   <data name="PrintExcel" xml:space="preserve">
     <value>PrintExcel</value>
@@ -474,6 +507,9 @@
   <data name="ThisAccountHasBeenLocked" xml:space="preserve">
     <value>This Account Has Been Locked</value>
   </data>
+  <data name="ToDate" xml:space="preserve">
+    <value>To Date</value>
+  </data>
   <data name="Trainer" xml:space="preserve">
     <value>Trainer</value>
   </data>
@@ -512,6 +548,12 @@
   </data>
   <data name="VisitorName" xml:space="preserve">
     <value>VisitorName</value>
+  </data>
+  <data name="Visitors" xml:space="preserve">
+    <value>Visitors Informations</value>
+  </data>
+  <data name="VistDate" xml:space="preserve">
+    <value>Vist Date</value>
   </data>
   <data name="Website" xml:space="preserve">
     <value>Website</value>

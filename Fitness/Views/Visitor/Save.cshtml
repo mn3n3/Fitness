@@ -1,0 +1,303 @@
+﻿@model Fitness.ViewModels.VisitorVM
+@{
+    ViewBag.Title = @Resources.Resource.Save;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div style="padding-top:20px;">
+    <div class="panel card-view">
+        <div class="panel-heading">
+            <div class="pull-left">
+                <h6 class="panel-title txt-light" style="font-weight:bold">@Resources.Resource.Save - @Resources.Resource.Visitors</h6>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="panel-body">
+            <div class="col-lg-12">
+                <div class="col-lg-2">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.VisitorCode)
+                        @Html.TextBoxFor(m => m.VisitorCode, new { @id = "VisitorCode", @class = "form-control input-sml", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.VisitorName) <span style="color:red">*</span>
+                        @Html.TextBoxFor(m => m.VisitorName, new { @id = "VisitorName", @class = "form-control input-sml" })
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.BirthDate)
+                        @Html.TextBoxFor(model => model.BirthDate, new { @id = "BirthDate", @class = "form-control input-sml", @Value = Model.BirthDate.ToString("dd/MM/yyyy") })
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.VistDate)
+                        @Html.TextBoxFor(model => model.VistDate, new { @id = "VistDate", @class = "form-control input-sml", @Value = Model.VistDate.ToString("dd/MM/yyyy") })
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Phone1)
+                        @Html.TextBoxFor(m => m.Phone1, new { @id = "Phone1", @class = "form-control input-sml" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="col-lg-3">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email)
+                        @Html.TextBoxFor(model => model.Email, new { @id = "Email", @class = "form-control input-sml" })
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Address)
+                        @Html.TextBoxFor(m => m.Address, new { @id = "Address", @class = "form-control input-sml" })
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="form-group">
+                        @Html.Label(Resources.Resource.Nationality)
+                        @Html.DropDownListFor(m => m.NationalityCode, new SelectList(Model.Nationality, "NationalityCode", "NationalityName"), Resources.Resource.Nationality, new { @id = "NationalityCode", @class = "form-control input-sml" })
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="form-group">
+                        @Html.Label(Resources.Resource.Source)
+                        @Html.DropDownListFor(m => m.SourceCode, new SelectList(Model.Source, "SourceCode", "SourceName"), Resources.Resource.Source, new { @id = "SourceCode", @class = "form-control input-sml" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="col-lg-3">
+                    <div class="form-group">
+                        @Html.Label(Resources.Resource.Job)
+                        @Html.DropDownListFor(m => m.JobCode, new SelectList(Model.Job, "JobCode", "JobName"), Resources.Resource.Job, new { @id = "JobCode", @class = "form-control input-sml" })
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.GenderCode)
+                        @Html.DropDownListFor(m => m.GenderCode, new List<SelectListItem>
+                            {
+                            new SelectListItem{ Text=Resources.Resource.Gender, Value = "0",Selected=true },
+                            new SelectListItem{ Text=Resources.Resource.Male, Value = "1",Selected=false },
+                            new SelectListItem{ Text=Resources.Resource. Female, Value = "2",Selected=false }
+                        }, new { @id = "GenderCode", @class = "form-control input-sml" })
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Note)
+                        @Html.TextBoxFor(m => m.Note, new { @id = "Note", @class = "form-control input-sml" })
+                    </div>
+                </div>
+                <div class="col-lg-2" style="margin-top : 20px">
+                    <div class="form-group">
+                        <label style="font-size :medium">
+                            @Html.CheckBoxFor(m => m.Interseted, new { @id = "Interseted" }) @Resources.Resource.Interseted
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <button type="button" class="btn btn-primary btn-anim" id="SaveVisitor"><i class="fa fa-save"></i><span class="btn-text">@Resources.Resource.Save</span> </button>
+            <button type="button" class="btn btn-warning btn-anim" id="Clear"><i class="fa fa-refresh"></i><span class="btn-text">@Resources.Resource.Clear</span> </button>
+            <button type="button" class="btn btn-default btn-anim" id="Close"><i class="fa fa-times"></i><span class="btn-text">@Resources.Resource.Close</span></button>
+        </div>
+    </div>
+</div>
+<div id="modal-container" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-content">
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+<script>
+    $(document).ready(function () {
+        $(document).on('click', '#Clear', function () {
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth() + 1;
+            var yyyy = today.getFullYear();
+            if (dd < 10) {
+                dd = '0' + dd;
+            }
+            if (mm < 10) {
+                mm = '0' + mm;
+            }
+            var today = dd + '/' + mm + '/' + yyyy;
+            document.getElementById("NationalityCode").selectedIndex = "0";
+            document.getElementById("SourceCode").selectedIndex = "0";
+            document.getElementById("JobCode").selectedIndex = "0";
+            document.getElementById("GenderCode").selectedIndex = "0";
+            document.getElementById("BirthDate").value = today;
+            document.getElementById("VistDate").value = today;
+            document.getElementById("VisitorName").value = '';
+            document.getElementById("Note").value = '';
+            document.getElementById("Email").value = '';
+            document.getElementById("Phone1").value = '';
+            document.getElementById("Address").value = '';
+            document.getElementById('Interseted').checked = false;
+            $("#VisitorName").focus().select();
+        });
+        $(document).on('click', '#Close', function () {
+            window.location = "/Visitor/Index";
+        });
+        $("#BirthDate").mask("99/99/9999");
+        $("#VistDate").mask("99/99/9999");
+        $("#VisitorName").focus().select();
+        $(document).on('click', '#SaveVisitor', function () {
+            if ($("#VisitorName").val() == '') {
+                bootbox.alert({
+                    message: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif"> @Resources.Resource.PleasefillalRequiredfields</h6>',
+                    className: 'rubberBand animated',
+                    buttons: {
+                        ok: {
+                            label: '<span style="font-family: Verdana, Geneva, Tahoma, sans-serif">@Resources.Resource.Ok</span>',
+                            className: 'btn-primary'
+                        }
+                    }
+                });
+            }
+            else {
+                bootbox.confirm({
+                    message: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif"> @Resources.Resource.AreYouSure</h6>',
+                    className: 'rubberBand animated',
+                    buttons: {
+                        confirm: {
+                            label: '<span style="font-family: Verdana, Geneva, Tahoma, sans-serif">@Resources.Resource.Yes</span>',
+                            className: 'btn-success'
+                        },
+                        cancel: {
+                            label: '<span style="font-family: Verdana, Geneva, Tahoma, sans-serif">@Resources.Resource.No</span>',
+                            className: 'btn-danger'
+                        }
+                    },
+                    callback: function (result) {
+                        if (result) {
+                            var dialog = bootbox.dialog({
+                                title: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif;color : White"> @Resources.Resource.PleaseWait...</h6>',
+                                message: '<p style="font-family: Verdana, Geneva, Tahoma, sans-serif"><i class="fa fa-spin fa-spinner"></i> @Resources.Resource.Saving...</p>',
+                                closeButton: false
+                            });
+                            var DataToSave = {
+                                VisitorName: $("#VisitorName").val(),
+                                BirthDate: $("#BirthDate").val(),
+                                VistDate: $("#VistDate").val(),
+                                Phone1: $("#Phone1").val(),
+                                Email: $("#Email").val(),
+                                Address: $("#Address").val(),
+                                NationalityCode: $("#NationalityCode").val(),
+                                SourceCode: $("#SourceCode").val(),
+                                JobCode: $("#JobCode").val(),
+                                GenderCode: $("#GenderCode").val(),
+                                Note: $("#Note").val(),
+                                Interseted: $("#Interseted:checked").val()
+                            }
+
+                            $.ajax({
+                                type: "POST",
+                                url: "/Visitor/SaveVisitor",
+                                data: JSON.stringify(DataToSave),
+                                contentType: 'application/json',
+                                success: function (data) {
+
+                                    dialog.modal('hide');
+                                    if (data.Code == 0) {
+                                        toastr.error(data.Msg);
+                                    }
+                                    else if (data.Code == 1) {
+                                        toastr.success(data.Msg);
+                                        document.getElementById("Clear").click();
+
+                                    }
+                                },
+                                error: function (data) {
+                                    dialog.modal('hide');
+                                    toastr.error(data);
+                                    bootbox.alert(data.Msg);
+                                }
+
+                            });
+                        }
+                    }
+                });
+            }
+        });
+        $("#VisitorName").keyup(function (event) {
+            if (event.keyCode == 13)
+                $("#BirthDate").focus().select();
+
+        });
+        $("#BirthDate").keyup(function (event) {
+            if (event.keyCode == 13) {
+                $("#VistDate").focus().select();
+            }
+        });
+        $("#VistDate").keyup(function (event) {
+            if (event.keyCode == 13)
+                $("#Phone1").focus().select();
+        });
+        $("#Phone1").keyup(function (event) {
+            if (event.keyCode == 13)
+                $("#Email").focus().select();
+        });
+        $("#Email").keyup(function (event) {
+            if (event.keyCode == 13)
+                $("#Address").focus().select();
+        });
+        $("#Address").keyup(function (event) {
+            if (event.keyCode == 13)
+                $("#Note").focus().select();
+        });
+        $("#Note").keyup(function (event) {
+            if (event.keyCode == 13)
+                $("#VisitorName").focus().select();
+        });
+        $("#Amount").blur(function () {
+            if (document.getElementById("Amount").value == '') {
+                document.getElementById("Amount").value = 0;
+            }
+            if (document.getElementById("Amount").value < 0) {
+                document.getElementById("Amount").value = 0;
+                $("#Amount").focus().select();
+            }
+            var CurrencyAmount = document.getElementById("CurrencyNewValue").value;
+            if (CurrencyAmount == 0) {
+                CurrencyAmount = 1
+            };
+            if (CurrencyAmount == 1) {
+                $("#ForeignAmount").val((parseFloat(0)).toFixed(3));
+                $("#Amount").val((parseFloat($("#Amount").val())).toFixed(3));
+            }
+            else {
+                $("#ForeignAmount").val((parseFloat($("#Amount").val() / parseFloat($("#CurrencyNewValue").val()))).toFixed(3));
+                $("#Amount").val((parseFloat($("#Amount").val())).toFixed(3));
+            };
+
+        });
+        $(document).on('click', '.js-Pop', function (e) {
+            $('#modal-container').removeData('bs.modal');
+            e.preventDefault();
+            $(this).attr('data-target', '#modal-container');
+            $(this).attr('data-toggle', 'modal');
+
+        });
+        $('#modal-container').on('hidden.bs.modal', function () {
+            $(this).removeData('bs.modal');
+        });
+        $('#CancelModal').on('click', function () {
+
+            return false;
+        });
+    });
+</script>
+}
+
+

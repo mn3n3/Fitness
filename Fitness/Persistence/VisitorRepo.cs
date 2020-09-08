@@ -56,18 +56,19 @@ namespace Fitness.Persistence
             {
                 ObjToUpdate.VisitorName = ObjUpdate.VisitorName;
                 ObjToUpdate.BirthDate = ObjUpdate.BirthDate;
+                ObjToUpdate.BirthDateInt = ObjUpdate.BirthDateInt;
                 ObjToUpdate.Phone1 = ObjUpdate.Phone1;
                 ObjToUpdate.SourceCode = ObjUpdate.SourceCode;
                 ObjToUpdate.JobCode = ObjUpdate.JobCode;
-                ObjToUpdate.JobCode = ObjUpdate.JobCode;
+                ObjToUpdate.NationalityCode = ObjUpdate.NationalityCode;
                 ObjToUpdate.Interseted = ObjUpdate.Interseted;
-                ObjToUpdate.UnInterseted = ObjUpdate.UnInterseted;
                 ObjToUpdate.Email = ObjUpdate.Email;
                 ObjToUpdate.Address = ObjUpdate.Address;
                 ObjToUpdate.Note = ObjUpdate.Note;
-
-
-
+                ObjToUpdate.VistDate = ObjUpdate.VistDate;
+                ObjToUpdate.VistDateInt = ObjUpdate.VistDateInt;
+                ObjToUpdate.InsUserID = ObjUpdate.InsUserID;
+                ObjToUpdate.InsDateTime = ObjUpdate.InsDateTime;
             }
         }
     }

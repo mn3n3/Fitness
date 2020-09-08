@@ -1,0 +1,75 @@
+﻿
+
+
+@model Fitness.Models.Item
+@{
+    ViewBag.Title = @Resources.Resource.Save;
+}
+<script>
+    $(document).ready(function () {
+        $("#ItemName").focus().select();
+        $("#ItemName").keyup(function (event) {
+            if (event.keyCode == 13)
+                $("#Percentage").focus().select();
+
+        });
+        $("#Percentage").keyup(function (event) {
+            if (event.keyCode == 13)
+                $("#ItemName").focus().select();
+
+        });
+    });
+</script>
+<div id="myModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: block;">
+    <div class="modal-dialog modal-sm ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="pull-left">
+                    <h6 class="modal-title txt-light" style="font-weight:bold">@Resources.Resource.Save</h6>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="modal-body">
+                @Html.ValidationSummary(true, "Please Fix The Foloing Error!")
+
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ItemCode)
+
+                        @Html.TextBoxFor(m => m.ItemCode, new { @id = "ItemCode", @class = "form-control input-sml", @readonly = "readonly" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ItemName)  <span style="color:red">*</span>
+
+                        @Html.TextBoxFor(m => m.ItemName, new { @id = "ItemName", @class = "form-control input-sml" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ItemPrice)  <span style="color:red">*</span>
+
+                        @Html.TextBoxFor(m => m.ItemPrice, new { @id = "ItemPrice", @class = "form-control input-sml" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ItemCost)  <span style="color:red">*</span>
+
+                        @Html.TextBoxFor(m => m.ItemCost, new { @id = "ItemCost", @class = "form-control input-sml" })
+                    </div>
+                    
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <div class="col-lg-12">
+                    <button type="submit" class="btn btn-primary btn-anim" id="SaveItem"> <i class="fa fa-save"></i><span class="btn-text">@Resources.Resource.Save</span></button>
+                    <button type="button" class="btn btn-default btn-anim" data-dismiss="modal" id="Close"><i class="fa fa-times"></i><span class="btn-text">@Resources.Resource.Close</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+

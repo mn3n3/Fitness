@@ -1,28 +1,30 @@
 ﻿@{
-    ViewBag.Title = @Resources.Resource.PlaceOfBirths;
+    ViewBag.Title = @Resources.Resource.Items;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="panel card-view">
     <div class="panel-heading">
         <div class="pull-left">
-            <h6 class="panel-title txt-light">@Resources.Resource.PlaceOfBirths</h6>
+            <h6 class="panel-title txt-light">@Resources.Resource.Items</h6>
         </div>
         <div class="clearfix"></div>
     </div>
     <div class="panel-body">
         <div class="col-lg-12">
-            <a class="btn btn-primary btn-anim js-Pop" id="btnSave" href="/PlaceOfBirth/Save"> <i class="fa fa-save"></i><span class="btn-text">@Resources.Resource.New</span></a>
+            <a class="btn btn-primary btn-anim js-Pop" id="btnSave" href="/Item/Save"> <i class="fa fa-save"></i><span class="btn-text">@Resources.Resource.New</span></a>
             <a class="btn btn-warning btn-anim" id="btnPrintExcel"> <i class="fa fa-file-excel-o"></i><span class="btn-text">@Resources.Resource.PrintExcel</span></a>
             <button type="button" class="btn btn-default btn-anim" id="CloseForm"> <i class="fa fa-times"></i><span class="btn-text">@Resources.Resource.Close</span></button>
         </div>
         <div class="col-lg-12" style="margin-top:10px;">
 
-            <table id="tdataTable" class="table table-bordered"style="width : 100%">
+            <table id="tdataTable" class="table table-bordered" style="width : 100%">
                 <thead>
                     <tr>
-                        <th>@Resources.Resource.PlaceCode</th>
-                        <th>@Resources.Resource.PlaceName</th>
+                        <th>@Resources.Resource.ItemCode</th>
+                        <th>@Resources.Resource.ItemName</th>
+                        <th>@Resources.Resource.ItemPrice</th>
+                        <th>@Resources.Resource.ItemCost</th>
                         <th>@Resources.Resource.InsUserName</th>
                         <th>@Resources.Resource.Update</th>
                         <th>@Resources.Resource.Delete</th>
@@ -55,8 +57,8 @@
 		$(document).on('click', '#btnPrintExcel', function () {
 			$(".dt-button").click();
 		});
-		$(document).on('click', '#SavePlaceOfBirth', function () {
-			if ($("#ArabicName").val() == '') {
+		$(document).on('click', '#SaveItem', function () {
+			if ($("#ItemName").val() == '') {
 				bootbox.alert({
 					message: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif"> @Resources.Resource.PleasefillalRequiredfields</h6>',
 					className: 'rubberBand animated',
@@ -91,15 +93,17 @@
 							});
 
 							var dataToSave = {
-                                PlaceCode: $("#PlaceCode").val(),
-								ArabicName: $("#ArabicName").val(),
-								EnglishName: $("#EnglishName").val()
+                                ItemCode: $("#ItemCode").val(),
+                                ItemName: $("#ItemName").val(),
+                                ItemPrice: $("#ItemPrice").val(),
+                                ItemCost: $("#ItemCost").val()
+								
 
 
 							};
 							$.ajax({
 								type: "POST",
-								url: "/PlaceOfBirth/SavePlaceOfBirth",
+								url: "/Item/SaveItem",
 								data: JSON.stringify(dataToSave),
 								contentType: 'application/json',
 								success: function (data) {
@@ -111,12 +115,13 @@
 									else if (data.Code == 1) {
 										toastr.success(data.Msg);
 										tabelMemRef.ajax.reload();
-                                        document.getElementById("PlaceCode").value = data.LastID;
-										document.getElementById("ArabicName").value = '';
-										document.getElementById("EnglishName").value = '';
+                                        document.getElementById("ItemCode").value = data.LastID;
+                                        document.getElementById("ItemName").value = '';
+                                        document.getElementById("ItemPrice").value = '';
+                                        document.getElementById("ItemCost").value = '';
+                                       
 
-
-										$("#ArabicName").focus().select();
+                                        $("#ItemName").focus().select();
 
 
 									}
@@ -135,8 +140,8 @@
 		});
 
 
-		$(document).on('click', '#UpdatePlaceOfBirth', function () {
-			if ($("#ArabicName").val() == '') {
+		$(document).on('click', '#UpdateItem', function () {
+            if ($("#ItemName").val() == '') {
 				bootbox.alert({
 					message: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif"> @Resources.Resource.PleasefillalRequiredfields</h6>',
 					className: 'rubberBand animated',
@@ -173,13 +178,16 @@
 
 							var dataToSave = {
 
-                                PlaceCode: $("#PlaceCode").val(),
-								ArabicName: $("#ArabicName").val(),
-								EnglishName: $("#EnglishName").val()
+                                ItemCode: $("#ItemCode").val(),
+                                ItemName: $("#ItemName").val(),
+                                ItemPrice: $("#ItemPrice").val(),
+                                ItemCost: $("#ItemCost").val()
+                               
+
 							};
 							$.ajax({
 								type: "POST",
-								url: "/PlaceOfBirth/UpdatePlaceOfBirth",
+								url: "/Item/UpdateItem",
 								data: JSON.stringify(dataToSave),
 								contentType: 'application/json',
 								success: function (data) {
@@ -209,7 +217,7 @@
 
 			}
 		});
-		$(document).on('click', '#DeletePlaceOfBirth', function () {
+		$(document).on('click', '#DeleteItem', function () {
 			bootbox.confirm({
 				message: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif"> @Resources.Resource.AreYouSure</h6>',
 				className: 'rubberBand animated',
@@ -231,11 +239,11 @@
 							closeButton: false
 						});
 						var dataToSave = {
-                            PlaceCode: $("#PlaceCode").val()
+                            ItemCode: $("#ItemCode").val()
 						};
 						$.ajax({
 							type: "POST",
-                            url: "/PlaceOfBirth/DeletePlaceOfBirth",
+							url: "/Item/DeleteItem",
 							data: JSON.stringify(dataToSave),
 							contentType: 'application/json',
 							success: function (data) {
@@ -293,41 +301,57 @@
 			"scrollCollapse": true,
 			"fixedColumns": true,
 			"columnDefs": [
-                { "width": "10%", "targets": 0, "className": "dt-center"  },
-                { "width": "60%", "targets": 1, "className": "dt-center"},
-                { "width": "10%", "targets": 2, "className": "dt-center"},
-                { "width": "10%", "targets": 3, "className": "dt-center", "orderable": false },
-                { "width": "10%", "targets": 4, "className": "dt-center", "orderable": false }
-            ],
+				{ "width": "10%", "targets": 0, "className": "dt-center" },
+				{ "width": "35%", "targets": 1, "className": "dt-center" },
+				{ "width": "10%", "targets": 2, "className": "dt-center" },
+				{ "width": "10%", "targets": 3, "className": "dt-center" },
+                { "width": "10%", "targets": 4, "className": "dt-center", "orderable": false},
+				{ "width": "10%", "targets": 5, "className": "dt-center", "orderable": false },
+				{ "width": "15%", "targets": 6, "className": "dt-center", "orderable": false }
+
+				],
 
 			buttons: [
 
 				{
-					messageTop: '@Resources.Resource.PlaceOfBirth',
+					messageTop: '@Resources.Resource.Item',
 					extend: 'excelHtml5',
 					exportOptions: {
-						columns: [0, 1, 2 ]
+						columns: [0, 1, 2 ,3 , 4]
 					}
 				}
 
 			],
 
 			ajax: {
-                url: "/PlaceOfBirth/GetAllPlaceOfBirth",
+                url: "/Item/GetAllItems",
 				dataSrc: ""
 			},
 			columns: [
 				{
 
-                    data: "PlaceCode"
+                    data: "ItemCode"
 				},
 
 				{
-                    data: "PlaceName"
+                    data: "ItemName"
 
 				}
 
 				,
+				{
+                    data: "ItemPrice"
+
+				}
+
+				,
+				{
+                    data: "ItemCost"
+
+				}
+
+				,
+               
 
                 {
                     data: "UserName"
@@ -336,16 +360,16 @@
 
                 ,
 				{
-                    data: "PlaceCode",
+                    data: "ItemCode",
 					render: function (data) {
-						return "<a  class='btn btn-success btn-icon-anim btn-square btn-sm js-Pop' href='/PlaceOfBirth/Update/" + data + "'><i class='fa fa-edit' style='margin-top: 4px;'></i> </a>";
+						return "<a  class='btn btn-success btn-icon-anim btn-square btn-sm js-Pop' href='/Item/Update/" + data + "'><i class='fa fa-edit' style='margin-top: 4px;'></i> </a>";
 					}
 
 				},
 				{
-                    data: "PlaceCode",
+                    data: "ItemCode",
 					render: function (data) {
-                        return "<a  class='btn  btn-icon-anim btn-square btnDelete btn-sm js-Pop' href='/PlaceOfBirth/Delete/" + data + " '><i class='fa fa-trash-o' style='margin-top: 4px;'></i> </a>";
+                        return "<a  class='btn  btn-icon-anim btn-square btnDelete btn-sm js-Pop' href='/Item/Delete/" + data + " '><i class='fa fa-trash-o' style='margin-top: 4px;'></i> </a>";
 					}
 
 				}
