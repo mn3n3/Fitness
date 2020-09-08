@@ -361,7 +361,7 @@ namespace Fitness.Persistence
                 return new List<ItemVM>();
             }
         }
-        public IEnumerable<VisitorVM> GetAllVisitor(int CompanyID,int FromVisitorDate , int ToDate)
+        public IEnumerable<VisitorVM> GetAllVisitor(int CompanyID,DateTime FromVisitorDate , DateTime ToDate)
         {
             if (Resources.Resource.CurLang == "Arb")
             {
@@ -397,9 +397,9 @@ namespace Fitness.Persistence
                         " And " +
                         " V.CompanyID >= @CompanyID " +
                         " And " +
-                        " V.VistDateInt >= @FromVisitorDate " +
+                        " V.VistDate >= @FromVisitorDate " +
                         " And " +
-                        " V.VistDateInt <= @ToDate " +
+                        " V.VistDate <= @ToDate " +
                       "  Order By V.VisitorCode "
                     , new SqlParameter("@CompanyID", CompanyID)
                     , new SqlParameter("@FromVisitorDate", FromVisitorDate)
@@ -445,9 +445,9 @@ namespace Fitness.Persistence
                         " And " +
                         " V.CompanyID >= @CompanyID " +
                         " And " +
-                        " V.VistDateInt >= @FromVisitorDate " +
+                        " V.VistDate >= @FromVisitorDate " +
                         " And " +
-                        " V.VistDateInt <= @ToDate " +
+                        " V.VistDate <= @ToDate " +
                       "  Order By V.VisitorCode "
                     , new SqlParameter("@CompanyID", CompanyID)
                     , new SqlParameter("@FromVisitorDate", FromVisitorDate)

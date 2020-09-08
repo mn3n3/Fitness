@@ -58,23 +58,38 @@
                     </div>
                 </div>
                 <div class="col-lg-3">
-                    <div class="form-group">
-                        @Html.Label(Resources.Resource.Nationality)
+                    @Html.Label(Resources.Resource.Nationality)
+                    <div class="form-group  input-group">
                         @Html.DropDownListFor(m => m.NationalityCode, new SelectList(Model.Nationality, "NationalityCode", "NationalityName"), Resources.Resource.Nationality, new { @id = "NationalityCode", @class = "form-control input-sml" })
+                        <span class="input-group-btn">
+                            <a class="btn btn-primary btn-icon-anim btn-square js-Pop" id="AddNationality" href="/Nationality/Save">
+                                <i class="fa fa-plus" style="margin-top : 12px"></i>
+                            </a>
+                        </span>
                     </div>
                 </div>
                 <div class="col-lg-3">
-                    <div class="form-group">
-                        @Html.Label(Resources.Resource.Source)
+                    @Html.Label(Resources.Resource.Source)
+                    <div class="form-group  input-group">
                         @Html.DropDownListFor(m => m.SourceCode, new SelectList(Model.Source, "SourceCode", "SourceName"), Resources.Resource.Source, new { @id = "SourceCode", @class = "form-control input-sml" })
+                        <span class="input-group-btn">
+                            <a class="btn btn-primary btn-icon-anim btn-square js-Pop" id="AddSource" href="/Source/Save">
+                                <i class="fa fa-plus" style="margin-top : 12px"></i>
+                            </a>
+                        </span>
                     </div>
                 </div>
             </div>
             <div class="col-lg-12">
                 <div class="col-lg-3">
-                    <div class="form-group">
-                        @Html.Label(Resources.Resource.Job)
+                    @Html.Label(Resources.Resource.Job)
+                    <div class="form-group  input-group">
                         @Html.DropDownListFor(m => m.JobCode, new SelectList(Model.Job, "JobCode", "JobName"), Resources.Resource.Job, new { @id = "JobCode", @class = "form-control input-sml" })
+                        <span class="input-group-btn">
+                            <a class="btn btn-primary btn-icon-anim btn-square js-Pop" id="AddJob" href="/Job/Save">
+                                <i class="fa fa-plus" style="margin-top : 12px"></i>
+                            </a>
+                        </span>
                     </div>
                 </div>
                 <div class="col-lg-2">
@@ -248,6 +263,321 @@
         $('#CancelModal').on('click', function () {
 
             return false;
+        });
+        $(document).on('click', '#SaveNationality', function () {
+            if ($("#ArabicName").val() == '') {
+                bootbox.alert({
+                    message: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif"> @Resources.Resource.PleasefillalRequiredfields</h6>',
+                    className: 'rubberBand animated',
+                    buttons: {
+                        ok: {
+                            label: '<span style="font-family: Verdana, Geneva, Tahoma, sans-serif">@Resources.Resource.Ok</span>',
+                            className: 'btn-primary'
+                        }
+                    }
+                });
+            }
+            else {
+                bootbox.confirm({
+                    message: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif"> @Resources.Resource.AreYouSure</h6>',
+                    className: 'rubberBand animated',
+                    buttons: {
+                        confirm: {
+                            label: '<span style="font-family: Verdana, Geneva, Tahoma, sans-serif">@Resources.Resource.Yes</span>',
+                            className: 'btn-success'
+                        },
+                        cancel: {
+                            label: '<span style="font-family: Verdana, Geneva, Tahoma, sans-serif">@Resources.Resource.No</span>',
+                            className: 'btn-danger'
+                        }
+                    },
+                    callback: function (result) {
+                        if (result) {
+                            var dialog = bootbox.dialog({
+                                title: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif;color : White"> @Resources.Resource.PleaseWait...</h6>',
+                                message: '<p style="font-family: Verdana, Geneva, Tahoma, sans-serif"><i class="fa fa-spin fa-spinner"></i> @Resources.Resource.Saving...</p>',
+                                closeButton: false
+                            });
+
+                            var dataToSave = {
+                                NationalityCode: $("#NationalityCode").val(),
+                                ArabicName: $("#ArabicName").val(),
+                                EnglishName: $("#EnglishName").val()
+
+
+                            };
+                            $.ajax({
+                                type: "POST",
+                                url: "/Nationality/SaveNationality",
+                                data: JSON.stringify(dataToSave),
+                                contentType: 'application/json',
+                                success: function (data) {
+
+                                    dialog.modal('hide');
+                                    if (data.Code == 0) {
+                                        toastr.error(data.Msg);
+                                    }
+                                    else if (data.Code == 1) {
+                                        toastr.success(data.Msg);
+                                        document.getElementById("NationalityCode").value = data.LastID;
+                                        document.getElementById("ArabicName").value = '';
+                                        document.getElementById("EnglishName").value = '';
+                                        $("#ArabicName").focus().select();
+
+                                        var NationalityCode = $('#NationalityCode');
+                                        NationalityCode.empty();
+                                        $.ajax({
+                                            method: "GET",
+                                            url: "/Nationality/GetAllNationality",
+
+
+                                            success: function (data) {
+                                                NationalityCode.append($('<option/>', {
+                                                    value: 0,
+                                                    text: '@Resources.Resource.Nationality'
+                                                }));
+
+
+                                                $.each(data, function (id, region) {
+                                                    NationalityCode.append($('<option/>', {
+                                                        value: region.NationalityCode,
+                                                        text: region.NationalityName
+                                                    }));
+                                                });
+
+                                                dialog.modal('hide');
+
+                                            },
+                                            error: function (xhr, AJAXOptions, thrownError) {
+                                                dialog.modal('hide');
+                                                alert('Failed to retrieve .');
+                                            }
+                                        });
+
+
+                                    }
+
+                                },
+                                error: function (data) {
+                                    dialog.modal('hide');
+                                    toastr.error(data);
+                                }
+
+                            });
+                        }
+                    }
+                });
+            }
+        });
+        $(document).on('click', '#SaveSource', function () {
+            if ($("#ArabicName").val() == '') {
+                bootbox.alert({
+                    message: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif"> @Resources.Resource.PleasefillalRequiredfields</h6>',
+                    className: 'rubberBand animated',
+                    buttons: {
+                        ok: {
+                            label: '<span style="font-family: Verdana, Geneva, Tahoma, sans-serif">@Resources.Resource.Ok</span>',
+                            className: 'btn-primary'
+                        }
+                    }
+                });
+            }
+            else {
+                bootbox.confirm({
+                    message: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif"> @Resources.Resource.AreYouSure</h6>',
+                    className: 'rubberBand animated',
+                    buttons: {
+                        confirm: {
+                            label: '<span style="font-family: Verdana, Geneva, Tahoma, sans-serif">@Resources.Resource.Yes</span>',
+                            className: 'btn-success'
+                        },
+                        cancel: {
+                            label: '<span style="font-family: Verdana, Geneva, Tahoma, sans-serif">@Resources.Resource.No</span>',
+                            className: 'btn-danger'
+                        }
+                    },
+                    callback: function (result) {
+                        if (result) {
+                            var dialog = bootbox.dialog({
+                                title: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif;color : White"> @Resources.Resource.PleaseWait...</h6>',
+                                message: '<p style="font-family: Verdana, Geneva, Tahoma, sans-serif"><i class="fa fa-spin fa-spinner"></i> @Resources.Resource.Saving...</p>',
+                                closeButton: false
+                            });
+
+                            var dataToSave = {
+                                SourceCode: $("#SourceCode").val(),
+                                ArabicName: $("#ArabicName").val(),
+                                EnglishName: $("#EnglishName").val()
+
+
+                            };
+                            $.ajax({
+                                type: "POST",
+                                url: "/Source/SaveSource",
+                                data: JSON.stringify(dataToSave),
+                                contentType: 'application/json',
+                                success: function (data) {
+
+                                    dialog.modal('hide');
+                                    if (data.Code == 0) {
+                                        toastr.error(data.Msg);
+                                    }
+                                    else if (data.Code == 1) {
+                                        toastr.success(data.Msg);
+                                        document.getElementById("SourceCode").value = data.LastID;
+                                        document.getElementById("ArabicName").value = '';
+                                        document.getElementById("EnglishName").value = '';
+                                        $("#ArabicName").focus().select();
+
+                                        var SourceCode = $('#SourceCode');
+                                        SourceCode.empty();
+                                        $.ajax({
+                                            method: "GET",
+                                            url: "/Source/GetAllSource",
+
+
+                                            success: function (data) {
+                                                SourceCode.append($('<option/>', {
+                                                    value: 0,
+                                                    text: '@Resources.Resource.Source'
+                                                }));
+
+
+                                                $.each(data, function (id, region) {
+                                                    SourceCode.append($('<option/>', {
+                                                        value: region.SourceCode,
+                                                        text: region.SourceName
+                                                    }));
+                                                });
+
+                                                dialog.modal('hide');
+
+                                            },
+                                            error: function (xhr, AJAXOptions, thrownError) {
+                                                dialog.modal('hide');
+                                                alert('Failed to retrieve .');
+                                            }
+                                        });
+
+
+                                    }
+
+                                },
+                                error: function (data) {
+                                    dialog.modal('hide');
+                                    toastr.error(data);
+                                }
+
+                            });
+                        }
+                    }
+                });
+            }
+        });
+        $(document).on('click', '#SaveJob', function () {
+            if ($("#ArabicName").val() == '') {
+                bootbox.alert({
+                    message: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif"> @Resources.Resource.PleasefillalRequiredfields</h6>',
+                    className: 'rubberBand animated',
+                    buttons: {
+                        ok: {
+                            label: '<span style="font-family: Verdana, Geneva, Tahoma, sans-serif">@Resources.Resource.Ok</span>',
+                            className: 'btn-primary'
+                        }
+                    }
+                });
+            }
+            else {
+                bootbox.confirm({
+                    message: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif"> @Resources.Resource.AreYouSure</h6>',
+                    className: 'rubberBand animated',
+                    buttons: {
+                        confirm: {
+                            label: '<span style="font-family: Verdana, Geneva, Tahoma, sans-serif">@Resources.Resource.Yes</span>',
+                            className: 'btn-success'
+                        },
+                        cancel: {
+                            label: '<span style="font-family: Verdana, Geneva, Tahoma, sans-serif">@Resources.Resource.No</span>',
+                            className: 'btn-danger'
+                        }
+                    },
+                    callback: function (result) {
+                        if (result) {
+                            var dialog = bootbox.dialog({
+                                title: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif;color : White"> @Resources.Resource.PleaseWait...</h6>',
+                                message: '<p style="font-family: Verdana, Geneva, Tahoma, sans-serif"><i class="fa fa-spin fa-spinner"></i> @Resources.Resource.Saving...</p>',
+                                closeButton: false
+                            });
+
+                            var dataToSave = {
+                                JobCode: $("#JobCode").val(),
+                                ArabicName: $("#ArabicName").val(),
+                                EnglishName: $("#EnglishName").val()
+
+
+                            };
+                            $.ajax({
+                                type: "POST",
+                                url: "/Job/SaveJob",
+                                data: JSON.stringify(dataToSave),
+                                contentType: 'application/json',
+                                success: function (data) {
+
+                                    dialog.modal('hide');
+                                    if (data.Code == 0) {
+                                        toastr.error(data.Msg);
+                                    }
+                                    else if (data.Code == 1) {
+                                        toastr.success(data.Msg);
+                                        document.getElementById("JobCode").value = data.LastID;
+                                        document.getElementById("ArabicName").value = '';
+                                        document.getElementById("EnglishName").value = '';
+                                        $("#ArabicName").focus().select();
+
+                                        var JobCode = $('#JobCode');
+                                        JobCode.empty();
+                                        $.ajax({
+                                            method: "GET",
+                                            url: "/Job/GetAllJob",
+
+
+                                            success: function (data) {
+                                                JobCode.append($('<option/>', {
+                                                    value: 0,
+                                                    text: '@Resources.Resource.Job'
+                                                }));
+
+
+                                                $.each(data, function (id, region) {
+                                                    JobCode.append($('<option/>', {
+                                                        value: region.JobCode,
+                                                        text: region.JobName
+                                                    }));
+                                                });
+
+                                                dialog.modal('hide');
+
+                                            },
+                                            error: function (xhr, AJAXOptions, thrownError) {
+                                                dialog.modal('hide');
+                                                alert('Failed to retrieve .');
+                                            }
+                                        });
+
+
+                                    }
+
+                                },
+                                error: function (data) {
+                                    dialog.modal('hide');
+                                    toastr.error(data);
+                                }
+
+                            });
+                        }
+                    }
+                });
+            }
         });
     });
 </script>

@@ -43,13 +43,9 @@ namespace Fitness.Controllers
         {
             try
             {
-                string sFromVisitorDate = Obj.FromVistDate.Day.ToString() + Obj.FromVistDate.Month.ToString() + Obj.FromVistDate.Year.ToString();
-                int FromVisitorDate = int.Parse(sFromVisitorDate);
-                string sToDate = Obj.ToDate.Day.ToString() + Obj.ToDate.Month.ToString() + Obj.ToDate.Year.ToString();
-                int ToDate = int.Parse(sToDate);
                 var userId = User.Identity.GetUserId();
                 var UserInfo = _unitOfWork.User.GetMyInfo(userId);
-                var AllVisitor = _unitOfWork.NativeSql.GetAllVisitor(UserInfo.fCompanyId, FromVisitorDate,ToDate);
+                var AllVisitor = _unitOfWork.NativeSql.GetAllVisitor(UserInfo.fCompanyId, Obj.FromVistDate, Obj.ToDate);
 
                 if (!String.IsNullOrEmpty(Obj.VisitorName))
                 {

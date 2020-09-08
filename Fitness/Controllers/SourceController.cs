@@ -27,7 +27,7 @@ namespace Fitness.Controllers
             return View();
         }
 
-
+        [HttpGet]
         public JsonResult GetAllSource()
         {
             try

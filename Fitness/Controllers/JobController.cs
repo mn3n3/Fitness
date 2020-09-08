@@ -26,7 +26,7 @@ namespace Fitness.Controllers
             var UserInfo = _unitOfWork.User.GetMyInfo(userId);
             return View();
         }
-
+        [HttpGet]
         public JsonResult GetAllJob()
         {
             try
