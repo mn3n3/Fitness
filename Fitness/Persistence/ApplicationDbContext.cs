@@ -8,7 +8,7 @@ namespace Fitness.Persistence
     {
         public DbSet<Group> Groups { get; set; }
         public DbSet<Company> Companies { get; set; }
-        public DbSet<Item> Items { get; set; }
+       public DbSet<Item> Items { get; set; }
         public DbSet<Nationality> Nationalities { get; set; }
         public DbSet<Job> Jobs { get; set; }
         public DbSet<PlaceOfBirth> PlaceOfBirths { get; set; }

@@ -16,13 +16,16 @@ namespace Fitness.Persistence
             _context = context;
         }
 
+        
+
         public void Add(Item ObjSave)
         {
             _context.Items.Add(ObjSave);
         }
 
-        public void Delete(Item ObjDelete)
+        public void Delete(Item ObjDelete )
         {
+            
             var ObjToDelete = _context.Items.SingleOrDefault(m => m.CompanyID == ObjDelete.CompanyID && m.ItemCode == ObjDelete.ItemCode);
             if (ObjToDelete != null)
             {
@@ -30,14 +33,11 @@ namespace Fitness.Persistence
             }
         }
 
-        public IEnumerable<Item> GetAllItem(int CompanyID)
-        {
-            return _context.Items.Where(m => m.CompanyID == CompanyID).ToList();
-        }
+        
 
-        public Item GetItemByID(int CompanyID, string ItemCode)
-        {
-            return _context.Items.FirstOrDefault(m => m.CompanyID == CompanyID && m.ItemCode == ItemCode);
+        public Item GetItemByID(int CompanyID , string ItemCode)
+        {   
+             return _context.Items.FirstOrDefault(m => m.CompanyID == CompanyID && m.ItemCode ==ItemCode);
         }
 
         public void Update(Item ObjUpdate)

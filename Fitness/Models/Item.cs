@@ -9,14 +9,22 @@ namespace Fitness.Models
 {
     public class Item
     {
-        public Company Company { get; set; }
-        [Key]
-        [Column(Order = 1)]
-        public int CompanyID { get; set; }
 
+         
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Column(Order = 1)]
         [Display(Name = "ItemCode", ResourceType = typeof(Resources.Resource))]
 
+
         public string ItemCode { get; set; }
+        public Company Company { get; set; }
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Column(Order = 2)]
+        public int CompanyID { get; set; }
+
+       
+        
+     
 
         [Display(Name = "ItemName", ResourceType = typeof(Resources.Resource))]
 

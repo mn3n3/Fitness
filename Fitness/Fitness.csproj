@@ -189,33 +189,9 @@
     </Compile>
     <Compile Include="Helpers\CultureHelper.cs" />
     <Compile Include="Helpers\MsgUnit.cs" />
-    <Compile Include="Migrations\202009050715433_FirstRun.cs" />
-    <Compile Include="Migrations\202009050715433_FirstRun.Designer.cs">
-      <DependentUpon>202009050715433_FirstRun.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009060957209_addClass060920.cs" />
-    <Compile Include="Migrations\202009060957209_addClass060920.Designer.cs">
-      <DependentUpon>202009060957209_addClass060920.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009061534558_addClass060920-nagham.cs" />
-    <Compile Include="Migrations\202009061534558_addClass060920-nagham.Designer.cs">
-      <DependentUpon>202009061534558_addClass060920-nagham.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009061934118_n3n3sdlskdlksldk.cs" />
-    <Compile Include="Migrations\202009061934118_n3n3sdlskdlksldk.Designer.cs">
-      <DependentUpon>202009061934118_n3n3sdlskdlksldk.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009080848240_Nagham080920201.cs" />
-    <Compile Include="Migrations\202009080848240_Nagham080920201.Designer.cs">
-      <DependentUpon>202009080848240_Nagham080920201.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009081002493_Nagham080920202.cs" />
-    <Compile Include="Migrations\202009081002493_Nagham080920202.Designer.cs">
-      <DependentUpon>202009081002493_Nagham080920202.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009081245531_Nagham080920.cs" />
-    <Compile Include="Migrations\202009081245531_Nagham080920.Designer.cs">
-      <DependentUpon>202009081245531_Nagham080920.cs</DependentUpon>
+    <Compile Include="Migrations\202009081532572_Nagham_new.cs" />
+    <Compile Include="Migrations\202009081532572_Nagham_new.Designer.cs">
+      <DependentUpon>202009081532572_Nagham_new.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -269,6 +245,7 @@
     <Compile Include="ViewModels\CustomerCompanyVM.cs" />
     <Compile Include="ViewModels\DashBoardVM.cs" />
     <Compile Include="ViewModels\GroupVM.cs" />
+    <Compile Include="ViewModels\ItemVM.cs" />
     <Compile Include="ViewModels\JobVM.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\NationalityVM.cs" />
@@ -9116,26 +9093,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202009050715433_FirstRun.resx">
-      <DependentUpon>202009050715433_FirstRun.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009060957209_addClass060920.resx">
-      <DependentUpon>202009060957209_addClass060920.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009061534558_addClass060920-nagham.resx">
-      <DependentUpon>202009061534558_addClass060920-nagham.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009061934118_n3n3sdlskdlksldk.resx">
-      <DependentUpon>202009061934118_n3n3sdlskdlksldk.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009080848240_Nagham080920201.resx">
-      <DependentUpon>202009080848240_Nagham080920201.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009081002493_Nagham080920202.resx">
-      <DependentUpon>202009081002493_Nagham080920202.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009081245531_Nagham080920.resx">
-      <DependentUpon>202009081245531_Nagham080920.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009081532572_Nagham_new.resx">
+      <DependentUpon>202009081532572_Nagham_new.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -7,13 +7,13 @@ namespace Fitness.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Nagham080920201 : IMigrationMetadata
+    public sealed partial class Nagham_new : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Nagham080920201));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Nagham_new));
         
         string IMigrationMetadata.Id
         {
-            get { return "202009080848240_Nagham080920201"; }
+            get { return "202009081532572_Nagham_new"; }
         }
         
         string IMigrationMetadata.Source

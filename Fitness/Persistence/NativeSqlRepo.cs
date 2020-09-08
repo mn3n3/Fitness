@@ -336,6 +336,31 @@ namespace Fitness.Persistence
                 return new List<TrainerVM>();
             }
         }
+
+        public IEnumerable<ItemVM> GetAllItems(int CompanyID )
+        {
+            try
+            {
+                return _context.Database.SqlQuery<ItemVM>(
+                    " Select I.ItemCode, I.ItemName, A.UserName, I.ItemPrice, I.ItemCost " +
+                   "  From Items I, AspNetUsers A " +
+                   "  Where " +
+                   "  I.CompanyID = @CompanyID " +
+                   "  And " +
+                   "   I.CompanyID = A.fCompanyId " +
+                    "  And " +
+                   "  I.InsUserID = A.Id " +
+                   "  Order By I.ItemCode " 
+                , new SqlParameter("@CompanyID", CompanyID)
+        
+
+            ).ToList();
+            }
+            catch
+            {
+                return new List<ItemVM>();
+            }
+        }
         public IEnumerable<VisitorVM> GetAllVisitor(int CompanyID,int FromVisitorDate , int ToDate)
         {
             if (Resources.Resource.CurLang == "Arb")

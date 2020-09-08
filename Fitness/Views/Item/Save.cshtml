@@ -10,10 +10,15 @@
         $("#ItemName").focus().select();
         $("#ItemName").keyup(function (event) {
             if (event.keyCode == 13)
-                $("#Percentage").focus().select();
+                $("#ItemPrice").focus().select();
 
         });
-        $("#Percentage").keyup(function (event) {
+        $("#ItemPrice").keyup(function (event) {
+            if (event.keyCode == 13)
+                $("#ItemCost").focus().select();
+
+        });
+        $("#ItemCost").keyup(function (event) {
             if (event.keyCode == 13)
                 $("#ItemName").focus().select();
 
@@ -36,7 +41,7 @@
                     <div class="form-group">
                         @Html.LabelFor(m => m.ItemCode)
 
-                        @Html.TextBoxFor(m => m.ItemCode, new { @id = "ItemCode", @class = "form-control input-sml", @readonly = "readonly" })
+                        @Html.TextBoxFor(m => m.ItemCode, new { @id = "ItemCode", @class = "form-control input-sml"})
                     </div>
                     <div class="form-group">
                         @Html.LabelFor(m => m.ItemName)  <span style="color:red">*</span>

@@ -31,9 +31,10 @@ namespace Fitness.Controllers
         {
             try
             {
+                
                 var userId = User.Identity.GetUserId();
                 var UserInfo = _unitOfWork.User.GetMyInfo(userId);
-                var AllItem = _unitOfWork.Item.GetAllItem(UserInfo.fCompanyId);
+                var AllItem = _unitOfWork.NativeSql.GetAllItems(UserInfo.fCompanyId );
                 if (AllItem == null)
                 {
                     return Json(new List<Item>(), JsonRequestBehavior.AllowGet);
@@ -49,27 +50,25 @@ namespace Fitness.Controllers
 
         }
 
-        public ActionResult Save( string ItemCode)
+        public ActionResult Save()
         {
+
             var userId = User.Identity.GetUserId();
             var UserInfo = _unitOfWork.User.GetMyInfo(userId);
-            Item Obj = new Item
-            {
-                ItemCode = ItemCode
-            };
+            Item Obj = new Item();
+           
             return PartialView(Obj);
         }
 
         [HttpPost]
-        public JsonResult SaveItem(Item ObjSave , string ItemCode)
+        public JsonResult SaveItem(Item ObjSave)
         {
             MsgUnit Msg = new MsgUnit();
             try
             {
                 var userId = User.Identity.GetUserId();
                 var UserInfo = _unitOfWork.User.GetMyInfo(userId);
-               
-                ObjSave.ItemCode = ItemCode;
+              
                 ObjSave.InsDateTime = DateTime.Now;
                 ObjSave.InsUserID = userId;
                 ObjSave.CompanyID = UserInfo.fCompanyId;
@@ -104,10 +103,11 @@ namespace Fitness.Controllers
         }
 
 
-        public ActionResult Update(string  ItemCode)
+        public ActionResult Update(string  id)
         {
             try
             {
+                string ItemCode = id;
                 if (ItemCode != " " )
                 {
                     var userId = User.Identity.GetUserId();
@@ -119,6 +119,7 @@ namespace Fitness.Controllers
                     }
 
                     var Obj = _unitOfWork.Item.GetItemByID(UserInfo.fCompanyId, ItemCode);
+
 
 
                     return PartialView("Update", Obj);
@@ -177,10 +178,11 @@ namespace Fitness.Controllers
         }
 
 
-        public ActionResult Delete(string ItemCode)
+        public ActionResult Delete(string id)
         {
             try
             {
+                var ItemCode = id;
                 if (ItemCode != " ")
                 {
                     var userId = User.Identity.GetUserId();
