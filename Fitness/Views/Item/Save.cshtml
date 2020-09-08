@@ -7,7 +7,7 @@
 }
 <script>
     $(document).ready(function () {
-        $("#ItemName").focus().select();
+        $("#ItemCode").focus().select();
         $("#ItemName").keyup(function (event) {
             if (event.keyCode == 13)
                 $("#ItemPrice").focus().select();
@@ -20,7 +20,7 @@
         });
         $("#ItemCost").keyup(function (event) {
             if (event.keyCode == 13)
-                $("#ItemName").focus().select();
+                $("#ItemCode").focus().select();
 
         });
     });
