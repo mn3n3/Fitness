@@ -151,5 +151,91 @@ namespace Fitness.Controllers
             }
 
         }
+
+        public ActionResult Update(int id)
+        {
+            try
+            {
+                if (id != 0)
+                {
+                    var userId = User.Identity.GetUserId();
+
+                    var UserInfo = _unitOfWork.User.GetUserByID(userId);
+                    if (UserInfo == null)
+                    {
+                        RedirectToAction("", "");
+                    }
+
+                    var Obj = _unitOfWork.Visitor.GetVisitorByID(UserInfo.fCompanyId, id);
+
+
+                    return View("Update", Obj);
+                }
+                return View("Update", new Visitor());
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message.ToString();
+                return View("Error");
+            }
+        }
+        [HttpPost]
+        public JsonResult UpdateVisitor(Visitor ObjUpdate)
+        {
+            MsgUnit Msg = new MsgUnit();
+            try
+            {
+                var userId = User.Identity.GetUserId();
+                var UserInfo = _unitOfWork.User.GetMyInfo(userId);
+                var ObjVisitor = new Visitor();
+                ObjVisitor.VisitorCode = _unitOfWork.Visitor.GetMaxSerial(UserInfo.fCompanyId);
+                ObjVisitor.VisitorName = ObjUpdate.VisitorName;
+                ObjVisitor.Phone1 = ObjUpdate.Phone1;
+                ObjVisitor.Email = ObjUpdate.Email;
+                ObjVisitor.Address = ObjUpdate.Address;
+                ObjVisitor.NationalityCode = ObjUpdate.NationalityCode;
+                ObjVisitor.SourceCode = ObjUpdate.SourceCode;
+                ObjVisitor.JobCode = ObjUpdate.JobCode;
+                ObjVisitor.GenderCode = ObjUpdate.GenderCode;
+                ObjVisitor.Note = ObjUpdate.Note;
+                ObjVisitor.Interseted = ObjUpdate.Interseted;
+                ObjVisitor.InsDateTime = DateTime.Now;
+                ObjVisitor.InsUserID = userId;
+                ObjVisitor.CompanyID = UserInfo.fCompanyId;
+                ObjVisitor.BirthDate = ObjUpdate.BirthDate;
+                ObjVisitor.VistDate = ObjUpdate.VistDate;
+                string sBirthDate = ObjUpdate.BirthDate.Day.ToString() + ObjUpdate.BirthDate.Month.ToString() + ObjUpdate.BirthDate.Year.ToString();
+                ObjVisitor.BirthDateInt = int.Parse(sBirthDate);
+                string sVistDate = ObjUpdate.VistDate.Day.ToString() + ObjUpdate.VistDate.Month.ToString() + ObjUpdate.VistDate.Year.ToString();
+                ObjVisitor.VistDateInt = int.Parse(sVistDate);
+                if (!ModelState.IsValid)
+                {
+                    string Err = " ";
+                    var errors = ModelState.Values.SelectMany(v => v.Errors);
+                    foreach (ModelError error in errors)
+                    {
+                        Err = Err + error.ErrorMessage + " * ";
+                    }
+
+                    Msg.Msg = Resources.Resource.SomthingWentWrong + " : " + Err;
+                    Msg.Code = 0;
+                    return Json(Msg, JsonRequestBehavior.AllowGet);
+
+                }
+                _unitOfWork.Visitor.Update(ObjUpdate);
+                _unitOfWork.Complete();
+
+                Msg.Code = 1;
+                Msg.Msg = Resources.Resource.UpdatedSuccessfully;
+                return Json(Msg, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                Msg.Msg = Resources.Resource.SomthingWentWrong + " : " + ex.Message.ToString();
+                Msg.Code = 0;
+                return Json(Msg, JsonRequestBehavior.AllowGet);
+            }
+
+        }
     }
 }
