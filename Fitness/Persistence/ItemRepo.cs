@@ -52,5 +52,14 @@ namespace Fitness.Persistence
                 ObjToUpdate.InsUserID = ObjUpdate.InsUserID;
             }
         }
+        public string CheckIfItemCodeExisting(int CompanyID, string ItemCode)
+        {
+            var Obj = _context.Items.FirstOrDefault(m => m.CompanyID == CompanyID && m.ItemCode == ItemCode);
+            if (Obj != null)
+                return Obj.ItemCode;
+            else
+                return "";
+
+        }
     }
 }

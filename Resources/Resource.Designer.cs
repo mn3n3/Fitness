@@ -1231,6 +1231,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This Item Is Already Entered.
+        /// </summary>
+        public static string ThisItemIsAlreadyEntered {
+            get {
+                return ResourceManager.GetString("ThisItemIsAlreadyEntered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to To Date.
         /// </summary>
         public static string ToDate {

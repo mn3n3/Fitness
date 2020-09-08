@@ -16,7 +16,6 @@ namespace Fitness.Repositories
         IEnumerable<SourceVM> GetAllSources(int CompanyID);  
         IEnumerable<TrainerVM> GetAllTrainers(int CompanyID);
         IEnumerable<VisitorVM> GetAllVisitor(int CompanyID, int FromVisitorDate, int ToDate);      
-        
         IEnumerable<ItemVM> GetAllItems(int CompanyID);
     }
 }

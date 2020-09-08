@@ -12,5 +12,6 @@ namespace Fitness.ViewModels
         public double  ItemPrice { get; set; }
         public double ItemCost { get; set; }
         public string UserName { get; set; }
+        public int DecimalPoint { get; set; }
     }
 }

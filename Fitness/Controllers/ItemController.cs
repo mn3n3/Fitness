@@ -2,6 +2,7 @@
 using Fitness.Models;
 using Fitness.Persistence;
 using Fitness.Repositories;
+using Fitness.ViewModels;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -23,31 +24,31 @@ namespace Fitness.Controllers
         {
             var userId = User.Identity.GetUserId();
             var UserInfo = _unitOfWork.User.GetMyInfo(userId);
-            return View();
+            var Company = _unitOfWork.Company.GetMyCompany(UserInfo.fCompanyId);
+            var ItemObj = new ItemVM
+            {
+               DecimalPoint = Company.DecimalPoint
+            };
+            return View(ItemObj);
         }
-
-
         public JsonResult GetAllItems()
         {
             try
             {
-                
                 var userId = User.Identity.GetUserId();
                 var UserInfo = _unitOfWork.User.GetMyInfo(userId);
                 var AllItem = _unitOfWork.NativeSql.GetAllItems(UserInfo.fCompanyId );
                 if (AllItem == null)
                 {
-                    return Json(new List<Item>(), JsonRequestBehavior.AllowGet);
+                    return Json(new List<ItemVM>(), JsonRequestBehavior.AllowGet);
                 }
-
                 return Json(AllItem, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
                 ViewBag.Error = ex.Message.ToString();
-                return Json(new List<Item>(), JsonRequestBehavior.AllowGet);
+                return Json(new List<ItemVM>(), JsonRequestBehavior.AllowGet);
             }
-
         }
 
         public ActionResult Save()
@@ -245,6 +246,14 @@ namespace Fitness.Controllers
                 return Json(Msg, JsonRequestBehavior.AllowGet);
             }
 
+        }
+        [HttpGet]
+        public JsonResult CheckIfItemCodeExisting(string id)
+        {
+            var userId = User.Identity.GetUserId();
+            var UserInfo = _unitOfWork.User.GetMyInfo(userId);
+            string ItemCode = _unitOfWork.Item.CheckIfItemCodeExisting(UserInfo.fCompanyId, id);
+            return Json(ItemCode, JsonRequestBehavior.AllowGet);
         }
     }
 }

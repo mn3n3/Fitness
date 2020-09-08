@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Fitness.ViewModels.ItemVM
+@{
     ViewBag.Title = @Resources.Resource.Items;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -44,13 +45,31 @@
     <div class="modal-content">
     </div>
 </div>
-
+@Html.TextBoxFor(m => m.DecimalPoint, new { @id = "DecimalPoint", @style = "visibility : hidden;" })
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 
-    <script>
+<script>
 
 	$(document).ready(function () {
+		var DecimalPoint = document.getElementById("DecimalPoint").value;
+
+		if (DecimalPoint == '' || DecimalPoint == null) {
+			DecimalPoint = 3;
+		}
+		function formatMoneyLocalCurrencyFraction(number, decPlaces, decSep, thouSep) {
+			decPlaces = isNaN(decPlaces = Math.abs(decPlaces)) ? DecimalPoint : decPlaces,
+				decSep = typeof decSep === "undefined" ? "." : decSep;
+			thouSep = typeof thouSep === "undefined" ? "," : thouSep;
+			var sign = number < 0 ? "-" : "";
+			var i = String(parseInt(number = Math.abs(Number(number) || 0).toFixed(decPlaces)));
+			var j = (j = i.length) > 3 ? j % 3 : 0;
+
+			return sign +
+				(j ? i.substr(0, j) + thouSep : "") +
+				i.substr(j).replace(/(\decSep{3})(?=\decSep)/g, "$1" + thouSep) +
+				(decPlaces ? decSep + Math.abs(number - i).toFixed(decPlaces).slice(2) : "");
+		}
 		$(document).on('click', '#CloseForm', function () {
 			window.location = "/CompanySettingsDash/Index";
 		});
@@ -58,6 +77,119 @@
 			$(".dt-button").click();
 		});
 		$(document).on('click', '#SaveItem', function () {
+			bootbox.confirm({
+					message: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif"> @Resources.Resource.AreYouSure</h6>',
+					className: 'rubberBand animated',
+					buttons: {
+						confirm: {
+							label: '<span style="font-family: Verdana, Geneva, Tahoma, sans-serif">@Resources.Resource.Yes</span>',
+							className: 'btn-success'
+						},
+						cancel: {
+							label: '<span style="font-family: Verdana, Geneva, Tahoma, sans-serif">@Resources.Resource.No</span>',
+							className: 'btn-danger'
+						}
+					},
+					callback: function (result) {
+						if (result) {
+                            var ItemCode = $("#ItemCode").val();
+                            if (ItemCode != null && ItemCode != '') {
+                                $.getJSON('@Url.Action("CheckIfItemCodeExisting", "Item")', { id: ItemCode }, function (Data) {
+									if (Data == '' || Data == null) {
+                                        if ($("#ItemCode").val() == '') {
+											bootbox.alert({
+												message: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif"> @Resources.Resource.PleasefillalRequiredfields</h6>',
+												className: 'rubberBand animated',
+												buttons: {
+													ok: {
+														label: '<span style="font-family: Verdana, Geneva, Tahoma, sans-serif">@Resources.Resource.Ok</span>',
+														className: 'btn-primary'
+													}
+												}
+											});
+										}
+                                        else if ($("#ItemName").val() == '') {
+											bootbox.alert({
+												message: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif"> @Resources.Resource.PleasefillalRequiredfields</h6>',
+												className: 'rubberBand animated',
+												buttons: {
+													ok: {
+														label: '<span style="font-family: Verdana, Geneva, Tahoma, sans-serif">@Resources.Resource.Ok</span>',
+														className: 'btn-primary'
+													}
+												}
+											});
+										}
+										else {
+											var dialog = bootbox.dialog({
+												title: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif;color : White"> @Resources.Resource.PleaseWait...</h6>',
+												message: '<p style="font-family: Verdana, Geneva, Tahoma, sans-serif"><i class="fa fa-spin fa-spinner"></i> @Resources.Resource.Saving...</p>',
+												closeButton: false
+											});
+
+											var dataToSave = {
+												ItemCode: $("#ItemCode").val(),
+												ItemName: $("#ItemName").val(),
+												ItemPrice: $("#ItemPrice").val(),
+												ItemCost: $("#ItemCost").val()
+											};
+											$.ajax({
+												type: "POST",
+												url: "/Item/SaveItem",
+												data: JSON.stringify(dataToSave),
+												contentType: 'application/json',
+												success: function (data) {
+
+													dialog.modal('hide');
+													if (data.Code == 0) {
+														toastr.error(data.Msg);
+													}
+													else if (data.Code == 1) {
+														toastr.success(data.Msg);
+														tabelMemRef.ajax.reload();
+														document.getElementById("ItemCode").value = '';
+														document.getElementById("ItemName").value = '';
+														document.getElementById("ItemPrice").value = '';
+														document.getElementById("ItemCost").value = '';
+
+														$("#ItemCode").focus().select();
+
+
+													}
+
+												},
+												error: function (data) {
+													dialog.modal('hide');
+													toastr.error(data);
+												}
+
+											});
+										}
+									}
+									else {
+										bootbox.alert({
+											message: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif"> @Resources.Resource.ThisItemIsAlreadyEntered</h6>',
+											className: 'rubberBand animated',
+											buttons: {
+												ok: {
+													label: '<span style="font-family: Verdana, Geneva, Tahoma, sans-serif">@Resources.Resource.Ok</span>',
+													className: 'btn-primary'
+												}
+											}
+										});
+                                        $("#ItemCode").focus().select();
+                                        document.getElementById("ItemCode").value = '';
+									}
+								});
+							}
+							else {
+							}
+
+						}
+					}
+				});
+		});
+		$(document).on('click', '#UpdateItem', function () {
 			if ($("#ItemName").val() == '') {
 				bootbox.alert({
 					message: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif"> @Resources.Resource.PleasefillalRequiredfields</h6>',
@@ -69,89 +201,6 @@
 						}
 					}
 				});
-			}
-			else {
-				bootbox.confirm({
-					message: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif"> @Resources.Resource.AreYouSure</h6>',
-					className: 'rubberBand animated',
-					buttons: {
-						confirm: {
-							label: '<span style="font-family: Verdana, Geneva, Tahoma, sans-serif">@Resources.Resource.Yes</span>',
-							className: 'btn-success'
-						},
-						cancel: {
-							label: '<span style="font-family: Verdana, Geneva, Tahoma, sans-serif">@Resources.Resource.No</span>',
-							className: 'btn-danger'
-						}
-					},
-					callback: function (result) {
-						if (result) {
-							var dialog = bootbox.dialog({
-                                title: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif;color : White"> @Resources.Resource.PleaseWait...</h6>',
-								message: '<p style="font-family: Verdana, Geneva, Tahoma, sans-serif"><i class="fa fa-spin fa-spinner"></i> @Resources.Resource.Saving...</p>',
-								closeButton: false
-							});
-
-							var dataToSave = {
-                                ItemCode: $("#ItemCode").val(),
-                                ItemName: $("#ItemName").val(),
-                                ItemPrice: $("#ItemPrice").val(),
-                                ItemCost: $("#ItemCost").val()
-								
-
-
-							};
-							$.ajax({
-								type: "POST",
-								url: "/Item/SaveItem",
-								data: JSON.stringify(dataToSave),
-								contentType: 'application/json',
-								success: function (data) {
-
-									dialog.modal('hide');
-									if (data.Code == 0) {
-										toastr.error(data.Msg);
-									}
-									else if (data.Code == 1) {
-										toastr.success(data.Msg);
-										tabelMemRef.ajax.reload();
-                                        document.getElementById("ItemCode").value = data.LastID;
-                                        document.getElementById("ItemName").value = '';
-                                        document.getElementById("ItemPrice").value = '';
-                                        document.getElementById("ItemCost").value = '';
-                                       
-
-                                        $("#ItemName").focus().select();
-
-
-									}
-
-								},
-								error: function (data) {
-									dialog.modal('hide');
-									toastr.error(data);
-								}
-
-							});
-						}
-					}
-				});
-			}
-		});
-
-
-		$(document).on('click', '#UpdateItem', function () {
-            if ($("#ItemName").val() == '') {
-				bootbox.alert({
-					message: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif"> @Resources.Resource.PleasefillalRequiredfields</h6>',
-					className: 'rubberBand animated',
-					buttons: {
-						ok: {
-							label: '<span style="font-family: Verdana, Geneva, Tahoma, sans-serif">@Resources.Resource.Ok</span>',
-							className: 'btn-primary'
-						}
-					}
-				});
 
 			}
 			else {
@@ -171,18 +220,18 @@
 					callback: function (result) {
 						if (result) {
 							var dialog = bootbox.dialog({
-                                title: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif;color : White"> @Resources.Resource.PleaseWait...</h6>',
+								title: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif;color : White"> @Resources.Resource.PleaseWait...</h6>',
 								message: '<p style="font-family: Verdana, Geneva, Tahoma, sans-serif"><i class="fa fa-spin fa-spinner"></i> @Resources.Resource.Updating...</p>',
 								closeButton: false
 							});
 
 							var dataToSave = {
 
-                                ItemCode: $("#ItemCode").val(),
-                                ItemName: $("#ItemName").val(),
-                                ItemPrice: $("#ItemPrice").val(),
-                                ItemCost: $("#ItemCost").val()
-                               
+								ItemCode: $("#ItemCode").val(),
+								ItemName: $("#ItemName").val(),
+								ItemPrice: $("#ItemPrice").val(),
+								ItemCost: $("#ItemCost").val()
+
 
 							};
 							$.ajax({
@@ -234,12 +283,12 @@
 				callback: function (result) {
 					if (result) {
 						var dialog = bootbox.dialog({
-                            title: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif;color : White"> @Resources.Resource.PleaseWait...</h6>',
+							title: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif;color : White"> @Resources.Resource.PleaseWait...</h6>',
 							message: '<p style="font-family: Verdana, Geneva, Tahoma, sans-serif"><i class="fa fa-spin fa-spinner"></i> @Resources.Resource.Deleting...</p>',
 							closeButton: false
 						});
 						var dataToSave = {
-                            ItemCode: $("#ItemCode").val()
+							ItemCode: $("#ItemCode").val()
 						};
 						$.ajax({
 							type: "POST",
@@ -302,14 +351,14 @@
 			"fixedColumns": true,
 			"columnDefs": [
 				{ "width": "10%", "targets": 0, "className": "dt-center" },
-				{ "width": "35%", "targets": 1, "className": "dt-center" },
+				{ "width": "40%", "targets": 1, "className": "dt-center" },
 				{ "width": "10%", "targets": 2, "className": "dt-center" },
 				{ "width": "10%", "targets": 3, "className": "dt-center" },
-                { "width": "10%", "targets": 4, "className": "dt-center", "orderable": false},
+				{ "width": "10%", "targets": 4, "className": "dt-center" },
 				{ "width": "10%", "targets": 5, "className": "dt-center", "orderable": false },
-				{ "width": "15%", "targets": 6, "className": "dt-center", "orderable": false }
+				{ "width": "10%", "targets": 6, "className": "dt-center", "orderable": false }
 
-				],
+			],
 
 			buttons: [
 
@@ -317,59 +366,65 @@
 					messageTop: '@Resources.Resource.Item',
 					extend: 'excelHtml5',
 					exportOptions: {
-						columns: [0, 1, 2 ,3 , 4]
+						columns: [0, 1, 2, 3, 4]
 					}
 				}
 
 			],
 
 			ajax: {
-                url: "/Item/GetAllItems",
+				url: "/Item/GetAllItems",
 				dataSrc: ""
 			},
 			columns: [
 				{
 
-                    data: "ItemCode"
+					data: "ItemCode"
 				},
 
 				{
-                    data: "ItemName"
+					data: "ItemName"
 
 				}
 
 				,
 				{
-                    data: "ItemPrice"
+					data: "ItemPrice",
+					render: function (data, type, r) {
+						return (formatMoneyLocalCurrencyFraction(data))
+					}
 
 				}
 
 				,
 				{
-                    data: "ItemCost"
+					data: "ItemCost",
+					render: function (data, type, r) {
+						return (formatMoneyLocalCurrencyFraction(data))
+					}
 
 				}
 
 				,
-               
 
-                {
-                    data: "UserName"
 
-                }
-
-                ,
 				{
-                    data: "ItemCode",
+					data: "UserName"
+
+				}
+
+				,
+				{
+					data: "ItemCode",
 					render: function (data) {
 						return "<a  class='btn btn-success btn-icon-anim btn-square btn-sm js-Pop' href='/Item/Update/" + data + "'><i class='fa fa-edit' style='margin-top: 4px;'></i> </a>";
 					}
 
 				},
 				{
-                    data: "ItemCode",
+					data: "ItemCode",
 					render: function (data) {
-                        return "<a  class='btn  btn-icon-anim btn-square btnDelete btn-sm js-Pop' href='/Item/Delete/" + data + " '><i class='fa fa-trash-o' style='margin-top: 4px;'></i> </a>";
+						return "<a  class='btn  btn-icon-anim btn-square btnDelete btn-sm js-Pop' href='/Item/Delete/" + data + " '><i class='fa fa-trash-o' style='margin-top: 4px;'></i> </a>";
 					}
 
 				}
@@ -392,7 +447,7 @@
 			return false;
 		});
 	});
-    </script>
+</script>
 }
 
 

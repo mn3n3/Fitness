@@ -310,7 +310,7 @@
     <value>سعر البيع</value>
   </data>
   <data name="Items" xml:space="preserve">
-    <value>مواد</value>
+    <value>المواد</value>
   </data>
   <data name="Job" xml:space="preserve">
     <value>الوظيفة</value>
@@ -512,6 +512,9 @@
   </data>
   <data name="ThisAccountHasBeenLocked" xml:space="preserve">
     <value>تم اغلاق الحساب</value>
+  </data>
+  <data name="ThisItemIsAlreadyEntered" xml:space="preserve">
+    <value>هذه المادة مدخلة مسبقا</value>
   </data>
   <data name="ToDate" xml:space="preserve">
     <value>الى تاريخ</value>

@@ -507,6 +507,9 @@
   <data name="ThisAccountHasBeenLocked" xml:space="preserve">
     <value>This Account Has Been Locked</value>
   </data>
+  <data name="ThisItemIsAlreadyEntered" xml:space="preserve">
+    <value>This Item Is Already Entered</value>
+  </data>
   <data name="ToDate" xml:space="preserve">
     <value>To Date</value>
   </data>

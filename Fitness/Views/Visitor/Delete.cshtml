@@ -21,7 +21,7 @@
                 </div>
                 <div class="col-lg-3">
                     <div class="form-group">
-                        @Html.LabelFor(m => m.VisitorName) <span style="color:red">*</span>
+                        @Html.LabelFor(m => m.VisitorName)
                         @Html.TextBoxFor(m => m.VisitorName, new { @id = "VisitorName", @class = "form-control input-sml" , @readonly = "readonly" })
                     </div>
                 </div>
@@ -169,7 +169,6 @@
                                 error: function (data) {
                                     dialog.modal('hide');
                                     toastr.error(data);
-                                    bootbox.alert(data.Msg);
                                 }
 
                             });

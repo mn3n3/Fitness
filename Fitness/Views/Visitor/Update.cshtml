@@ -105,7 +105,6 @@
         </div>
         <div class="panel-footer">
             <button type="submit" class="btn btn-success btn-anim" id="UpdateVisitor"> <i class="fa fa-edit"></i><span class="btn-text">@Resources.Resource.Update</span></button>
-            <button type="button" class="btn btn-warning btn-anim" id="Clear"><i class="fa fa-refresh"></i><span class="btn-text">@Resources.Resource.Clear</span> </button>
             <button type="button" class="btn btn-default btn-anim" data-dismiss="modal" id="Close"><i class="fa fa-times"></i><span class="btn-text">@Resources.Resource.Close</span></button>
         </div>
     </div>
@@ -120,32 +119,6 @@
     @Scripts.Render("~/bundles/jqueryval")
 <script>
     $(document).ready(function () {
-        $(document).on('click', '#Clear', function () {
-            var today = new Date();
-            var dd = today.getDate();
-            var mm = today.getMonth() + 1;
-            var yyyy = today.getFullYear();
-            if (dd < 10) {
-                dd = '0' + dd;
-            }
-            if (mm < 10) {
-                mm = '0' + mm;
-            }
-            var today = dd + '/' + mm + '/' + yyyy;
-            document.getElementById("NationalityCode").selectedIndex = "0";
-            document.getElementById("SourceCode").selectedIndex = "0";
-            document.getElementById("JobCode").selectedIndex = "0";
-            document.getElementById("GenderCode").selectedIndex = "0";
-            document.getElementById("BirthDate").value = today;
-            document.getElementById("VistDate").value = today;
-            document.getElementById("VisitorName").value = '';
-            document.getElementById("Note").value = '';
-            document.getElementById("Email").value = '';
-            document.getElementById("Phone1").value = '';
-            document.getElementById("Address").value = '';
-            document.getElementById('Interseted').checked = false;
-            $("#VisitorName").focus().select();
-        });
         $(document).on('click', '#Close', function () {
             window.location = "/Visitor/Index";
         });
@@ -215,14 +188,13 @@
                                     }
                                     else if (data.Code == 1) {
                                         toastr.success(data.Msg);
-                                        document.getElementById("Clear").click();
+                                        window.location = "/Visitor/Index";
 
                                     }
                                 },
                                 error: function (data) {
                                     dialog.modal('hide');
                                     toastr.error(data);
-                                    bootbox.alert(data.Msg);
                                 }
 
                             });
