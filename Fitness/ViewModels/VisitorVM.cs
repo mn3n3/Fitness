@@ -39,6 +39,7 @@ namespace Fitness.ViewModels
         [Display(Name = "GenderCode", ResourceType = typeof(Resources.Resource))]
 
         public int GenderCode { get; set; }
+        public string GenderName { get; set; }
 
         [Display(Name = "NationalityCode", ResourceType = typeof(Resources.Resource))]
 

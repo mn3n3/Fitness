@@ -182,6 +182,7 @@
     <Compile Include="Controllers\NationalityController.cs" />
     <Compile Include="Controllers\PlaceOfBirthController.cs" />
     <Compile Include="Controllers\SourceController.cs" />
+    <Compile Include="Controllers\SubscriberController.cs" />
     <Compile Include="Controllers\TrainerController.cs" />
     <Compile Include="Controllers\VisitorController.cs" />
     <Compile Include="Global.asax.cs">
@@ -9067,6 +9068,7 @@
     <Folder Include="Content\vendors\bower_components\x-editable\dist\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\" />
     <Folder Include="Content\vendors\x-editable\dist\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\" />
     <Folder Include="vendors\bower_components\pdfmake\libs\FileSaver.js\" />
+    <Folder Include="Views\Subscriber\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -205,6 +205,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Coming Soon.
+        /// </summary>
+        public static string ComingSoon {
+            get {
+                return ResourceManager.GetString("ComingSoon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Company Code.
         /// </summary>
         public static string CompanyCode {
@@ -907,6 +916,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Phone.
+        /// </summary>
+        public static string Phone {
+            get {
+                return ResourceManager.GetString("Phone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Phone (1).
         /// </summary>
         public static string Phone1 {
@@ -1177,6 +1195,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Subscribers Informations.
+        /// </summary>
+        public static string Subscribers {
+            get {
+                return ResourceManager.GetString("Subscribers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Subscriber Type.
         /// </summary>
         public static string SubscriberType {
@@ -1200,6 +1227,15 @@ namespace Resources {
         public static string SubscriptionName {
             get {
                 return ResourceManager.GetString("SubscriptionName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Subscriptions Informations.
+        /// </summary>
+        public static string Subscriptions {
+            get {
+                return ResourceManager.GetString("Subscriptions", resourceCulture);
             }
         }
         
@@ -1299,6 +1335,15 @@ namespace Resources {
         public static string Type {
             get {
                 return ResourceManager.GetString("Type", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Under Construction.
+        /// </summary>
+        public static string UnderConstruction {
+            get {
+                return ResourceManager.GetString("UnderConstruction", resourceCulture);
             }
         }
         

@@ -51,6 +51,14 @@ namespace Fitness.Controllers
                 {
                     AllVisitor = AllVisitor.Where(m => m.VisitorName.Contains(Obj.VisitorName)).ToList();
                 }
+                if (!String.IsNullOrEmpty(Obj.Phone1))
+                {
+                    AllVisitor = AllVisitor.Where(m => m.Phone1.Contains(Obj.Phone1)).ToList();
+                }
+                if (Obj.GenderCode != 0)
+                {
+                    AllVisitor = AllVisitor.Where(m => m.GenderCode == Obj.GenderCode).ToList();
+                }
                 if (Obj.NationalityCode != 0)
                 {
                     AllVisitor = AllVisitor.Where(m => m.NationalityCode == Obj.NationalityCode).ToList();

@@ -368,15 +368,22 @@ namespace Fitness.Persistence
                 try
                 {
                     return _context.Database.SqlQuery<VisitorVM>(
-                      " Select V.VisitorCode, V.VisitorName, V.VistDate, N.ArabicName As NationalityName,V.Interseted, " +
-                        " S.ArabicName As SourceName, J.ArabicName As JobName, A.UserName, " +
+                      " Select V.VisitorCode, V.VisitorName, V.VistDate, N.ArabicName As NationalityName,V.Interseted,V.Phone1, " +
+                        " S.ArabicName As SourceName, J.ArabicName As JobName, A.UserName,V.GenderCode, " +
                          " ( " +
                          " Case When " +
                          " V.Interseted = 0 Then N'غير مهتم' " +
                          " Else " +
                          " N'مهتم' " +
                          " End " +
-                         " ) As IntersetedCase " +
+                         " ) As IntersetedCase, " +
+                         " ( " +
+                          " Case When " +
+                          " V.GenderCode = 1 Then N'ذكر' " +
+                          " Else " +
+                          " N'انثى' " +
+                          " End " +
+                          " ) As GenderName " +
                         " From AspNetUsers A,Visitors V " +
                         " Left Join Nationalities N On " +
                         " V.NationalityCode = N.NationalityCode " +
@@ -416,15 +423,22 @@ namespace Fitness.Persistence
                 try
                 {
                     return _context.Database.SqlQuery<VisitorVM>(
-                      " Select V.VisitorCode, V.VisitorName, V.VistDate, N.EnglishName As NationalityName, " +
-                        " S.EnglishName As SourceName, J.EnglishName As JobName, A.UserName, " +
+                      " Select V.VisitorCode, V.VisitorName, V.VistDate, N.EnglishName As NationalityName,V.Interseted,V.Phone1, " +
+                        " S.EnglishName As SourceName, J.EnglishName As JobName, A.UserName,V.GenderCode, " +
                          " ( " +
                          " Case When " +
                          " V.Interseted = 0 Then 'UnInterseted' " +
                          " Else " +
                          " 'Interseted' " +
                          " End " +
-                         " ) As IntersetedCase " +
+                         " ) As IntersetedCase, " +
+                         " ( " +
+                          " Case When " +
+                          " V.GenderCode = 1 Then 'Male' " +
+                          " Else " +
+                          " 'Female' " +
+                          " End " +
+                          " ) As GenderName " +
                         " From AspNetUsers A,Visitors V " +
                         " Left Join Nationalities N On " +
                         " V.NationalityCode = N.NationalityCode " +

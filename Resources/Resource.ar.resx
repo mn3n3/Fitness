@@ -165,6 +165,9 @@
   <data name="ComapnyName" xml:space="preserve">
     <value>اسم الشركة</value>
   </data>
+  <data name="ComingSoon" xml:space="preserve">
+    <value>قريبا</value>
+  </data>
   <data name="CompanyAddress" xml:space="preserve">
     <value>موقع الشركة</value>
   </data>
@@ -402,6 +405,9 @@
   <data name="PeriodByWeeks" xml:space="preserve">
     <value>الفتره حسب الاسبوع</value>
   </data>
+  <data name="Phone" xml:space="preserve">
+    <value>الهاتف</value>
+  </data>
   <data name="Phone1" xml:space="preserve">
     <value>هاتف (1)</value>
   </data>
@@ -495,6 +501,9 @@
   <data name="SubscriberName" xml:space="preserve">
     <value>اسم المشترك</value>
   </data>
+  <data name="Subscribers" xml:space="preserve">
+    <value>معلومات المشتركين</value>
+  </data>
   <data name="SubscriberType" xml:space="preserve">
     <value>نوع الاشتراك</value>
   </data>
@@ -503,6 +512,9 @@
   </data>
   <data name="SubscriptionName" xml:space="preserve">
     <value>اسم الاشتراك</value>
+  </data>
+  <data name="Subscriptions" xml:space="preserve">
+    <value>تعريف الاشتركات</value>
   </data>
   <data name="Suspension" xml:space="preserve">
     <value>إيقاف عن العمل</value>
@@ -536,6 +548,9 @@
   </data>
   <data name="Type" xml:space="preserve">
     <value>النوع </value>
+  </data>
+  <data name="UnderConstruction" xml:space="preserve">
+    <value>قيد الإنشاء</value>
   </data>
   <data name="UnInterseted" xml:space="preserve">
     <value>غير مهتم</value>
