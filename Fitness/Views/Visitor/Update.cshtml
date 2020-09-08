@@ -1,13 +1,13 @@
 ﻿@model Fitness.ViewModels.VisitorVM
 @{
-    ViewBag.Title = @Resources.Resource.Save;
+    ViewBag.Title = @Resources.Resource.Update;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div style="padding-top:20px;">
     <div class="panel card-view">
         <div class="panel-heading">
             <div class="pull-left">
-                <h6 class="panel-title txt-light" style="font-weight:bold">@Resources.Resource.Save - @Resources.Resource.Visitors</h6>
+                <h6 class="panel-title txt-light" style="font-weight:bold">@Resources.Resource.Update - @Resources.Resource.Visitors</h6>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -187,6 +187,7 @@
                                 closeButton: false
                             });
                             var DataToSave = {
+                                VisitorCode: $("#VisitorCode").val(),
                                 VisitorName: $("#VisitorName").val(),
                                 BirthDate: $("#BirthDate").val(),
                                 VistDate: $("#VistDate").val(),
@@ -203,7 +204,7 @@
 
                             $.ajax({
                                 type: "POST",
-                                url: "/Visitor/UpdateVivitor",
+                                url: "/Visitor/UpdateVisitor",
                                 data: JSON.stringify(DataToSave),
                                 contentType: 'application/json',
                                 success: function (data) {

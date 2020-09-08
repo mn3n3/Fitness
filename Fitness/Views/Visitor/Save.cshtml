@@ -182,7 +182,7 @@
                     callback: function (result) {
                         if (result) {
                             var dialog = bootbox.dialog({
-                                title: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif;color : White"> @Resources.Resource.PleaseWait...</h6>',
+                                title: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif; color : White"> @Resources.Resource.PleaseWait...</h6>',
                                 message: '<p style="font-family: Verdana, Geneva, Tahoma, sans-serif"><i class="fa fa-spin fa-spinner"></i> @Resources.Resource.Saving...</p>',
                                 closeButton: false
                             });
@@ -260,28 +260,7 @@
             if (event.keyCode == 13)
                 $("#VisitorName").focus().select();
         });
-        $("#Amount").blur(function () {
-            if (document.getElementById("Amount").value == '') {
-                document.getElementById("Amount").value = 0;
-            }
-            if (document.getElementById("Amount").value < 0) {
-                document.getElementById("Amount").value = 0;
-                $("#Amount").focus().select();
-            }
-            var CurrencyAmount = document.getElementById("CurrencyNewValue").value;
-            if (CurrencyAmount == 0) {
-                CurrencyAmount = 1
-            };
-            if (CurrencyAmount == 1) {
-                $("#ForeignAmount").val((parseFloat(0)).toFixed(3));
-                $("#Amount").val((parseFloat($("#Amount").val())).toFixed(3));
-            }
-            else {
-                $("#ForeignAmount").val((parseFloat($("#Amount").val() / parseFloat($("#CurrencyNewValue").val()))).toFixed(3));
-                $("#Amount").val((parseFloat($("#Amount").val())).toFixed(3));
-            };
-
-        });
+      
         $(document).on('click', '.js-Pop', function (e) {
             $('#modal-container').removeData('bs.modal');
             e.preventDefault();

@@ -151,7 +151,6 @@ namespace Fitness.Controllers
             }
 
         }
-
         public ActionResult Update(int id)
         {
             try
@@ -159,28 +158,41 @@ namespace Fitness.Controllers
                 if (id != 0)
                 {
                     var userId = User.Identity.GetUserId();
-
                     var UserInfo = _unitOfWork.User.GetUserByID(userId);
                     if (UserInfo == null)
                     {
                         RedirectToAction("", "");
                     }
-
                     var Obj = _unitOfWork.Visitor.GetVisitorByID(UserInfo.fCompanyId, id);
-
-
-                    return View("Update", Obj);
+                    var VisitorObj = new VisitorVM { };
+                    VisitorObj.Nationality = _unitOfWork.NativeSql.GetAllNationalities(UserInfo.fCompanyId);
+                    VisitorObj.Source = _unitOfWork.NativeSql.GetAllSources(UserInfo.fCompanyId);
+                    VisitorObj.Job = _unitOfWork.NativeSql.GetAllJob(UserInfo.fCompanyId);
+                    VisitorObj.VisitorCode = Obj.VisitorCode;
+                    VisitorObj.VisitorName = Obj.VisitorName;
+                    VisitorObj.BirthDate = Obj.BirthDate;
+                    VisitorObj.VistDate = Obj.VistDate;
+                    VisitorObj.Email = Obj.Email;
+                    VisitorObj.Phone1 = Obj.Phone1;
+                    VisitorObj.Note = Obj.Note;
+                    VisitorObj.Interseted = Obj.Interseted;
+                    VisitorObj.Address = Obj.Address;
+                    VisitorObj.NationalityCode = Obj.NationalityCode;
+                    VisitorObj.SourceCode = Obj.SourceCode;
+                    VisitorObj.JobCode = Obj.JobCode;
+                    VisitorObj.GenderCode = Obj.GenderCode;
+                    return View("Update", VisitorObj);
                 }
-                return View("Update", new Visitor());
+                return View("Update", new VisitorVM());
             }
             catch (Exception ex)
             {
                 ViewBag.Error = ex.Message.ToString();
                 return View("Error");
             }
-        }
+        }            
         [HttpPost]
-        public JsonResult UpdateVisitor(Visitor ObjUpdate)
+        public JsonResult UpdateVisitor(VisitorVM ObjUpdate)
         {
             MsgUnit Msg = new MsgUnit();
             try
@@ -188,7 +200,7 @@ namespace Fitness.Controllers
                 var userId = User.Identity.GetUserId();
                 var UserInfo = _unitOfWork.User.GetMyInfo(userId);
                 var ObjVisitor = new Visitor();
-                ObjVisitor.VisitorCode = _unitOfWork.Visitor.GetMaxSerial(UserInfo.fCompanyId);
+                ObjVisitor.VisitorCode = ObjUpdate.VisitorCode;
                 ObjVisitor.VisitorName = ObjUpdate.VisitorName;
                 ObjVisitor.Phone1 = ObjUpdate.Phone1;
                 ObjVisitor.Email = ObjUpdate.Email;
@@ -222,11 +234,94 @@ namespace Fitness.Controllers
                     return Json(Msg, JsonRequestBehavior.AllowGet);
 
                 }
-                _unitOfWork.Visitor.Update(ObjUpdate);
+                _unitOfWork.Visitor.Update(ObjVisitor);
                 _unitOfWork.Complete();
 
                 Msg.Code = 1;
                 Msg.Msg = Resources.Resource.UpdatedSuccessfully;
+                return Json(Msg, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                Msg.Msg = Resources.Resource.SomthingWentWrong + " : " + ex.Message.ToString();
+                Msg.Code = 0;
+                return Json(Msg, JsonRequestBehavior.AllowGet);
+            }
+
+        }
+        public ActionResult Delete(int id)
+        {
+            try
+            {
+                if (id != 0)
+                {
+                    var userId = User.Identity.GetUserId();
+
+                    var UserInfo = _unitOfWork.User.GetUserByID(userId);
+                    if (UserInfo == null)
+                    {
+                        RedirectToAction("", "");
+                    }
+
+                    var Obj = _unitOfWork.Visitor.GetVisitorByID(UserInfo.fCompanyId, id);
+                    var VisitorObj = new VisitorVM { };
+                    VisitorObj.Nationality = _unitOfWork.NativeSql.GetAllNationalities(UserInfo.fCompanyId);
+                    VisitorObj.Source = _unitOfWork.NativeSql.GetAllSources(UserInfo.fCompanyId);
+                    VisitorObj.Job = _unitOfWork.NativeSql.GetAllJob(UserInfo.fCompanyId);
+                    VisitorObj.VisitorCode = Obj.VisitorCode;
+                    VisitorObj.VisitorName = Obj.VisitorName;
+                    VisitorObj.BirthDate = Obj.BirthDate;
+                    VisitorObj.VistDate = Obj.VistDate;
+                    VisitorObj.Email = Obj.Email;
+                    VisitorObj.Phone1 = Obj.Phone1;
+                    VisitorObj.Note = Obj.Note;
+                    VisitorObj.Interseted = Obj.Interseted;
+                    VisitorObj.Address = Obj.Address;
+                    VisitorObj.NationalityCode = Obj.NationalityCode;
+                    VisitorObj.SourceCode = Obj.SourceCode;
+                    VisitorObj.JobCode = Obj.JobCode;
+                    VisitorObj.GenderCode = Obj.GenderCode;
+
+                    return View("Delete", VisitorObj);
+                }
+                return View("Delete", new VisitorVM());
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message.ToString();
+                return View("Error");
+            }
+        }
+        [HttpPost]
+        public JsonResult DeleteVisitor(VisitorVM ObjDelete)
+        {
+            MsgUnit Msg = new MsgUnit();
+            try
+            {
+                var userId = User.Identity.GetUserId();
+                var UserInfo = _unitOfWork.User.GetMyInfo(userId);
+                var ObjVisitor = new Visitor();
+                ObjVisitor.VisitorCode = ObjDelete.VisitorCode;
+                ObjVisitor.CompanyID = UserInfo.fCompanyId;
+                if (!ModelState.IsValid)
+                {
+                    string Err = " ";
+                    var errors = ModelState.Values.SelectMany(v => v.Errors);
+                    foreach (ModelError error in errors)
+                    {
+                        Err = Err + error.ErrorMessage + " * ";
+                    }
+
+                    Msg.Msg = Resources.Resource.SomthingWentWrong + " : " + Err;
+                    Msg.Code = 0;
+                    return Json(Msg, JsonRequestBehavior.AllowGet);
+
+                }
+                _unitOfWork.Visitor.Delete(ObjVisitor);
+                _unitOfWork.Complete();
+
+                Msg.Code = 1;
+                Msg.Msg = Resources.Resource.DeletedSuccessfully;
                 return Json(Msg, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
