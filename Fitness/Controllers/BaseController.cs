@@ -16,7 +16,7 @@ namespace Fitness.Controllers
             string cultureName = null;
 
             // Attempt to read the culture cookie from Request
-            HttpCookie cultureCookie = Request.Cookies["_culture"];
+            HttpCookie cultureCookie = Request.Cookies["Fitness_culture3"];
             if (cultureCookie != null)
                 cultureName = cultureCookie.Value;
             else

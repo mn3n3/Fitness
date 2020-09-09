@@ -77,4 +77,5 @@ namespace Fitness.Helpers
             return name.Split('-')[0]; // Read first part only. E.g. "en", "es"
         }
     }
+
 }

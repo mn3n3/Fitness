@@ -21,7 +21,7 @@ namespace Fitness
          
 
             Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("ar-JO");
-            Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern = "dd/MM/yyyy";
+          Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern = "dd/MM/yyyy";
             Thread.CurrentThread.CurrentCulture.DateTimeFormat.LongDatePattern = "dd/MM/yyyy";
         }
     }

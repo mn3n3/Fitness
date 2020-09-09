@@ -24,18 +24,28 @@ namespace Fitness.Controllers
         [AllowAnonymous]
         public ActionResult SetCulture(string culture)
         {
+            // Validate input
+
             culture = CultureHelper.GetImplementedCulture(culture);
-            HttpCookie cookie = Request.Cookies["_culture"];
+            //  RouteData.Values["culture"] = culture;  // set culture
+            // Save culture in a cookie
+            HttpCookie cookie = Request.Cookies["Fitness_culture3"];
+          
             if (cookie != null)
-                cookie.Value = culture;
+                cookie.Value = culture;   // update cookie value
             else
             {
-                cookie = new HttpCookie("_culture");
+                cookie = new HttpCookie("Fitness_culture3");
+                cookie.SameSite = (SameSiteMode.Lax);
+                // cookie.Domain = "Senirossoft.Fitness";
                 cookie.Value = culture;
                 cookie.Expires = DateTime.Now.AddYears(1);
             }
-
+            //  HttpContext.Request.Cookies.Set(cookie);
+            cookie.SameSite = (SameSiteMode.Lax);
             Response.Cookies.Add(cookie);
+            //  this.HttpContext.Response.Cookies.Add(cookie);
+
             return RedirectToAction("Index");
         }
         public ActionResult Index()

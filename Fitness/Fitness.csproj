@@ -4755,6 +4755,7 @@
     <Content Include="fonts\themify-icons\themify.eot" />
     <Content Include="fonts\themify-icons\themify.ttf" />
     <Content Include="fonts\themify-icons\themify.woff" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bundle.js" />
     <Content Include="Scripts\buttons.flash.min.js" />
