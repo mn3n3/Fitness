@@ -120,8 +120,14 @@
   <data name="AccountNumber" xml:space="preserve">
     <value>رقم الحساب</value>
   </data>
+  <data name="AccountStatus" xml:space="preserve">
+    <value>حالة الحساب</value>
+  </data>
   <data name="Active" xml:space="preserve">
     <value>فعال</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>إضافة</value>
   </data>
   <data name="AddByAdmin" xml:space="preserve">
     <value>اضافة من قبل المشرف</value>
@@ -381,11 +387,17 @@
   <data name="No" xml:space="preserve">
     <value>لا</value>
   </data>
+  <data name="NotActive" xml:space="preserve">
+    <value>موقوف</value>
+  </data>
   <data name="Note" xml:space="preserve">
     <value>ملاحظه</value>
   </data>
   <data name="Ok" xml:space="preserve">
     <value>موافق</value>
+  </data>
+  <data name="OperationCompletedSuccessfully" xml:space="preserve">
+    <value>تمت العمليه بنجاح</value>
   </data>
   <data name="ParentsName" xml:space="preserve">
     <value>اسماء الاباء</value>
@@ -462,8 +474,14 @@
   <data name="Saving" xml:space="preserve">
     <value>جاري عملية التخزين</value>
   </data>
+  <data name="Screens" xml:space="preserve">
+    <value>الشاشات</value>
+  </data>
   <data name="Search" xml:space="preserve">
     <value>بحث</value>
+  </data>
+  <data name="Show" xml:space="preserve">
+    <value>مشاهدة</value>
   </data>
   <data name="SocialStatus" xml:space="preserve">
     <value>الحالة الاجتماعية</value>
@@ -561,8 +579,14 @@
   <data name="UpdatedSuccessfully" xml:space="preserve">
     <value>تمت عملية التعديل بنجاح</value>
   </data>
+  <data name="UpdatePermission" xml:space="preserve">
+    <value>تعديل الصلاحيات</value>
+  </data>
   <data name="Updating" xml:space="preserve">
     <value>جاري عملية التعديل</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>اسم المستخدم</value>
   </data>
   <data name="Users" xml:space="preserve">
     <value>المستخدمين</value>

@@ -59,7 +59,7 @@
                 </div>
                 <div class="col-lg-3">
                     @Html.Label(Resources.Resource.Nationality)
-                    <div class="form-group  input-group">
+                    <div class="form-group input-group">
                         @Html.DropDownListFor(m => m.NationalityCode, new SelectList(Model.Nationality, "NationalityCode", "NationalityName"), Resources.Resource.Nationality, new { @id = "NationalityCode", @class = "form-control input-sml" })
                         <span class="input-group-btn">
                             <a class="btn btn-primary btn-icon-anim btn-square js-Pop" id="Save" href="/Nationality/Save">

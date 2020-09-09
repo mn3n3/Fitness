@@ -1,26 +1,31 @@
-﻿using System;
-using System.Globalization;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
+﻿using Fitness.Helpers;
+using Fitness.Models;
+using Fitness.Persistence;
+using Fitness.Repositories;
+using Fitness.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using Fitness.Models;
-using Fitness.Helpers;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
 
 namespace Fitness.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private readonly IUnitOfWork _unitOfWork;
+
 
         public AccountController()
         {
+            _unitOfWork = new UnitOfWork(new ApplicationDbContext());
+
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -43,6 +48,7 @@ namespace Fitness.Controllers
 
         public ApplicationUserManager UserManager
         {
+
             get
             {
                 return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
@@ -52,6 +58,244 @@ namespace Fitness.Controllers
                 _userManager = value;
             }
         }
+            
+            
+       public async Task<ActionResult> CreateUser(UserAccountVM UserData)
+        {
+            MsgUnit Msg = new MsgUnit();
+            ApplicationUser model = UserData.ApplicationUser;
+            //  ObjToSave.AddBYUserID = userId;
+
+            var UserId = User.Identity.GetUserId();
+            var UserInfo = _unitOfWork.User.GetUserByID(UserId);
+
+
+
+            int e = UserData.Email.IndexOf('@');
+            int Co = UserInfo.Email.IndexOf('@');
+            if (e < 0)
+            {
+                model.Email = UserData.Email + UserInfo.Email.Substring(Co);
+            }
+            else
+            {
+                //Msg.Msg = Resources.Resource.EmailMustBe;
+                //Msg.Code = 0;
+                //// return RedirectToAction("Index", "Users");
+                //return Json(Msg, JsonRequestBehavior.AllowGet);
+            }
+            if (!ModelState.IsValid)
+            {
+                string Err = " ";
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
+                foreach (ModelError error in errors)
+                {
+                    Err = Err + error.ErrorMessage + "  ";
+                }
+
+                Msg.Msg = Resources.Resource.SomthingWentWrong + " " + Err;
+                Msg.Code = 0;
+                return Json(Msg, JsonRequestBehavior.AllowGet);
+            }
+
+            //   if (ModelState.IsValid)
+            try
+            {
+
+
+
+                var user = new ApplicationUser();
+
+
+                user = model;
+
+                user.UserName = model.Email;
+                user.Email = model.Email;
+                user.UserType = model.UserType;
+                user.fCompanyId = UserInfo.fCompanyId;
+
+                var result = await UserManager.CreateAsync(user, UserData.Password);
+                if (result.Succeeded)
+                {
+                    await UserManager.AddToRoleAsync(user.Id, "CoUser");
+                    string[] roleNames = {
+                      "Admin", "CoOwner", "CoUser" ,
+
+
+
+                 "ShowCompany","UpdateCompany", //Company Screen
+				 "ShowUser","AddUser" ,"UpdateUser","DeleteUser","PrintUser", //User Screen
+                 "ShowGroup" ,"AddGroup" ,"UpdateGroup" , "DeleteGroup" , "PrintGroup" , // Group Screen
+                 "ShowSource" ,"AddSource" ,"UpdateSource" , "DeleteSource" , "PrintSource" , // Source Screen
+                 "ShowTrainer", "AddTrainer" , "UpdateTrainer" , "DeleteTrainer" ,"PrintTrainer" , // Trainer Screen
+                 "ShowItem" , "AddItem","UpdateItem" , "UpdateItem" , "DeleteItem" , "PrintItem" , // Item Screen
+                 "ShowCustomerCompany" , "AddCustomerCompany" , "UpdateCustomerCompany" , "DeleteCustomerCompany" , "PrintCustomerCompany" , // Cust Screen
+                 "ShowJob" , "AddJob" , "UpdateJob"  , "DeleteJob" , "PrintJob", // Job Screen
+                 "ShowNationality" , "AddNationality" , "UpdateNationality" , "DeleteNationality" , "PrintNationality" , // Nationality Screen
+                 "ShowPlaceOfBirth" , "AddPlaceOfBirth" , "UpdatePlaceOfBirth" , "DeletePlaceOfBirth" , "PrintPlaceOfBirth" // Place of Birth Screen 
+
+
+
+
+
+                
+  
+
+            };
+
+                    foreach (var roleName in roleNames)
+                    {
+                        if ((model.ShowCompany) && (roleName == "ShowCompany"))
+                            await UserManager.AddToRoleAsync(user.Id, "ShowCompany");
+                        if ((model.UpdateCompany) && (roleName == "UpdateCompany"))
+                            await UserManager.AddToRoleAsync(user.Id, "UpdateCompany");
+
+
+
+                        if ((model.ShowUser) && (roleName == "ShowUser"))
+                            await UserManager.AddToRoleAsync(user.Id, "ShowUser");
+                        if ((model.AddUser) && (roleName == "AddUser"))
+                            await UserManager.AddToRoleAsync(user.Id, "AddUser");
+                        if ((model.UpdateUser) && (roleName == "UpdateUser"))
+                            await UserManager.AddToRoleAsync(user.Id, "UpdateUser");
+                        if ((model.DeleteUser) && (roleName == "DeleteUser"))
+                            await UserManager.AddToRoleAsync(user.Id, "DeleteUser");
+                        if ((model.PrintUser) && (roleName == "PrintUser"))
+                            await UserManager.AddToRoleAsync(user.Id, "PrintUser");
+
+                        if ((model.ShowGroup) && (roleName == "ShowGroup"))
+                            await UserManager.AddToRoleAsync(user.Id, "ShowGroup");
+                        if ((model.AddGroup) && (roleName == "AddGroup"))
+                            await UserManager.AddToRoleAsync(user.Id, "AddGroup");
+                        if ((model.UpdateGroup) && (roleName == "UpdateGroup"))
+                            await UserManager.AddToRoleAsync(user.Id, "UpdateGroup");
+                        if ((model.DeleteGroup) && (roleName == "DeleteGroup"))
+                            await UserManager.AddToRoleAsync(user.Id, "DeleteGroup");
+                        if ((model.PrintGroup) && (roleName == "PrintGroup"))
+                            await UserManager.AddToRoleAsync(user.Id, "PrintGroup");
+
+
+                        if ((model.ShowSource) && (roleName == "ShowSource"))
+                            await UserManager.AddToRoleAsync(user.Id, "ShowSource");
+                        if ((model.AddSource) && (roleName == "AddSource"))
+                            await UserManager.AddToRoleAsync(user.Id, "AddSource");
+                        if ((model.UpdateSource) && (roleName == "UpdateSource"))
+                            await UserManager.AddToRoleAsync(user.Id, "UpdateSource");
+                        if ((model.DeleteSource) && (roleName == "DeleteSource"))
+                            await UserManager.AddToRoleAsync(user.Id, "DeleteSource");
+                        if ((model.PrintSource) && (roleName == "PrintSource"))
+                            await UserManager.AddToRoleAsync(user.Id, "PrintSource");
+
+
+
+                        if ((model.ShowTrainer) && (roleName == "ShowTrainer"))
+                            await UserManager.AddToRoleAsync(user.Id, "ShowTrainer");
+                        if ((model.AddTrainer) && (roleName == "AddTrainer"))
+                            await UserManager.AddToRoleAsync(user.Id, "AddTrainer");
+                        if ((model.UpdateTrainer) && (roleName == "UpdateTrainer"))
+                            await UserManager.AddToRoleAsync(user.Id, "UpdateTrainer");
+                        if ((model.DeleteTrainer) && (roleName == "DeleteTrainer"))
+                            await UserManager.AddToRoleAsync(user.Id, "DeleteTrainer");
+                        if ((model.PrintTrainer) && (roleName == "PrintTrainer"))
+                            await UserManager.AddToRoleAsync(user.Id, "PrintTrainer");
+
+
+                        if ((model.ShowItem) && (roleName == "ShowItem"))
+                            await UserManager.AddToRoleAsync(user.Id, "ShowItem");
+                        if ((model.AddItem) && (roleName == "AddItem"))
+                            await UserManager.AddToRoleAsync(user.Id, "AddItem");
+                        if ((model.UpdateItem) && (roleName == "UpdateItem"))
+                            await UserManager.AddToRoleAsync(user.Id, "UpdateItem");
+                        if ((model.DeleteItem) && (roleName == "DeleteItem"))
+                            await UserManager.AddToRoleAsync(user.Id, "DeleteItem");
+                        if ((model.PrintItem) && (roleName == "PrintItem"))
+                            await UserManager.AddToRoleAsync(user.Id, "PrintItem");
+
+
+                        if ((model.ShowCustomerCompany) && (roleName == "ShowCustomerCompany"))
+                            await UserManager.AddToRoleAsync(user.Id, "ShowCustomerCompany");
+                        if ((model.AddCustomerCompany) && (roleName == "AddCustomerCompany"))
+                            await UserManager.AddToRoleAsync(user.Id, "AddCustomerCompany");
+                        if ((model.UpdateCustomerCompany) && (roleName == "UpdateCustomerCompany"))
+                            await UserManager.AddToRoleAsync(user.Id, "UpdateCustomerCompany");
+                        if ((model.DeleteCustomerCompany) && (roleName == "DeleteCustomerCompany"))
+                            await UserManager.AddToRoleAsync(user.Id, "DeleteCustomerCompany");
+                        if ((model.PrintCustomerCompany) && (roleName == "PrintCustomerCompany"))
+                            await UserManager.AddToRoleAsync(user.Id, "PrintCustomerCompany");
+
+                        if ((model.ShowJob) && (roleName == "ShowJob"))
+                            await UserManager.AddToRoleAsync(user.Id, "ShowJob");
+                        if ((model.AddJob) && (roleName == "AddJob"))
+                            await UserManager.AddToRoleAsync(user.Id, "AddJob");
+                        if ((model.UpdateJob) && (roleName == "UpdateJob"))
+                            await UserManager.AddToRoleAsync(user.Id, "UpdateJob");
+                        if ((model.DeleteJob) && (roleName == "DeleteJob"))
+                            await UserManager.AddToRoleAsync(user.Id, "DeleteJob");
+                        if ((model.PrintJob) && (roleName == "PrintJob"))
+                            await UserManager.AddToRoleAsync(user.Id, "PrintJob");
+
+
+
+                        if ((model.ShowNationality) && (roleName == "ShowNationality"))
+                            await UserManager.AddToRoleAsync(user.Id, "ShowNationality");
+                        if ((model.AddNationality) && (roleName == "AddNationality"))
+                            await UserManager.AddToRoleAsync(user.Id, "AddNationality");
+                        if ((model.UpdateNationality) && (roleName == "UpdateNationality"))
+                            await UserManager.AddToRoleAsync(user.Id, "UpdateNationality");
+                        if ((model.DeleteNationality) && (roleName == "DeleteNationality"))
+                            await UserManager.AddToRoleAsync(user.Id, "DeleteNationality");
+                        if ((model.PrintNationality) && (roleName == "PrintNationality"))
+                            await UserManager.AddToRoleAsync(user.Id, "PrintNationality");
+
+
+                        if ((model.ShowPlaceOfBirth) && (roleName == "ShowPlaceOfBirth"))
+                            await UserManager.AddToRoleAsync(user.Id, "ShowPlaceOfBirth");
+                        if ((model.AddPlaceOfBirth) && (roleName == "AddPlaceOfBirth"))
+                            await UserManager.AddToRoleAsync(user.Id, "AddPlaceOfBirth");
+                        if ((model.UpdatePlaceOfBirth) && (roleName == "UpdatePlaceOfBirth"))
+                            await UserManager.AddToRoleAsync(user.Id, "UpdatePlaceOfBirth");
+                        if ((model.DeletePlaceOfBirth) && (roleName == "DeletePlaceOfBirth"))
+                            await UserManager.AddToRoleAsync(user.Id, "DeletePlaceOfBirth");
+                        if ((model.PrintPlaceOfBirth) && (roleName == "PrintPlaceOfBirth"))
+                            await UserManager.AddToRoleAsync(user.Id, "PrintPlaceOfBirth");
+
+
+
+
+                    }
+
+                    Msg.Msg = Resources.Resource.AddedSuccessfully;
+                    Msg.Code = 1;
+                    // return RedirectToAction("Index", "Users");
+                    return Json(Msg, JsonRequestBehavior.AllowGet);
+                }
+
+                AddErrors(result);
+                Msg.Msg = Resources.Resource.SomthingWentWrong + " " + result.Errors.FirstOrDefault().ToString();
+                Msg.Code = 0;
+                return Json(Msg, JsonRequestBehavior.AllowGet);
+            }
+
+            // If we got this far, something failed, redisplay form
+            //   return View(model);
+            catch (Exception ex)
+            {
+                string Err = " ";
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
+                foreach (ModelError error in errors)
+                {
+                    Err = Err + error.ErrorMessage + "  ";
+                }
+                Err = Err + " " + ex.Message;
+
+                Msg.Msg = Resources.Resource.SomthingWentWrong + " " + Err;
+                Msg.Code = 0;
+                return Json(Msg, JsonRequestBehavior.AllowGet);
+
+            }
+
+        }
+
         [HttpPost]
         [AllowAnonymous]
         // [ValidateAntiForgeryToken]
@@ -121,7 +365,7 @@ namespace Fitness.Controllers
         }
 
         //
-        // GET: /Account/Login
+        // GET: /Fitness/Login
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
@@ -130,7 +374,7 @@ namespace Fitness.Controllers
         }
 
         //
-        // POST: /Account/Login
+        // POST: /Fitness/Login
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -160,7 +404,7 @@ namespace Fitness.Controllers
         }
 
         //
-        // GET: /Account/VerifyCode
+        // GET: /Fitness/VerifyCode
         [AllowAnonymous]
         public async Task<ActionResult> VerifyCode(string provider, string returnUrl, bool rememberMe)
         {
@@ -203,7 +447,7 @@ namespace Fitness.Controllers
         }
 
         //
-        // GET: /Account/Register
+        // GET: /Fitness/Register
         [AllowAnonymous]
         public ActionResult Register()
         {
@@ -211,7 +455,7 @@ namespace Fitness.Controllers
         }
 
         //
-        // POST: /Account/Register
+        // POST: /Fitness/Register
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -241,7 +485,7 @@ namespace Fitness.Controllers
         }
 
         //
-        // GET: /Account/ConfirmEmail
+        // GET: /Fitness/ConfirmEmail
         [AllowAnonymous]
         public async Task<ActionResult> ConfirmEmail(string userId, string code)
         {
@@ -254,7 +498,7 @@ namespace Fitness.Controllers
         }
 
         //
-        // GET: /Account/ForgotPassword
+        // GET: /Fitness/ForgotPassword
         [AllowAnonymous]
         public ActionResult ForgotPassword()
         {
@@ -262,7 +506,7 @@ namespace Fitness.Controllers
         }
 
         //
-        // POST: /Account/ForgotPassword
+        // POST: /Fitness/ForgotPassword
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -290,7 +534,7 @@ namespace Fitness.Controllers
         }
 
         //
-        // GET: /Account/ForgotPasswordConfirmation
+        // GET: /Fitness/ForgotPasswordConfirmation
         [AllowAnonymous]
         public ActionResult ForgotPasswordConfirmation()
         {
@@ -298,7 +542,7 @@ namespace Fitness.Controllers
         }
 
         //
-        // GET: /Account/ResetPassword
+        // GET: /Fitness/ResetPassword
         [AllowAnonymous]
         public ActionResult ResetPassword(string code)
         {
@@ -306,7 +550,7 @@ namespace Fitness.Controllers
         }
 
         //
-        // POST: /Account/ResetPassword
+        // POST: /Fitness/ResetPassword
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -332,7 +576,7 @@ namespace Fitness.Controllers
         }
 
         //
-        // GET: /Account/ResetPasswordConfirmation
+        // GET: /Fitness/ResetPasswordConfirmation
         [AllowAnonymous]
         public ActionResult ResetPasswordConfirmation()
         {
@@ -340,7 +584,7 @@ namespace Fitness.Controllers
         }
 
         //
-        // POST: /Account/ExternalLogin
+        // POST: /Fitness/ExternalLogin
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -351,7 +595,7 @@ namespace Fitness.Controllers
         }
 
         //
-        // GET: /Account/SendCode
+        // GET: /Fitness/SendCode
         [AllowAnonymous]
         public async Task<ActionResult> SendCode(string returnUrl, bool rememberMe)
         {
@@ -366,7 +610,7 @@ namespace Fitness.Controllers
         }
 
         //
-        // POST: /Account/SendCode
+        // POST: /Fitness/SendCode
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -386,7 +630,7 @@ namespace Fitness.Controllers
         }
 
         //
-        // GET: /Account/ExternalLoginCallback
+        // GET: /Fitness/ExternalLoginCallback
         [AllowAnonymous]
         public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
         {
@@ -416,7 +660,7 @@ namespace Fitness.Controllers
         }
 
         //
-        // POST: /Account/ExternalLoginConfirmation
+        // POST: /Fitness/ExternalLoginConfirmation
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -454,7 +698,7 @@ namespace Fitness.Controllers
         }
 
         //
-        // POST: /Account/LogOff
+        // POST: /Fitness/LogOff
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
@@ -464,7 +708,7 @@ namespace Fitness.Controllers
         }
 
         //
-        // GET: /Account/ExternalLoginFailure
+        // GET: /Fitness/ExternalLoginFailure
         [AllowAnonymous]
         public ActionResult ExternalLoginFailure()
         {
