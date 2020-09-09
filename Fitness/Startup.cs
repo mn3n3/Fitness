@@ -52,7 +52,21 @@ namespace Fitness
             }
             string[] roleNames = {
                 "Admin", "CoOwner", "CoUser" ,
- 
+
+
+
+                 "ShowCompany","UpdateCompany", //Company Screen
+				 "ShowUser","AddUser" ,"UpdateUser","DeleteUser","PrintUser", //User Screen
+                 "ShowGroup" ,"AddGroup" ,"UpdateGroup" , "DeleteGroup" , "PrintGroup" , // Group Screen
+                 "ShowSource" ,"AddSource" ,"UpdateSource" , "DeleteSource" , "PrintSource" , // Source Screen
+                 "ShowTrainer", "AddTrainer" , "UpdateTrainer" , "DeleteTrainer" ,"PrintTrainer" , // Trainer Screen
+                 "ShowItem" , "AddItem","UpdateItem" , "UpdateItem" , "DeleteItem" , "PrintItem" , // Item Screen
+                 "ShowCustomerCompany" , "AddCustomerCompany" , "UpdateCustomerCompany" , "DeleteCustomerCompany" , "PrintCustomerCompany" , // Cust Screen
+                 "ShowJob" , "AddJob" , "UpdateJob"  , "DeleteJob" , "PrintJob", // Job Screen
+                 "ShowNationality" , "AddNationality" , "UpdateNationality" , "DeleteNationality" , "PrintNationality" , // Nationality Screen
+                 "ShowPlaceOfBirth" , "AddPlaceOfBirth" , "UpdatePlaceOfBirth" , "DeletePlaceOfBirth" , "PrintPlaceOfBirth" // Place of Birth Screen 
+
+
  
             };
             foreach (var roleName in roleNames)

@@ -1,30 +1,41 @@
-﻿using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
 using System.Web;
 
-namespace Fitness.Models
+namespace Fitness.ViewModels
 {
-    public class ApplicationUser : IdentityUser
+    public class UserViewModel
     {
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email", ResourceType = typeof(Resources.Resource))]
+        public string Email { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+
+        [Display(Name = "Password", ResourceType = typeof(Resources.Resource))]
+        public string Password { get; set; }
+
+        [DataType(DataType.Password)]
+
+        [Display(Name = "ConfirmPassword", ResourceType = typeof(Resources.Resource))]
+        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        public string ConfirmPassword { get; set; }
+
+        public string Id { get; set; }
         public int UserType { get; set; }
         public int fCompanyId { get; set; }
         public int AccountStatus { get; set; }
         public string EmployeeID { get; set; }
 
-        //public string FCOREFID { get; set; }
-        //public int FCoID { get; set; }
-        //public int AccountStatus { get; set; }
-
-        //public string EmployeeID { get; set; }
 
         public string RealPass { get; set; }
         public string UserId { get; set; }
+
 
         [Display(Name = "Show", ResourceType = typeof(Resources.Resource))]
         public bool ShowCompany { get; set; }
@@ -51,19 +62,19 @@ namespace Fitness.Models
 
 
 
-         [Display(Name = "Show", ResourceType = typeof(Resources.Resource))]
+        [Display(Name = "Show", ResourceType = typeof(Resources.Resource))]
         public bool ShowGroup { get; set; }
 
         [Display(Name = "Add", ResourceType = typeof(Resources.Resource))]
-        public bool  AddGroup { get; set; }
+        public bool AddGroup { get; set; }
 
-         [Display(Name = "Update", ResourceType = typeof(Resources.Resource))]
+        [Display(Name = "Update", ResourceType = typeof(Resources.Resource))]
         public bool UpdateGroup { get; set; }
 
-          [Display(Name = "Delete", ResourceType = typeof(Resources.Resource))]
+        [Display(Name = "Delete", ResourceType = typeof(Resources.Resource))]
         public bool DeleteGroup { get; set; }
 
-         [Display(Name = "Print", ResourceType = typeof(Resources.Resource))]
+        [Display(Name = "Print", ResourceType = typeof(Resources.Resource))]
         public bool PrintGroup { get; set; }
 
 
@@ -190,14 +201,9 @@ namespace Fitness.Models
         public bool PrintPlaceOfBirth { get; set; }
 
 
-        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
-        {
-            // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
-            var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
-            // Add custom user claims here
-            return userIdentity;
 
 
-        }
+
+
     }
 }

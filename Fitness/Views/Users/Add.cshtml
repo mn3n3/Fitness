@@ -1,0 +1,683 @@
+﻿
+@model  Fitness.ViewModels.UserViewModel
+@{
+    ViewBag.Title = @Resources.Resource.Save;
+
+
+}
+<style>
+
+    .panel-title {
+        font-family: Verdana, Geneva, Tahoma, sans-serif
+    }
+</style>
+<div class="panel panel-default card-view">
+    <div class="panel-heading" style="background-color: #34495E">
+        <div class="pull-left">
+            <h6 class="panel-title txt-light" style="font-weight:bold">@Resources.Resource.Save - @Resources.Resource.Users</h6>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="panel-wrapper collapse in">
+        <div class="panel-body">
+            <div class="col-lg-12">
+                <div class="col-lg-3">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email)
+                        @Html.TextBoxFor(m => m.Email, new { @id = "Email", @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Email)
+                    </div>
+
+                </div>
+                <div class="col-lg-3">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password)
+                        @Html.TextBoxFor(m => m.Password, new { @id = "Password", @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Password)
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ConfirmPassword)
+                        @Html.TextBoxFor(m => m.ConfirmPassword, new { @id = "ConfirmPassword", @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.ConfirmPassword)
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12" style="margin-top : 10px">
+                <button type="button" class="btn btn-primary btn-anim" id="save"><i class="fa fa-save"></i><span class="btn-text">@Resources.Resource.Save</span> </button>
+                <button type="button" class="btn btn-warning btn-anim" id="Clear"><i class="fa fa-refresh"></i><span class="btn-text">@Resources.Resource.Clear</span> </button>
+                <button type="button" class="btn btn-default btn-anim" id="Close"><i class="fa fa-times"></i><span class="btn-text">@Resources.Resource.Close</span></button>
+            </div>
+            <div class="col-lg-12" style="margin-top : 10px">
+                <div class="pills-struct mt-40">
+                    <ul role="tablist" class="nav nav-pills nav-pills-rounded" id="myTabs_11">
+                        <li class="active" role="presentation"><a aria-expanded="true" data-toggle="tab" role="tab" href="#CompanyMainSetup">@Resources.Resource.CompanyMainSetup</a></li>
+
+                    </ul>
+                    <div class="tab-content" id="myTabContent_11">
+                        <div class="tab-pane fade active in" role="tabpanel" id="CompanyMainSetup">
+                            <div class="row">
+                                <div class="col-sm-3 col-xs-12 mt-15">
+                                    <h6>@Resources.Resource.Screens</h6>
+                                </div>
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    <div class="checkbox checkbox-primary">
+                                        <input id="MainSetupShow" type="checkbox">
+                                        <label for="MainSetupShow">
+                                            @Resources.Resource.Show
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    <div class="checkbox checkbox-primary">
+                                        <input id="MainSetupAdd" type="checkbox">
+                                        <label for="MainSetupAdd">
+                                            @Resources.Resource.Add
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    <div class="checkbox checkbox-primary">
+                                        <input id="MainSetupUpdate" type="checkbox">
+                                        <label for="MainSetupUpdate">
+                                            @Resources.Resource.Update
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    <div class="checkbox checkbox-primary">
+                                        <input id="MainSetupDelete" type="checkbox">
+                                        <label for="MainSetupDelete">
+                                            @Resources.Resource.Delete
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    <div class="checkbox checkbox-primary">
+                                        <input id="MainSetupPrint" type="checkbox">
+                                        <label for="MainSetupPrint">
+                                            @Resources.Resource.Print
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3 col-xs-12 mt-15">
+                                    - @Resources.Resource.CompanyInfo
+                                </div>
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                @Html.CheckBoxFor(m => m.ShowCompany, new { @id = "ShowCompany", @class = "MainSetupShow" })
+                                </div>
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                   x
+                                </div>
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                @Html.CheckBoxFor(m => m.UpdateCompany, new { @id = "ShowCompany", @class = "MainSetupUpdate" })
+
+                                </div>
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    x
+                                </div>
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    x
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3 col-xs-12 mt-15">
+                                    - @Resources.Resource.Users
+                                </div>
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.ShowUser, new { @id = "ShowUser", @class = "MainSetupShow" })
+                                </div>
+
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.AddUser, new { @id = "AddUser", @class = "MainSetupAdd" })
+                                </div>
+
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.UpdateUser, new { @id = "UpdateUser", @class = "MainSetupUpdate" })
+                                </div>
+
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.DeleteUser, new { @id = "DeleteUser", @class = "MainSetupDelete" })
+                                </div>
+
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.PrintUser, new { @id = "PrintUser", @class = "MainSetupPrint" })
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3 col-xs-12 mt-15">
+                                    - @Resources.Resource.Group
+                                </div>
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.ShowGroup, new { @id = "ShowGroup", @class = "MainSetupShow" })
+
+                                </div>
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.AddGroup, new { @id = "AddGroup", @class = "MainSetupAdd" })
+
+                                </div>
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.UpdateGroup, new { @id = "UpdateGroup", @class = "MainSetupUpdate" })
+
+                                </div>
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.DeleteGroup, new { @id = "DeleteGroup", @class = "MainSetupDelete" })
+
+                                </div>
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.PrintGroup, new { @id = "PrintGroup", @class = "MainSetupPrint" })
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3 col-xs-12 mt-15">
+                                    - @Resources.Resource.Source
+                                </div>
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.ShowSource, new { @id = "ShowSource", @class = "MainSetupShow" })
+
+                                </div>
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.AddSource, new { @id = "AddSource", @class = "MainSetupAdd" })
+
+                                </div>
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.UpdateSource, new { @id = "UpdateSource", @class = "MainSetupUpdate" })
+
+                                </div>
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.DeleteSource, new { @id = "DeleteSource", @class = "MainSetupDelete" })
+
+                                </div>
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.PrintSource, new { @id = "PrintSource", @class = "MainSetupPrint" })
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3 col-xs-12 mt-15">
+                                    - @Resources.Resource.Trainers
+                                </div>
+
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.ShowTrainer, new { @id = "ShowTrainer", @class = "MainSetupShow" })
+
+                                </div>
+
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.AddTrainer, new { @id = "AddTrainer", @class = "MainSetupAdd" })
+
+                                </div>
+
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.UpdateTrainer, new { @id = "UpdateTrainer", @class = "MainSetupUpdate" })
+
+                                </div>
+
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.DeleteTrainer, new { @id = "DeleteTrainer", @class = "MainSetupDelete" })
+
+                                </div>
+
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.PrintTrainer, new { @id = "PrintTrainer", @class = "MainSetupPrint" })
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3 col-xs-12 mt-15">
+                                    - @Resources.Resource.Items
+                                </div>
+
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.ShowItem, new { @id = "ShowItem", @class = "MainSetupShow" })
+
+                                </div>
+
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.AddItem, new { @id = "AddItem", @class = "MainSetupAdd" })
+
+                                </div>
+
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.UpdateItem, new { @id = "UpdateItem", @class = "MainSetupUpdate" })
+
+                                </div>
+
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.DeleteItem, new { @id = "DeleteItem", @class = "MainSetupDelete" })
+
+                                </div>
+
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.PrintItem, new { @id = "PrintItem", @class = "MainSetupPrint" })
+
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3 col-xs-12 mt-15">
+                                    - @Resources.Resource.CustomerCompanies
+                                </div>
+
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.ShowCustomerCompany, new { @id = "ShowCustomerCompany", @class = "MainSetupShow" })
+                                </div>
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.AddCustomerCompany, new { @id = "AddCustomerCompany", @class = "MainSetupAdd" })
+                                </div>
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.UpdateCustomerCompany, new { @id = "UpdateCustomerCompany", @class = "MainSetupUpdate" })
+
+                                </div>
+
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.DeleteCustomerCompany, new { @id = "DeleteCustomerCompany", @class = "MainSetupDelete" })
+
+                                </div>
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.PrintCustomerCompany, new { @id = "PrintCustomerCompany", @class = "MainSetupPrint" })
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3 col-xs-12 mt-15">
+                                    - @Resources.Resource.Jobs
+                                </div>
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.ShowJob, new { @id = "ShowJob", @class = "MainSetupShow" })
+                                </div>
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.AddJob, new { @id = "AddJob", @class = "MainSetupAdd" })
+                                </div>
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.UpdateJob, new { @id = "UpdateJob", @class = "MainSetupUpdate" })
+                                </div>
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.DeleteJob, new { @id = "DeleteJob", @class = "MainSetupDelete" })
+                                </div>
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.PrintJob, new { @id = "PrintJob", @class = "MainSetupPrint" })
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3 col-xs-12 mt-15">
+                                    - @Resources.Resource.Nationalities
+                                </div>
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.ShowNationality, new { @id = "ShowNationality", @class = "MainSetupShow" })
+                                </div>
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.AddNationality, new { @id = "AddNationality", @class = "MainSetupAdd" })
+                                </div>
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.UpdateNationality, new { @id = "UpdateNationality", @class = "MainSetupUpdate" })
+                                </div>
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.DeleteNationality, new { @id = "DeleteNationality", @class = "MainSetupDelete" })
+                                </div>
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.PrintNationality, new { @id = "PrintNationality", @class = "MainSetupPrint" })
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3 col-xs-12 mt-15">
+                                    - @Resources.Resource.PlaceOfBirth
+                                </div>
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.ShowPlaceOfBirth, new { @id = "ShowPlaceOfBirth", @class = "MainSetupShow" })
+                                </div>
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.AddPlaceOfBirth, new { @id = "AddPlaceOfBirth", @class = "MainSetupAdd" })
+                                </div>
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.UpdatePlaceOfBirth, new { @id = "UpdatePlaceOfBirth", @class = "MainSetupUpdate" })
+                                </div>
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.DeletePlaceOfBirth, new { @id = "DeletePlaceOfBirth", @class = "MainSetupDelete" })
+                                </div>
+                                <div class="col-sm-1 col-xs-12 mt-15">
+                                    @Html.CheckBoxFor(m => m.PrintPlaceOfBirth, new { @id = "PrintPlaceOfBirth", @class = "MainSetupPrint" })
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3 col-xs-12 mt-15">
+                                    - @Resources.Resource.Subscribers
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3 col-xs-12 mt-15">
+                                    - @Resources.Resource.Visitors
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3 col-xs-12 mt-15">
+                                    - @Resources.Resource.Subscriptions
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval");
+    <script>
+    $(document).ready(function () {
+        $(document).on('click', '#Close', function () {
+            window.location = "/Users/Index";
+        });
+        $(document).on('click', '#Clear', function () {
+            document.getElementById("Email").value = '';
+            document.getElementById("Password").value = '';
+            document.getElementById("ConfirmPassword").value = '';
+            $("#Email").focus().select();
+        });
+        $("#Email").focus().select();
+        $("#Email").keyup(function (event) {
+            if (event.keyCode == 13)
+                $("#Password").focus().select();
+
+        });
+        $("#Password").keyup(function (event) {
+            if (event.keyCode == 13)
+                $("#ConfirmPassword").focus().select();
+
+        });
+        $("#ConfirmPassword").keyup(function (event) {
+            if (event.keyCode == 13)
+                $("#Email").focus().select();
+
+        });
+               $(document).on('click', '#save', function () {
+            if ($("#Email").val() == '') {
+                bootbox.alert({
+                    message: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif"> @Resources.Resource.PleasefillalRequiredfields</h6>',
+                    className: 'rubberBand animated',
+                    buttons: {
+                        ok: {
+                            label: '<span style="font-family: Verdana, Geneva, Tahoma, sans-serif">@Resources.Resource.Ok</span>',
+                            className: 'btn-primary'
+                        }
+                    }
+                });
+            }
+            else if ($("#Password").val() == '') {
+                bootbox.alert({
+                    message: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif"> @Resources.Resource.PleasefillalRequiredfields</h6>',
+                    className: 'rubberBand animated',
+                    buttons: {
+                        ok: {
+                            label: '<span style="font-family: Verdana, Geneva, Tahoma, sans-serif">@Resources.Resource.Ok</span>',
+                            className: 'btn-primary'
+                        }
+                    }
+                });
+            }
+            else if ($("#ConfirmPassword").val() == '') {
+                bootbox.alert({
+                    message: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif"> @Resources.Resource.PleasefillalRequiredfields</h6>',
+                    className: 'rubberBand animated',
+                    buttons: {
+                        ok: {
+                            label: '<span style="font-family: Verdana, Geneva, Tahoma, sans-serif">@Resources.Resource.Ok</span>',
+                            className: 'btn-primary'
+                        }
+                    }
+                });
+            }
+            else if ($("#ConfirmPassword").val() != $("#Password").val()) {
+                bootbox.alert({
+                    message: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif"> @Resources.Resource.PleasefillalRequiredfields</h6>',
+                    className: 'rubberBand animated',
+                    buttons: {
+                        ok: {
+                            label: '<span style="font-family: Verdana, Geneva, Tahoma, sans-serif">@Resources.Resource.Ok</span>',
+                            className: 'btn-primary'
+                        }
+                    }
+                });
+            }
+            else {
+                bootbox.confirm({
+                    message: '<h6 style="font-family: Verdana, Geneva, Tahoma, sans-serif"> @Resources.Resource.AreYouSure</h6>',
+                    className: 'rubberBand animated',
+                    buttons: {
+                        confirm: {
+                            label: '<span style="font-family: Verdana, Geneva, Tahoma, sans-serif">@Resources.Resource.Yes</span>',
+                            className: 'btn-success'
+                        },
+                        cancel: {
+                            label: '<span style="font-family: Verdana, Geneva, Tahoma, sans-serif">@Resources.Resource.No</span>',
+                            className: 'btn-danger'
+                        }
+                    },
+                    callback: function (result) {
+                        if (result) {
+                            var dataToSave = {
+                                Email: $("#Email").val(), Password: $("#Password").val(), ConfirmPassword: $("#ConfirmPassword").val(), UserName: $("#Email").val(),
+                                ShowCompany: $("#ShowCompany:checked").val(), UpdateCompany: $("#UpdateCompany:checked").val(), DeleteAccount: $("#DeleteAccount:checked").val(),
+                                ShowUser: $("#ShowUser:checked").val(), AddUser: $("#AddUser:checked").val(), UpdateUser: $("#UpdateUser:checked").val(), DeleteUser: $("#DeleteUser:checked").val(), PrintUser: $("#PrintUser:checked").val(),
+
+                                ShowCurrancy: $("#ShowCurrancy:checked").val(), AddCurrancy: $("#AddCurrancy:checked").val(), UpdateCurrancy: $("#UpdateCurrancy:checked").val(), DeleteCurrancy: $("#DeleteCurrancy:checked").val(), PrintCurrancy: $("#PrintCurrancy:checked").val(),
+
+                                ShowCurrancyValue: $("#ShowCurrancyValue:checked").val(), AddCurrancyValue: $("#AddCurrancyValue:checked").val(), PrintCurrancyValue: $("#PrintCurrancyValue:checked").val(),
+
+                                ShowSalesman: $("#ShowSalesman:checked").val(), AddSalesman: $("#AddSalesman:checked").val(), UpdateSalesman: $("#UpdateSalesman:checked").val(), DeleteSalesman: $("#DeleteSalesman:checked").val(), PrintSalesman: $("#PrintSalesman:checked").val(),
+
+                                ShowTransaction: $("#ShowTransaction:checked").val(), AddTransaction: $("#AddTransaction:checked").val(), UpdateTransaction: $("#UpdateTransaction:checked").val(), DeleteTransaction: $("#DeleteTransaction:checked").val(), PrintTransaction: $("#PrintTransaction:checked").val(),
+
+                                ShowServicegroup: $("#ShowServicegroup:checked").val(), AddServicegroup: $("#AddServicegroup:checked").val(), UpdateServicegroup: $("#UpdateServicegroup:checked").val(), DeleteServicegroup: $("#DeleteServicegroup:checked").val(), PrintServicegroup: $("#PrintServicegroup:checked").val(),
+
+                                ShowBankswithdrawnfrom: $("#ShowBankswithdrawnfrom:checked").val(), AddBankswithdrawnfrom: $("#AddBankswithdrawnfrom:checked").val(), UpdateBankswithdrawnfrom: $("#UpdateBankswithdrawnfrom:checked").val(), PrintBankswithdrawnfrom: $("#PrintBankswithdrawnfrom:checked").val(),
+
+
+                                ShowBank: $("#ShowBank:checked").val(), AddBank: $("#AddBank:checked").val(), UpdateBank: $("#UpdateBank:checked").val(), DeleteBank: $("#DeleteBank:checked").val(), PrintBank: $("#PrintBank:checked").val(),
+
+
+                                ShowOtheraccount: $("#ShowOtheraccount:checked").val(), AddOtheraccount: $("#AddOtheraccount:checked").val(), UpdateOtheraccount: $("#UpdateOtheraccount:checked").val(), DeleteOtheraccount: $("#DeleteOtheraccount:checked").val(), PrintOtheraccount: $("#PrintOtheraccount:checked").val(),
+
+
+
+                                ShowManagement: $("#ShowManagement:checked").val(), AddManagement: $("#AddManagement:checked").val(), UpdateManagement: $("#UpdateManagement:checked").val(), DeleteManagement: $("#DeleteManagement:checked").val(), PrintManagement: $("#PrintManagement:checked").val(),
+
+                                ShowDepartment: $("#ShowDepartment:checked").val(), AddDepartment: $("#AddDepartment:checked").val(), UpdateDepartment: $("#UpdateDepartment:checked").val(), DeleteDepartment: $("#DeleteDepartment:checked").val(), PrintDepartment: $("#PrintDepartment:checked").val(),
+
+                                ShowSections: $("#ShowSections:checked").val(), AddSections: $("#AddSections:checked").val(), UpdateSections: $("#UpdateSections:checked").val(), DeleteSections: $("#DeleteSections:checked").val(), PrintSections: $("#PrintSections:checked").val(),
+                                ShowLocations: $("#ShowLocations:checked").val(), AddLocations: $("#AddLocations:checked").val(), UpdateLocations: $("#UpdateLocations:checked").val(), DeleteLocations: $("#DeleteLocations:checked").val(), PrintLocations: $("#PrintLocations:checked").val(),
+                                ShowTrustee: $("#ShowTrustee:checked").val(), AddTrustee: $("#AddTrustee:checked").val(), UpdateTrustee: $("#UpdateTrustee:checked").val(), DeleteTrustee: $("#DeleteTrustee:checked").val(), PrintTrustee: $("#PrintTrustee:checked").val(),
+                                ShowSupplierbanks: $("#ShowSupplierbanks:checked").val(), AddSupplierbanks: $("#AddSupplierbanks:checked").val(), UpdateSupplierbanks: $("#UpdateSupplierbanks:checked").val(), DeleteSupplierbanks: $("#DeleteSupplierbanks:checked").val(), PrintSupplierbanks: $("#PrintSupplierbanks:checked").val(),
+                                ShowSuppliercountries: $("#ShowSuppliercountries:checked").val(), AddSuppliercountries: $("#AddSuppliercountries:checked").val(), UpdateSuppliercountries: $("#UpdateSuppliercountries:checked").val(), DeleteSuppliercountries: $("#DeleteSuppliercountries:checked").val(), PrintSuppliercountries: $("#PrintSuppliercountries:checked").val(),
+                                ShowSupplierbankcountries: $("#ShowSupplierbankcountries:checked").val(), AddSupplierbankcountries: $("#AddSupplierbankcountries:checked").val(), UpdateSupplierbankcountries: $("#UpdateSupplierbankcountries:checked").val(), DeleteSupplierbankcountries: $("#DeleteSupplierbankcountries:checked").val(), PrintSupplierbankcountries: $("#PrintSupplierbankcountries:checked").val(),
+                                ShowSupplierbankbranches: $("#ShowSupplierbankbranches:checked").val(), AddSupplierbankbranches: $("#AddSupplierbankbranches:checked").val(), UpdateSupplierbankbranches: $("#UpdateSupplierbankbranches:checked").val(), DeleteSupplierbankbranches: $("#DeleteSupplierbankbranches:checked").val(), PrintSupplierbankbranches: $("#PrintSupplierbankbranches:checked").val(),
+                                ShowSuppliercity: $("#ShowSuppliercity:checked").val(), AddSuppliercity: $("#AddSuppliercity:checked").val(), UpdateSuppliercity: $("#UpdateSuppliercity:checked").val(), DeleteSuppliercity: $("#DeleteSuppliercity:checked").val(), PrintSuppliercity: $("#PrintSuppliercity:checked").val(),
+                                ShowSuppliersbankcity: $("#ShowSuppliersbankcity:checked").val(), AddSuppliersbankcity: $("#AddSuppliersbankcity:checked").val(), UpdateSuppliersbankcity: $("#UpdateSuppliersbankcity:checked").val(), DeleteSuppliersbankcity: $("#DeleteSuppliersbankcity:checked").val(), PrintSuppliersbankcity: $("#PrintSuppliersbankcity:checked").val(),
+                                ShowCustomercity: $("#ShowCustomercity:checked").val(), AddCustomercity: $("#AddCustomercity:checked").val(), UpdateCustomercity: $("#UpdateCustomercity:checked").val(), DeleteCustomercity: $("#DeleteCustomercity:checked").val(), PrintCustomercity: $("#PrintCustomercity:checked").val(),
+                                ShowCustomerarea: $("#ShowCustomerarea:checked").val(), AddCustomerarea: $("#AddCustomerarea:checked").val(), UpdateCustomerarea: $("#UpdateCustomerarea:checked").val(), DeleteCustomerarea: $("#DeleteCustomerarea:checked").val(), PrintCustomerarea: $("#PrintCustomerarea:checked").val(),
+
+                                ShowService: $("#ShowService:checked").val(), AddService: $("#AddService:checked").val(), UpdateService: $("#UpdateService:checked").val(), DeleteService: $("#DeleteService:checked").val(), PrintService: $("#PrintService:checked").val(),
+
+
+                                //---------------------------------End Main Setup-----------//
+
+
+                                //----Operation------------//
+
+                                ShowTransferbetweenaccounts: $("#ShowTransferbetweenaccounts:checked").val(), TransferTransferbetweenaccounts: $("#TransferTransferbetweenaccounts:checked").val(),
+                                ShowFreezunfreezmonthtransaction: $("#ShowFreezunfreezmonthtransaction:checked").val(), FreezFreezunfreezmonthtransaction: $("#FreezFreezunfreezmonthtransaction:checked").val(), unFreezFreezunfreezmonthtransaction: $("#unFreezFreezunfreezmonthtransaction:checked").val(),
+                                ShowEstimatedbudget: $("#ShowEstimatedbudget:checked").val(), AddEstimatedbudget: $("#AddEstimatedbudget:checked").val(),
+                                //--End Opertaion------//
+
+
+
+                                //---Account-------//
+
+                                ShowChartofaccount: $("#ShowChartofaccount:checked").val(), AddmainaccountChartofaccount: $("#AddmainaccountChartofaccount:checked").val(), UpdateChartofaccoun: $("#UpdateChartofaccoun:checked").val(), DeleteChartofaccoun: $("#DeleteChartofaccoun:checked").val(),
+                                ShowChartofcostcenter: $("#ShowChartofcostcenter:checked").val(), AddmainaccountChartofcostcenter: $("#AddmainaccountChartofcostcenter:checked").val(), UpdateChartofcostcenter: $("#UpdateChartofcostcenter:checked").val(), DeleteChartofcostcenter: $("#DeleteChartofcostcenter:checked").val(),
+                                Showcustomeraccount: $("#Showcustomeraccount:checked").val(), Addcustomeraccount: $("#Addcustomeraccount:checked").val(), Updatecustomeraccount: $("#Updatecustomeraccount:checked").val(), Deletecustomeraccount: $("#Deletecustomeraccount:checked").val(),
+                                ShowSupplieraccount: $("#ShowSupplieraccount:checked").val(), AddSupplieraccount: $("#AddSupplieraccount:checked").val(), UpdateSupplieraccount: $("#UpdateSupplieraccount:checked").val(), DeleteSupplieraccount: $("#DeleteSupplieraccount:checked").val(),
+
+                                ///--End Account--//
+
+
+                                //---Asset---//
+
+                                ShowAssetType: $("#ShowAssetType:checked").val(), AddAssetType: $("#AddAssetType:checked").val(), UpdateAssetType: $("#UpdateAssetType:checked").val(), DeleteAssetType: $("#DeleteAssetType:checked").val(),
+                                PrintAssetType: $("#PrintAssetType:checked").val(),
+
+
+                                ShowCalculationOfConsumption: $("#ShowCalculationOfConsumption:checked").val(), AddCalculationOfConsumption: $("#AddCalculationOfConsumption:checked").val(),
+
+                                ShowAsset: $("#ShowAsset:checked").val(), AddAsset: $("#AddAsset:checked").val(), UpdateAsset: $("#UpdateAsset:checked").val(), DeleteAsset: $("#DeleteAsset:checked").val(),
+                                PrintAsset: $("#PrintAsset:checked").val(),
+
+                                ShowAssetToAcc: $("#ShowAssetToAcc:checked").val(), AddAssetToAcc: $("#AddAssetToAcc:checked").val(),
+
+                                ShowDefinitionAsset: $("#ShowDefinitionAsset:checked").val(), AddDefinitionAsset: $("#AddDefinitionAsset:checked").val(),
+
+
+                                ShowSaleAsset: $("#ShowSaleAsset:checked").val(), AddShowSaleAsset: $("#AddShowSaleAsset:checked").val(),
+
+
+                                ShowDeliveryAssetTrustee: $("#ShowDeliveryAssetTrustee:checked").val(), AddDeliveryAssetTrustee: $("#AddDeliveryAssetTrustee:checked").val(),
+
+                                ShowConsumAsset: $("#ShowConsumAsset:checked").val(), AddConsumAsset: $("#AddConsumAsset:checked").val(),
+
+
+                                ShowAssetMaintenance: $("#ShowAssetMaintenance:checked").val(), AddAssetMaintenance: $("#AddAssetMaintenance:checked").val(), UpdateAssetMaintenance: $("#UpdateAssetMaintenance:checked").val(),
+                                DeleteAssetMaintenance: $("#DeleteAssetMaintenance:checked").val(),
+
+                                //--End Asset--//
+
+
+
+                                //--Report---//
+
+                                RepAccountStatement: $("#RepAccountStatement:checked").val(), RepTrialBalance: $("#RepTrialBalance:checked").val(), RepAccountingDetailsReport: $("#RepAccountingDetailsReport:checked").val(),
+
+                                RepChequesReport: $("#RepChequesReport:checked").val(), RepCustSuppBalances: $("#RepCustSuppBalances:checked").val(), RepTrialBalanceYearly: $("#RepTrialBalanceYearly:checked").val(),
+
+                                RepTransActionDetails: $("#RepTransActionDetails:checked").val(), RepTrankingChequesReport: $("#RepTrankingChequesReport:checked").val(), RepSalesReport: $("#RepSalesReport:checked").val(),
+
+                                RepExpenseAnalysisDetailReport: $("#RepExpenseAnalysisDetailReport:checked").val(), RepSearchForTrans: $("#RepSearchForTrans:checked").val(), RepPaymentChequesReport: $("#RepPaymentChequesReport:checked").val(),
+
+                                RepServiceReport: $("#RepServiceReport:checked").val(), RepCustomerBalancesReport: $("#RepCustomerBalancesReport:checked").val(), RepPaymTrankingChequesReport: $("#RepPaymTrankingChequesReport:checked").val(),
+
+                                RepServiceTaxReport: $("#RepServiceTaxReport:checked").val(), RepSupplierBalancesReport: $("#RepSupplierBalancesReport:checked").val(), RepExpenseAnalysisReport: $("#RepExpenseAnalysisReport:checked").val(),
+
+                                RepProfitlossreport: $("#RepProfitlossreport:checked").val(), RepTempPrepaidReport: $("#RepTempPrepaidReport:checked").val(), RepPivotReportAccounts: $("#RepPivotReportAccounts:checked").val(),
+
+                                RepAssetsReport: $("#RepAssetsReport:checked").val(), RepTempRevenueReport: $("#RepTempRevenueReport:checked").val(), RepAssetDepreciationReport: $("#RepAssetDepreciationReport:checked").val(),
+
+                                RepEstimatedBudgetForAccount: $("#RepEstimatedBudgetForAccount:checked").val(), RepConsumptionByTypeReport: $("#RepConsumptionByTypeReport:checked").val(), RepEstimatedBudgetForAccountAll: $("#RepEstimatedBudgetForAccountAll:checked").val(),
+
+                                RepDefinitionAssetSiteReport: $("#RepDefinitionAssetSiteReport:checked").val(), RepEstimatedBudgetForAccountYear: $("#RepEstimatedBudgetForAccountYear:checked").val(), RepSoldAsset: $("#RepSoldAsset:checked").val(),
+
+                                RepEstimatedBudgetForCostCenters: $("#RepEstimatedBudgetForCostCenters:checked").val(), RepConsumAssetReport: $("#RepConsumAssetReport:checked").val(), RepEstimatedBudgetCostAllMonth: $("#RepEstimatedBudgetCostAllMonth:checked").val(),
+
+
+                                ////// Print report
+
+
+
+
+                                PrintRepAccountStatement: $("#PrintRepAccountStatement:checked").val(), PrintRepTrialBalance: $("#PrintRepTrialBalance:checked").val(), PrintRepAccountingDetailsPrintReport: $("#PrintRepAccountingDetailsPrintReport:checked").val(),
+
+                                PrintRepChequesPrintReport: $("#PrintRepChequesPrintReport:checked").val(), PrintRepCustSuppBalances: $("#PrintRepCustSuppBalances:checked").val(), PrintRepTrialBalanceYearly: $("#PrintRepTrialBalanceYearly:checked").val(),
+
+                                PrintRepTransActionDetails: $("#PrintRepTransActionDetails:checked").val(), PrintRepTrankingChequesPrintReport: $("#PrintRepTrankingChequesPrintReport:checked").val(), PrintRepSalesPrintReport: $("#PrintRepSalesPrintReport:checked").val(),
+
+                                PrintRepExpenseAnalysisDetailPrintReport: $("#PrintRepExpenseAnalysisDetailPrintReport:checked").val(), PrintRepSearchForTrans: $("#PrintRepSearchForTrans:checked").val(), PrintRepPaymentChequesPrintReport: $("#PrintRepPaymentChequesPrintReport:checked").val(),
+
+                                PrintRepServicePrintReport: $("#PrintRepServicePrintReport:checked").val(), PrintRepCustomerBalancesPrintReport: $("#PrintRepCustomerBalancesPrintReport:checked").val(), PrintRepPaymTrankingChequesPrintReport: $("#PrintRepPaymTrankingChequesPrintReport:checked").val(),
+
+                                PrintRepServiceTaxPrintReport: $("#PrintRepServiceTaxPrintReport:checked").val(), PrintRepSupplierBalancesPrintReport: $("#PrintRepSupplierBalancesPrintReport:checked").val(), PrintRepExpenseAnalysisPrintReport: $("#PrintRepExpenseAnalysisPrintReport:checked").val(),
+
+                                PrintRepProfitlossPrintReport: $("#PrintRepProfitlossPrintReport:checked").val(), PrintRepTempPPrintRepaidPrintReport: $("#PrintRepTempPPrintRepaidPrintReport:checked").val(), PrintRepPivotPrintReportAccounts: $("#PrintRepPivotPrintReportAccounts:checked").val(),
+
+                                PrintRepAssetsPrintReport: $("#PrintRepAssetsPrintReport:checked").val(), PrintRepTempRevenuePrintReport: $("#PrintRepTempRevenuePrintReport:checked").val(), PrintRepAssetDepreciationPrintReport: $("#PrintRepAssetDepreciationPrintReport:checked").val(),
+
+                                PrintRepEstimatedBudgetForAccount: $("#PrintRepEstimatedBudgetForAccount:checked").val(), PrintRepConsumptionByTypePrintReport: $("#PrintRepConsumptionByTypePrintReport:checked").val(), PrintRepEstimatedBudgetForAccountAll: $("#PrintRepEstimatedBudgetForAccountAll:checked").val(),
+
+                                PrintRepDefinitionAssetSitePrintReport: $("#PrintRepDefinitionAssetSitePrintReport:checked").val(), PrintRepEstimatedBudgetForAccountYear: $("#PrintRepEstimatedBudgetForAccountYear:checked").val(), PrintRepSoldAsset: $("#PrintRepSoldAsset:checked").val(),
+
+                                PrintRepEstimatedBudgetForCostCenters: $("#PrintRepEstimatedBudgetForCostCenters:checked").val(), PrintRepConsumAssetPrintReport: $("#PrintRepConsumAssetPrintReport:checked").val(), PrintRepEstimatedBudgetCostAllMonth: $("#PrintRepEstimatedBudgetCostAllMonth:checked").val(),
+
+
+
+
+                                //--End Report---/
+
+                                //---TransAction--//
+                                ShowTransActionTrans: $("#ShowTransActionTrans:checked").val(), AddTransActionTrans: $("#AddTransActionTrans:checked").val(), DeleteTransActionTrans: $("#DeleteTransActionTrans:checked").val(), UpdateTransActionTrans: $("#UpdateTransActionTrans:checked").val(), CopyTransActionTrans: $("#CopyTransActionTrans:checked").val(), PrintTransActionTrans: $("#PrintTransActionTrans:checked").val(), ExportTransActionTrans: $("#ExportTransActionTrans:checked").val(), UnExportTransActionTrans: $("#UnExportTransActionTrans:checked").val(), AttachTransActionTrans: $("#AttachTransActionTrans:checked").val(),
+                                ShowReceiptVoucherBank: $("#ShowReceiptVoucherBank:checked").val(), AddReceiptVoucherBank: $("#AddReceiptVoucherBank:checked").val(), DeleteReceiptVoucherBank: $("#DeleteReceiptVoucherBank:checked").val(), UpdateReceiptVoucherBank: $("#UpdateReceiptVoucherBank").val(), CopyReceiptVoucherBank: $("#CopyReceiptVoucherBank:checked").val(), PrintReceiptVoucherBank: $("#PrintReceiptVoucherBank:checked").val(), ExportReceiptVoucherBank: $("#ExportReceiptVoucherBank:checked").val(), UnExportReceiptVoucherBank: $("#UnExportReceiptVoucherBank:checked").val(), AttachReceiptVoucherBank: $("#AttachReceiptVoucherBank:checked").val(),
+                                ShowTempPrepaid: $("#ShowTempPrepaid:checked").val(), AddTempPrepaid: $("#AddTempPrepaid:checked").val(), DeleteTempPrepaid: $("#DeleteTempPrepaid:checked").val(), UpdateTempPrepaid: $("#UpdateTempPrepaid:checked").val(), CopyTempPrepaid: $("#CopyTempPrepaid:checked").val(), PrintTempPrepaid: $("#PrintTempPrepaid:checked").val(), AccumulativeTempPrepaid: $("#AccumulativeTempPrepaid:checked").val(), AttachTempPrepaid: $("#AttachTempPrepaid:checked").val(),
+                                ShowDebitNote: $("#ShowDebitNote:checked").val(), AddDebitNote: $("#AddDebitNote:checked").val(), DeleteDebitNote: $("#DeleteDebitNote:checked").val(), UpdateDebitNote: $("#UpdateDebitNote:checked").val(), CopyDebitNote: $("#CopyDebitNote:checked").val(), PrintDebitNote: $("#PrintDebitNote:checked").val(), ExportDebitNote: $("#ExportDebitNote:checked").val(), UnExportDebitNote: $("#UnExportDebitNote:checked").val(), AttachDebitNote: $("#AttachDebitNote:checked").val(),
+                                ShowServiceBill: $("#ShowServiceBill:checked").val(), AddServiceBill: $("#AddServiceBill:checked").val(), DeleteServiceBill: $("#DeleteServiceBill:checked").val(), UpdateServiceBill: $("#UpdateServiceBill:checked").val(), CopyServiceBill: $("#CopyServiceBill:checked").val(), PrintServiceBill: $("#PrintServiceBill:checked").val(), AttachServiceBill: $("#AttachServiceBill:checked").val(), ExportServiceBill: $("#ExportServiceBill:checked").val(), UnExportServiceBill: $("#UnExportServiceBill:checked").val(), ShowBill: $("#ShowBill:checked").val(),
+                                //ShowReceiptVoucherBankReceivedCheque: $("#ShowReceiptVoucherBankReceivedCheque:checked").val(), AddReceiptVoucherBankReceivedCheque: $("#AddReceiptVoucherBankReceivedCheque:checked").val(), DeleteReceiptVoucherBankReceivedCheque: $("#DeleteReceiptVoucherBankReceivedCheque:checked").val(), UpdateReceiptVoucherBankReceivedCheque: $("#UpdateReceiptVoucherBankReceivedCheque:checked").val(), CopyReceiptVoucherBankReceivedCheque: $("#CopyReceiptVoucherBankReceivedCheque:checked").val(), PrintReceiptVoucherBankReceivedCheque: $("#PrintReceiptVoucherBankReceivedCheque:checked").val(),
+                                ShowOpeningBalance: $("#ShowOpeningBalance:checked").val(), AddOpeningBalance: $("#AddOpeningBalance:checked").val(), DeleteOpeningBalance: $("#DeleteOpeningBalance:checked").val(), UpdateOpeningBalance: $("#UpdateOpeningBalance:checked").val(), CopyOpeningBalance: $("#CopyOpeningBalance:checked").val(), PrintOpeningBalance: $("#PrintOpeningBalance:checked").val(),
+                                ShowReceiptVoucherCash: $("#ShowReceiptVoucherCash:checked").val(), DeleteReceiptVoucherCash: $("#DeleteReceiptVoucherCash:checked").val(), AddReceiptVoucherCash: $("#AddReceiptVoucherCash:checked").val(), UpdateReceiptVoucherCash: $("#UpdateReceiptVoucherCash:checked").val(), CopyReceiptVoucherCash: $("#CopyReceiptVoucherCash:checked").val(), PrintReceiptVoucherCash: $("#PrintReceiptVoucherCash:checked").val(), ExportReceiptVoucherCash: $("#ExportReceiptVoucherCash:checked").val(), UnExportReceiptVoucherCash: $("#UnExportReceiptVoucherCash:checked").val(), AttachReceiptVoucherCash: $("#AttachReceiptVoucherCash:checked").val(),
+                                ShowTempRevenueReceived: $("#ShowTempRevenueReceived:checked").val(), AddTempRevenueReceived: $("#AddTempRevenueReceived:checked").val(), DeleteTempRevenueReceived: $("#DeleteTempRevenueReceived:checked").val(), UpdateTempRevenueReceived: $("#UpdateTempRevenueReceived:checked").val(), CopyTempRevenueReceived: $("#CopyTempRevenueReceived:checked").val(), PrintTempRevenueReceived: $("#PrintTempRevenueReceived:checked").val(), AccumulativeTempRevenueReceived: $("#AccumulativeTempRevenueReceived:checked").val(), AttachTempRevenueReceived: $("#AttachTempRevenueReceived:checked").val(),
+                                ShowCreditNote: $("#ShowCreditNote:checked").val(), AddCreditNote: $("#AddCreditNote:checked").val(), DeleteCreditNote: $("#DeleteCreditNote:checked").val(), UpdateCreditNote: $("#UpdateCreditNote:checked").val(), CopyCreditNote: $("#CopyCreditNote:checked").val(), PrintCreditNote: $("#PrintCreditNote:checked").val(), ExportCreditNote: $("#ExportCreditNote:checked").val(), UnExportCreditNote: $("#UnExportCreditNote:checked").val(), AttachCreditNote: $("#AttachCreditNote:checked").val(),
+                                //ShowPaymentVoucherBankPaymentCheque: $("#ShowPaymentVoucherBankPaymentCheque:checked").val(), AddPaymentVoucherBankPaymentCheque: $("#AddPaymentVoucherBankPaymentCheque:checked").val(), DeletePaymentVoucherBankPaymentCheque: $("#DeletePaymentVoucherBankPaymentCheque:checked").val(), UpdatePaymentVoucherBankPaymentCheque: $("#UpdatePaymentVoucherBankPaymentCheque:checked").val(), CopyPaymentVoucherBankPaymentCheque: $("#CopyPaymentVoucherBankPaymentCheque:checked").val(), PrintPaymentVoucherBankPaymentCheque: $("#PrintPaymentVoucherBankPaymentCheque:checked").val(),
+                                ShowPaymentVoucherBank: $("#ShowPaymentVoucherBank:checked").val(), AddPaymentVoucherBank: $("#AddPaymentVoucherBank:checked").val(), DeletePaymentVoucherBank: $("#DeletePaymentVoucherBank:checked").val(), UpdatePaymentVoucherBank: $("#UpdatePaymentVoucherBank:checked").val(), CopyPaymentVoucherBank: $("#CopyPaymentVoucherBank:checked").val(), PrintPaymentVoucherBank: $("#PrintPaymentVoucherBank:checked").val(), ExportPaymentVoucherBank: $("#ExportPaymentVoucherBank:checked").val(), UnExportPaymentVoucherBank: $("#UnExportPaymentVoucherBank:checked").val(), AttachPaymentVoucherBank: $("#AttachPaymentVoucherBank:checked").val(),
+                                ShowPaymentVoucherCash: $("#ShowPaymentVoucherCash:checked").val(), AddPaymentVoucherCash: $("#AddPaymentVoucherCash:checked").val(), DeletePaymentVoucherCash: $("#DeletePaymentVoucherCash:checked").val(), UpdatePaymentVoucherCash: $("#UpdatePaymentVoucherCash:checked").val(), CopyPaymentVoucherCash: $("#CopyPaymentVoucherCash:checked").val(), PrintPaymentVoucherCash: $("#PrintPaymentVoucherCash:checked").val(), ExportPaymentVoucherCash: $("#ExportPaymentVoucherCash:checked").val(), UnExportPaymentVoucherCash: $("#UnExportPaymentVoucherCash:checked").val(), AttachPaymentVoucherCash: $("#AttachPaymentVoucherCash:checked").val(),
+                                ShowDepositInTheBank: $("#ShowDepositInTheBank:checked").val(), AddDepositInTheBank: $("#AddDepositInTheBank:checked").val(), DeleteDepositInTheBank: $("#DeleteDepositInTheBank:checked").val(), UpdateDepositInTheBank: $("#UpdateDepositInTheBank:checked").val(), CopyDepositInTheBank: $("#CopyDepositInTheBank:checked").val(), PrintDepositInTheBank: $("#PrintDepositInTheBank:checked").val(), ExportDepositInTheBank: $("#ExportDepositInTheBank:checked").val(), UnExportDepositInTheBank: $("#UnExportDepositInTheBank:checked").val(), AttachDepositInTheBank: $("#AttachDepositInTheBank:checked").val(),
+                                ShowReturnACheque: $("#ShowReturnACheque:checked").val(), ShowTransferFromFundUC: $("#ShowTransferFromFundUC:checked").val(), ShowDrawingUC: $("#ShowDrawingUC:checked").val(), ShowPaymentchequeUC: $("#ShowPaymentchequeUC:checked").val(), ShowTransferFromFundCD: $("#ShowTransferFromFundCD:checked").val(), ShowReturnAChequeCD: $("#ShowReturnAChequeCD:checked").val(), ShowTransferFromFundToChequeE: $("#ShowTransferFromFundToChequeE:checked").val(), ShowPaymentChequeEndorsement: $("#ShowPaymentChequeEndorsement:checked").val(), ShowReturnChequeUnderCollection: $("#ShowReturnChequeUnderCollection:checked").val(), ShowReturnChequeEndorsement: $("#ShowReturnChequeEndorsement:checked").val(),
+                                ShowFundChequesDrawnFromUC: $("#ShowFundChequesDrawnFromUC:checked").val(), ShowReturnedChequeFund: $("#ShowReturnedChequeFund:checked").val(), ShowCourtFund: $("#ShowCourtFund:checked").val(),
+                                ShowPostdatedCheques: $("#ShowPostdatedCheques:checked").val(), ShowReturnPostdatedCheques: $("#ShowReturnPostdatedCheques:checked").val(), ShowReturnPaidPostdatedCheques: $("#ShowReturnPaidPostdatedCheques:checked").val(),
+
+
+
+                                ShowPaymentVoucherCashMultiAccount: $("#ShowPaymentVoucherCashMultiAccount:checked").val(), AddPaymentVoucherCashMultiAccount: $("#AddPaymentVoucherCashMultiAccount:checked").val(), DeletePaymentVoucherCashMultiAccount: $("#DeletePaymentVoucherCashMultiAccount:checked").val(), UpdatePaymentVoucherCashMultiAccount: $("#UpdatePaymentVoucherCashMultiAccount:checked").val(), CopyPaymentVoucherCashMultiAccount: $("#CopyPaymentVoucherCashMultiAccount:checked").val(), PrintPaymentVoucherCashMultiAccount: $("#PrintPaymentVoucherCashMultiAccount:checked").val(), ExportPaymentVoucherCashMultiAccount: $("#ExportPaymentVoucherCashMultiAccount:checked").val(), UnExportPaymentVoucherCashMultiAccount: $("#UnExportPaymentVoucherCashMultiAccount:checked").val(), AttachPaymentVoucherCashMultiAccount: $("#AttachPaymentVoucherCashMultiAccount:checked").val(),
+
+                                ShowReceiptVoucherCashMultiAccount: $("#ShowReceiptVoucherCashMultiAccount:checked").val(), AddReceiptVoucherCashMultiAccount: $("#AddReceiptVoucherCashMultiAccount:checked").val(), DeleteReceiptVoucherCashMultiAccount: $("#DeleteReceiptVoucherCashMultiAccount:checked").val(), UpdateReceiptVoucherCashMultiAccount: $("#UpdateReceiptVoucherCashMultiAccount:checked").val(), CopyReceiptVoucherCashMultiAccount: $("#CopyReceiptVoucherCashMultiAccount:checked").val(), PrintReceiptVoucherCashMultiAccount: $("#PrintReceiptVoucherCashMultiAccount:checked").val(), ExportReceiptVoucherCashMultiAccount: $("#ExportReceiptVoucherCashMultiAccount:checked").val(), UnExportReceiptVoucherCashMultiAccount: $("#UnExportReceiptVoucherCashMultiAccount:checked").val(), AttachReceiptVoucherCashMultiAccount: $("#AttachReceiptVoucherCashMultiAccount:checked").val(),
+
+                            };
+                            var Data = {
+                                Email: $("#Email").val(), Password: $("#Password").val(), ConfirmPassword: $("#ConfirmPassword").val(), UserName: $("#Email").val(),
+                                ApplicationUser: dataToSave
+                            };
+                            $.ajax({
+                                type: "POST",
+                                url: "/Account/CreateUser",
+                                data: JSON.stringify(Data),
+                                contentType: 'application/json',
+                                success: function (data) {
+                                    dialog.modal('hide');
+                                    if (data.Code == 0) {
+                                        toastr.error(data.Msg);
+                                    }
+                                    else if (data.Code == 1) {
+                                        $('#modal-container').modal('hide');
+                                        toastr.success(data.Msg);
+                                        document.getElementById("Email").value = '';
+                                        document.getElementById("Password").value = '';
+                                        document.getElementById("ConfirmPassword").value = '';
+                                        $("#Email").focus().select();
+                                    }
+                                },
+                                error: function (data) {
+                                    dialog.modal('hide');
+                                    toastr.error(data);
+                                }
+
+                            });
+                        }
+                    }
+                });
+            }
+        });
+    });
+
+    </script>
+}
+
+

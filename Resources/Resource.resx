@@ -120,8 +120,14 @@
   <data name="AccountNumber" xml:space="preserve">
     <value>Account Number</value>
   </data>
+  <data name="AccountStatus" xml:space="preserve">
+    <value>Account Status  </value>
+  </data>
   <data name="Active" xml:space="preserve">
     <value>Active</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Add</value>
   </data>
   <data name="AddByAdmin" xml:space="preserve">
     <value>Add By Admin</value>
@@ -378,11 +384,17 @@
   <data name="No" xml:space="preserve">
     <value>No</value>
   </data>
+  <data name="NotActive" xml:space="preserve">
+    <value>Not Active</value>
+  </data>
   <data name="Note" xml:space="preserve">
     <value>Note</value>
   </data>
   <data name="Ok" xml:space="preserve">
     <value>Ok</value>
+  </data>
+  <data name="OperationCompletedSuccessfully" xml:space="preserve">
+    <value>Operation Completed Successfully</value>
   </data>
   <data name="ParentsName" xml:space="preserve">
     <value>Parents Name</value>
@@ -459,8 +471,14 @@
   <data name="Saving" xml:space="preserve">
     <value>Saving</value>
   </data>
+  <data name="Screens" xml:space="preserve">
+    <value>Screens</value>
+  </data>
   <data name="Search" xml:space="preserve">
     <value>Search</value>
+  </data>
+  <data name="Show" xml:space="preserve">
+    <value>Show</value>
   </data>
   <data name="SocialStatus" xml:space="preserve">
     <value>Social Status</value>
@@ -555,8 +573,14 @@
   <data name="UpdatedSuccessfully" xml:space="preserve">
     <value>Updated Successfully</value>
   </data>
+  <data name="UpdatePermission" xml:space="preserve">
+    <value>Update Permission</value>
+  </data>
   <data name="Updating" xml:space="preserve">
     <value>Updating</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>User Name</value>
   </data>
   <data name="Users" xml:space="preserve">
     <value>Users</value>

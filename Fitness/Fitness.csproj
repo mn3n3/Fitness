@@ -184,6 +184,7 @@
     <Compile Include="Controllers\SourceController.cs" />
     <Compile Include="Controllers\SubscriberController.cs" />
     <Compile Include="Controllers\TrainerController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\VisitorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -193,6 +194,10 @@
     <Compile Include="Migrations\202009081532572_Nagham_new.cs" />
     <Compile Include="Migrations\202009081532572_Nagham_new.Designer.cs">
       <DependentUpon>202009081532572_Nagham_new.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009091245315_Permission090920NS.cs" />
+    <Compile Include="Migrations\202009091245315_Permission090920NS.Designer.cs">
+      <DependentUpon>202009091245315_Permission090920NS.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -254,6 +259,8 @@
     <Compile Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="ViewModels\SourceVM.cs" />
     <Compile Include="ViewModels\TrainerVM.cs" />
+    <Compile Include="ViewModels\UserAccountVM.cs" />
+    <Compile Include="ViewModels\UserViewModel.cs" />
     <Compile Include="ViewModels\VisitorVM.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -9062,6 +9069,10 @@
     <Content Include="Views\Item\Delete.cshtml" />
     <Content Include="Views\Visitor\Delete.cshtml" />
     <Content Include="Views\Visitor\Update.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Users\ModifyPermission.cshtml" />
+    <Content Include="Views\Users\Add.cshtml" />
+    <Content Include="Views\Users\ChangeUserPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -9099,6 +9110,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202009081532572_Nagham_new.resx">
       <DependentUpon>202009081532572_Nagham_new.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009091245315_Permission090920NS.resx">
+      <DependentUpon>202009091245315_Permission090920NS.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
